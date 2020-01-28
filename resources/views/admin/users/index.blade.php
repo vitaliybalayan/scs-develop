@@ -5,7 +5,7 @@
 @endsection
 
 @section('vendor_styles')
-<link href="{{ env('APP_URL') }}/assets/admin/plugins/custom/datatables/datatables.bundle.css" rel="stylesheet" type="text/css" />
+<link href="/assets/admin/plugins/custom/datatables/datatables.bundle.css" rel="stylesheet" type="text/css" />
 @endsection
 
 @section('content')
@@ -212,6 +212,6 @@
 @endsection
 
 @section('vendor_scripts')
-<script src="{{ env('APP_URL') }}/assets/admin/plugins/custom/datatables/datatables.bundle.js" type="text/javascript"></script>
-<script src="{{ env('APP_URL') }}/assets/admin/js/pages/crud/datatables/basic/paginations.js" type="text/javascript"></script>
+<script src="/assets/admin/plugins/custom/datatables/datatables.bundle.js" type="text/javascript"></script>
+<script src="/assets/admin/js/pages/crud/datatables/basic/paginations.js" type="text/javascript"></script>
 @endsection

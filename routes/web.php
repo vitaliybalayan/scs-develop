@@ -21,11 +21,19 @@ Route::group(['prefix'=>'parallaxpanel', 'namespace'=>'Admin', 'middleware'=>'au
 
 	Route::post('login', 'AuthController@login')->name('panel.login');
 	Route::post('register', 'AuthController@register')->name('panel.register');
-	Route::get('logout', 'AuthController@logout')->name('panel.logout');
+
 });
 
 Route::group(['prefix'=>'admin','namespace'=>'Admin', 'middleware'	=>	'admin'], function(){
 
+	Route::get('/', 'PageController@index')->name('admin.dashboard');
+
+	Route::get('/settings', 'SettingController@index')->name('admin.settings');
+	Route::post('/settings/store', 'SettingController@store')->name('admin.settings.store');
+	Route::post('/settings/update', 'SettingController@update')->name('admin.settings.update');
+	
 	Route::resource('/users', 'UsersController');
 
 });
+
+Route::get('parallaxpanel/logout', 'Admin\AuthController@logout')->name('panel.logout');

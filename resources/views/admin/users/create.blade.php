@@ -5,7 +5,7 @@
 @endsection
 
 @section('vendor_styles')
-<link href="{{ env('APP_URL') }}/assets/admin/css/pages/wizard/wizard-4.css" rel="stylesheet" type="text/css" />
+<link href="/assets/admin/css/pages/wizard/wizard-4.css" rel="stylesheet" type="text/css" />
 @endsection
 
 @section('content')
@@ -36,6 +36,8 @@
 
 	<!-- begin:: Content -->
 	<div class="kt-container  kt-container--fluid  kt-grid__item kt-grid__item--fluid">
+		@include('admin.errors')
+		
 		<div class="kt-portlet kt-portlet--tabs">
 			<div class="kt-portlet__head">
 				<div class="kt-portlet__head-toolbar">
@@ -146,5 +148,5 @@
 @endsection
 
 @section('vendor_scripts')
-<script src="{{ env('APP_URL') }}/assets/admin/js/pages/custom/user/edit-user.js" type="text/javascript"></script>
+<script src="/assets/admin/js/pages/custom/user/edit-user.js" type="text/javascript"></script>
 @endsection

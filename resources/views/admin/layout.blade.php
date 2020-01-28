@@ -19,15 +19,15 @@
 		<!--end::Page Vendors Styles -->
 
 		<!--begin::Global Theme Styles(used by all pages) -->
-		<link href="{{ env('APP_URL') }}/assets/admin/plugins/global/plugins.bundle.css" rel="stylesheet" type="text/css" />
-		<link href="{{ env('APP_URL') }}/assets/admin/css/style.bundle.css" rel="stylesheet" type="text/css" />
+		<link href="/assets/admin/plugins/global/plugins.bundle.css" rel="stylesheet" type="text/css" />
+		<link href="/assets/admin/css/style.bundle.css" rel="stylesheet" type="text/css" />
 		<!--end::Global Theme Styles -->
 
 		<!--begin::Layout Skins(used by all pages) -->
 
 		<!--end::Layout Skins -->
 
-		<link rel="shortcut icon" href="{{ env('APP_URL') }}/assets/admin/media/logos/favicon.png" />
+		<link rel="shortcut icon" href="/assets/admin/media/logos/favicon.png" />
 	</head>
 
 	<!-- end::Head -->
@@ -40,8 +40,8 @@
 		<!-- begin:: Header Mobile -->
 		<div id="kt_header_mobile" class="kt-header-mobile  kt-header-mobile--fixed ">
 			<div class="kt-header-mobile__logo">
-				<a href="index.html">
-					<img alt="Logo" src="{{ env('APP_URL') }}/assets/admin/media/logos/logo-2-sm.png" />
+				<a href="{{ route('admin.dashboard') }}">
+					<img alt="Logo" src="/assets/admin/media/logos/logo-2-sm.png" />
 				</a>
 			</div>
 			<div class="kt-header-mobile__toolbar">
@@ -62,8 +62,8 @@
 					<!-- begin:: Aside -->
 					<div class="kt-aside__brand kt-grid__item  " id="kt_aside_brand">
 						<div class="kt-aside__brand-logo">
-							<a href="index.html">
-								<img alt="Logo" src="{{ env('APP_URL') }}/assets/admin/media/logos/logo-4.png" />
+							<a href="{{ route('admin.dashboard') }}">
+								<img alt="Логотип" src="/assets/admin/media/logos/logo-4.png" />
 							</a>
 						</div>
 					</div>
@@ -81,30 +81,12 @@
 									</a>
 								</li>
 
-								<li class="kt-menu__item  kt-menu__item--submenu" aria-haspopup="true" data-ktmenu-submenu-toggle="hover"><a href="javascript:;" class="kt-menu__link kt-menu__toggle"><i class="kt-menu__link-icon flaticon2-layers-1"></i><span class="kt-menu__link-text">Actions</span></a>
-									<div class="kt-menu__submenu "><span class="kt-menu__arrow"></span>
-										<ul class="kt-menu__subnav">
-											<li class="kt-menu__item  kt-menu__item--parent" aria-haspopup="true"><span class="kt-menu__link"><span class="kt-menu__link-text">Actions</span></span></li>
-											<li class="kt-menu__item " aria-haspopup="true"><a href="#" class="kt-menu__link "><i class="kt-menu__link-bullet kt-menu__link-bullet--line"><span></span></i><span class="kt-menu__link-text">Add New</span></a></li>
-											<li class="kt-menu__item " aria-haspopup="true"><a href="#" class="kt-menu__link "><i class="kt-menu__link-bullet kt-menu__link-bullet--line"><span></span></i><span class="kt-menu__link-text">Edit</span></a></li>
-											<li class="kt-menu__item " aria-haspopup="true"><a href="#" class="kt-menu__link "><i class="kt-menu__link-bullet kt-menu__link-bullet--line"><span></span></i><span class="kt-menu__link-text">Delete</span></a></li>
-											<li class="kt-menu__item " aria-haspopup="true"><a href="#" class="kt-menu__link "><i class="kt-menu__link-bullet kt-menu__link-bullet--line"><span></span></i><span class="kt-menu__link-text">Import</span></a></li>
-										</ul>
-									</div>
+								<li class="kt-menu__item  kt-menu__item" aria-haspopup="true">
+									<a href="{{ route('admin.settings') }}" class="kt-menu__link ">
+										<i class="kt-menu__link-icon flaticon2-gear"></i><span class="kt-menu__link-text">Настройки</span>
+									</a>
 								</li>
-								<li class="kt-menu__item " aria-haspopup="true"><a href="#" class="kt-menu__link "><i class="kt-menu__link-icon flaticon2-graph"></i><span class="kt-menu__link-text">Reports</span></a></li>
-								<li class="kt-menu__item  kt-menu__item--submenu" aria-haspopup="true" data-ktmenu-submenu-toggle="hover"><a href="javascript:;" class="kt-menu__link kt-menu__toggle"><i class="kt-menu__link-icon flaticon2-drop"></i><span class="kt-menu__link-text">Config</span></a>
-									<div class="kt-menu__submenu "><span class="kt-menu__arrow"></span>
-										<ul class="kt-menu__subnav">
-											<li class="kt-menu__item  kt-menu__item--parent" aria-haspopup="true"><span class="kt-menu__link"><span class="kt-menu__link-text">Config</span></span></li>
-											<li class="kt-menu__item " aria-haspopup="true"><a href="#" class="kt-menu__link "><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">Import</span></a></li>
-											<li class="kt-menu__item " aria-haspopup="true"><a href="#" class="kt-menu__link "><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">Backup</span></a></li>
-										</ul>
-									</div>
-								</li>
-								<li class="kt-menu__item " aria-haspopup="true"><a href="#" class="kt-menu__link "><i class="kt-menu__link-icon flaticon2-analytics-2"></i><span class="kt-menu__link-text">Console</span></a></li>
-								<li class="kt-menu__item " aria-haspopup="true"><a href="#" class="kt-menu__link "><i class="kt-menu__link-icon flaticon2-protected"></i><span class="kt-menu__link-text">System</span></a></li>
-								<li class="kt-menu__item " aria-haspopup="true"><a href="#" class="kt-menu__link "><i class="kt-menu__link-icon flaticon2-mail-1"></i><span class="kt-menu__link-text">Logs</span></a></li>
+
 							</ul>
 						</div>
 					</div>
@@ -1051,7 +1033,7 @@
 									<form>
 
 										<!--begin: Head -->
-										<div class="kt-head kt-head--skin-dark" style="background-image: url({{ env('APP_URL') }}/assets/admin/media/misc/bg-1.jpg)">
+										<div class="kt-head kt-head--skin-dark" style="background-image: url(/assets/admin/media/misc/bg-1.jpg)">
 											<h3 class="kt-head__title">
 												User Quick Actions
 												<span class="kt-space-15"></span>
@@ -1134,7 +1116,7 @@
 
 										<!-- begin:: Mycart -->
 										<div class="kt-mycart">
-											<div class="kt-mycart__head kt-head" style="background-image: url({{ env('APP_URL') }}/assets/admin/media/misc/bg-1.jpg);">
+											<div class="kt-mycart__head kt-head" style="background-image: url(/assets/admin/media/misc/bg-1.jpg);">
 												<div class="kt-mycart__info">
 													<span class="kt-mycart__icon"><i class="flaticon2-shopping-cart-1 kt-font-success"></i></span>
 													<h3 class="kt-mycart__title">My Cart</h3>
@@ -1162,7 +1144,7 @@
 															</div>
 														</div>
 														<a href="#" class="kt-mycart__pic">
-															<img src="{{ env('APP_URL') }}/assets/admin/media/products/product9.jpg" title="">
+															<img src="/assets/admin/media/products/product9.jpg" title="">
 														</a>
 													</div>
 												</div>
@@ -1184,7 +1166,7 @@
 															</div>
 														</div>
 														<a href="#" class="kt-mycart__pic">
-															<img src="{{ env('APP_URL') }}/assets/admin/media/products/product13.jpg" title="">
+															<img src="/assets/admin/media/products/product13.jpg" title="">
 														</a>
 													</div>
 												</div>
@@ -1206,7 +1188,7 @@
 															</div>
 														</div>
 														<a href="#" class="kt-mycart__pic">
-															<img src="{{ env('APP_URL') }}/assets/admin/media/products/product16.jpg" title="">
+															<img src="/assets/admin/media/products/product16.jpg" title="">
 														</a>
 													</div>
 												</div>
@@ -1228,7 +1210,7 @@
 															</div>
 														</div>
 														<a href="#" class="kt-mycart__pic">
-															<img src="{{ env('APP_URL') }}/assets/admin/media/products/product15.jpg" title="" alt="">
+															<img src="/assets/admin/media/products/product15.jpg" title="" alt="">
 														</a>
 													</div>
 												</div>
@@ -1284,7 +1266,7 @@
 
 									<!--begin: Head -->
 									<div class="kt-user-card kt-user-card--skin-dark kt-notification-item-padding-x"
-									style="background-image: url({{ env('APP_URL') }}/assets/admin/media/misc/bg-1.jpg)">
+									style="background-image: url(/assets/admin/media/misc/bg-1.jpg)">
 										<div class="kt-user-card__avatar">
 											<img alt="Pic" src="{{ $user->getImage() }}" />
 
@@ -1367,7 +1349,7 @@
 											</div>
 										</a>
 										<div class="kt-notification__custom kt-space-between">
-											<a href="{{ route('panel.logout') }}" target="_blank" class="btn btn-label btn-label-brand btn-sm btn-bold">
+											<a href="{{ route('panel.logout') }}" class="btn btn-label btn-label-brand btn-sm btn-bold">
 												Выйти
 											</a>
 											<a href="custom/user/login-v2.html" target="_blank" class="btn btn-clean btn-sm btn-bold">Upgrade Plan</a>
@@ -1841,7 +1823,7 @@
 						Demo 1
 					</div>
 					<div class="kt-demo-panel__item-preview">
-						<img src="{{ env('APP_URL') }}/assets/admin/media//demos/preview/demo1.jpg" alt="" />
+						<img src="/assets/admin/media//demos/preview/demo1.jpg" alt="" />
 						<div class="kt-demo-panel__item-preview-overlay">
 							<a href="https://keenthemes.com/metronic/preview/demo1/index.html" class="btn btn-brand btn-elevate " target="_blank">Default</a>
 							<a href="https://keenthemes.com/metronic/preview/demo1/rtl/index.html" class="btn btn-light btn-elevate" target="_blank">RTL Version</a>
@@ -1853,7 +1835,7 @@
 						Demo 2
 					</div>
 					<div class="kt-demo-panel__item-preview">
-						<img src="{{ env('APP_URL') }}/assets/admin/media//demos/preview/demo2.jpg" alt="" />
+						<img src="/assets/admin/media//demos/preview/demo2.jpg" alt="" />
 						<div class="kt-demo-panel__item-preview-overlay">
 							<a href="https://keenthemes.com/metronic/preview/demo2/index.html" class="btn btn-brand btn-elevate " target="_blank">Default</a>
 							<a href="https://keenthemes.com/metronic/preview/demo2/rtl/index.html" class="btn btn-light btn-elevate" target="_blank">RTL Version</a>
@@ -1865,7 +1847,7 @@
 						Demo 3
 					</div>
 					<div class="kt-demo-panel__item-preview">
-						<img src="{{ env('APP_URL') }}/assets/admin/media//demos/preview/demo3.jpg" alt="" />
+						<img src="/assets/admin/media//demos/preview/demo3.jpg" alt="" />
 						<div class="kt-demo-panel__item-preview-overlay">
 							<a href="https://keenthemes.com/metronic/preview/demo3/index.html" class="btn btn-brand btn-elevate " target="_blank">Default</a>
 							<a href="https://keenthemes.com/metronic/preview/demo3/rtl/index.html" class="btn btn-light btn-elevate" target="_blank">RTL Version</a>
@@ -1877,7 +1859,7 @@
 						Demo 4
 					</div>
 					<div class="kt-demo-panel__item-preview">
-						<img src="{{ env('APP_URL') }}/assets/admin/media//demos/preview/demo4.jpg" alt="" />
+						<img src="/assets/admin/media//demos/preview/demo4.jpg" alt="" />
 						<div class="kt-demo-panel__item-preview-overlay">
 							<a href="https://keenthemes.com/metronic/preview/demo4/index.html" class="btn btn-brand btn-elevate " target="_blank">Default</a>
 							<a href="https://keenthemes.com/metronic/preview/demo4/rtl/index.html" class="btn btn-light btn-elevate" target="_blank">RTL Version</a>
@@ -1889,7 +1871,7 @@
 						Demo 5
 					</div>
 					<div class="kt-demo-panel__item-preview">
-						<img src="{{ env('APP_URL') }}/assets/admin/media//demos/preview/demo5.jpg" alt="" />
+						<img src="/assets/admin/media//demos/preview/demo5.jpg" alt="" />
 						<div class="kt-demo-panel__item-preview-overlay">
 							<a href="https://keenthemes.com/metronic/preview/demo5/index.html" class="btn btn-brand btn-elevate " target="_blank">Default</a>
 							<a href="https://keenthemes.com/metronic/preview/demo5/rtl/index.html" class="btn btn-light btn-elevate" target="_blank">RTL Version</a>
@@ -1901,7 +1883,7 @@
 						Demo 6
 					</div>
 					<div class="kt-demo-panel__item-preview">
-						<img src="{{ env('APP_URL') }}/assets/admin/media//demos/preview/demo6.jpg" alt="" />
+						<img src="/assets/admin/media//demos/preview/demo6.jpg" alt="" />
 						<div class="kt-demo-panel__item-preview-overlay">
 							<a href="https://keenthemes.com/metronic/preview/demo6/index.html" class="btn btn-brand btn-elevate " target="_blank">Default</a>
 							<a href="https://keenthemes.com/metronic/preview/demo6/rtl/index.html" class="btn btn-light btn-elevate" target="_blank">RTL Version</a>
@@ -1913,7 +1895,7 @@
 						Demo 7
 					</div>
 					<div class="kt-demo-panel__item-preview">
-						<img src="{{ env('APP_URL') }}/assets/admin/media//demos/preview/demo7.jpg" alt="" />
+						<img src="/assets/admin/media//demos/preview/demo7.jpg" alt="" />
 						<div class="kt-demo-panel__item-preview-overlay">
 							<a href="https://keenthemes.com/metronic/preview/demo7/index.html" class="btn btn-brand btn-elevate " target="_blank">Default</a>
 							<a href="https://keenthemes.com/metronic/preview/demo7/rtl/index.html" class="btn btn-light btn-elevate" target="_blank">RTL Version</a>
@@ -1925,7 +1907,7 @@
 						Demo 8
 					</div>
 					<div class="kt-demo-panel__item-preview">
-						<img src="{{ env('APP_URL') }}/assets/admin/media//demos/preview/demo8.jpg" alt="" />
+						<img src="/assets/admin/media//demos/preview/demo8.jpg" alt="" />
 						<div class="kt-demo-panel__item-preview-overlay">
 							<a href="https://keenthemes.com/metronic/preview/demo8/index.html" class="btn btn-brand btn-elevate " target="_blank">Default</a>
 							<a href="https://keenthemes.com/metronic/preview/demo8/rtl/index.html" class="btn btn-light btn-elevate" target="_blank">RTL Version</a>
@@ -1937,7 +1919,7 @@
 						Demo 9
 					</div>
 					<div class="kt-demo-panel__item-preview">
-						<img src="{{ env('APP_URL') }}/assets/admin/media//demos/preview/demo9.jpg" alt="" />
+						<img src="/assets/admin/media//demos/preview/demo9.jpg" alt="" />
 						<div class="kt-demo-panel__item-preview-overlay">
 							<a href="https://keenthemes.com/metronic/preview/demo9/index.html" class="btn btn-brand btn-elevate " target="_blank">Default</a>
 							<a href="https://keenthemes.com/metronic/preview/demo9/rtl/index.html" class="btn btn-light btn-elevate" target="_blank">RTL Version</a>
@@ -1949,7 +1931,7 @@
 						Demo 10
 					</div>
 					<div class="kt-demo-panel__item-preview">
-						<img src="{{ env('APP_URL') }}/assets/admin/media//demos/preview/demo10.jpg" alt="" />
+						<img src="/assets/admin/media//demos/preview/demo10.jpg" alt="" />
 						<div class="kt-demo-panel__item-preview-overlay">
 							<a href="https://keenthemes.com/metronic/preview/demo10/index.html" class="btn btn-brand btn-elevate " target="_blank">Default</a>
 							<a href="https://keenthemes.com/metronic/preview/demo10/rtl/index.html" class="btn btn-light btn-elevate" target="_blank">RTL Version</a>
@@ -1961,7 +1943,7 @@
 						Demo 11
 					</div>
 					<div class="kt-demo-panel__item-preview">
-						<img src="{{ env('APP_URL') }}/assets/admin/media//demos/preview/demo11.jpg" alt="" />
+						<img src="/assets/admin/media//demos/preview/demo11.jpg" alt="" />
 						<div class="kt-demo-panel__item-preview-overlay">
 							<a href="https://keenthemes.com/metronic/preview/demo11/index.html" class="btn btn-brand btn-elevate " target="_blank">Default</a>
 							<a href="https://keenthemes.com/metronic/preview/demo11/rtl/index.html" class="btn btn-light btn-elevate" target="_blank">RTL Version</a>
@@ -1973,7 +1955,7 @@
 						Demo 12
 					</div>
 					<div class="kt-demo-panel__item-preview">
-						<img src="{{ env('APP_URL') }}/assets/admin/media//demos/preview/demo12.jpg" alt="" />
+						<img src="/assets/admin/media//demos/preview/demo12.jpg" alt="" />
 						<div class="kt-demo-panel__item-preview-overlay">
 							<a href="https://keenthemes.com/metronic/preview/demo12/index.html" class="btn btn-brand btn-elevate " target="_blank">Default</a>
 							<a href="https://keenthemes.com/metronic/preview/demo12/rtl/index.html" class="btn btn-light btn-elevate" target="_blank">RTL Version</a>
@@ -1985,7 +1967,7 @@
 						Demo 13
 					</div>
 					<div class="kt-demo-panel__item-preview">
-						<img src="{{ env('APP_URL') }}/assets/admin/media//demos/preview/demo13.jpg" alt="" />
+						<img src="/assets/admin/media//demos/preview/demo13.jpg" alt="" />
 						<div class="kt-demo-panel__item-preview-overlay">
 							<a href="#" class="btn btn-brand btn-elevate disabled">Coming soon</a>
 						</div>
@@ -1996,7 +1978,7 @@
 						Demo 14
 					</div>
 					<div class="kt-demo-panel__item-preview">
-						<img src="{{ env('APP_URL') }}/assets/admin/media//demos/preview/demo14.jpg" alt="" />
+						<img src="/assets/admin/media//demos/preview/demo14.jpg" alt="" />
 						<div class="kt-demo-panel__item-preview-overlay">
 							<a href="#" class="btn btn-brand btn-elevate disabled">Coming soon</a>
 						</div>
@@ -2007,7 +1989,7 @@
 						Demo 15
 					</div>
 					<div class="kt-demo-panel__item-preview">
-						<img src="{{ env('APP_URL') }}/assets/admin/media//demos/preview/demo15.jpg" alt="" />
+						<img src="/assets/admin/media//demos/preview/demo15.jpg" alt="" />
 						<div class="kt-demo-panel__item-preview-overlay">
 							<a href="#" class="btn btn-brand btn-elevate disabled">Coming soon</a>
 						</div>
@@ -2018,7 +2000,7 @@
 						Demo 16
 					</div>
 					<div class="kt-demo-panel__item-preview">
-						<img src="{{ env('APP_URL') }}/assets/admin/media//demos/preview/demo16.jpg" alt="" />
+						<img src="/assets/admin/media//demos/preview/demo16.jpg" alt="" />
 						<div class="kt-demo-panel__item-preview-overlay">
 							<a href="#" class="btn btn-brand btn-elevate disabled">Coming soon</a>
 						</div>
@@ -2029,7 +2011,7 @@
 						Demo 17
 					</div>
 					<div class="kt-demo-panel__item-preview">
-						<img src="{{ env('APP_URL') }}/assets/admin/media//demos/preview/demo17.jpg" alt="" />
+						<img src="/assets/admin/media//demos/preview/demo17.jpg" alt="" />
 						<div class="kt-demo-panel__item-preview-overlay">
 							<a href="#" class="btn btn-brand btn-elevate disabled">Coming soon</a>
 						</div>
@@ -2059,7 +2041,7 @@
 						Demo 1
 					</div>
 					<div class="kt-demo-panel__item-preview">
-						<img src="{{ env('APP_URL') }}/assets/admin/media//demos/preview/demo1.jpg" alt="" />
+						<img src="/assets/admin/media//demos/preview/demo1.jpg" alt="" />
 						<div class="kt-demo-panel__item-preview-overlay">
 							<a href="https://keenthemes.com/metronic/preview/demo1/index.html" class="btn btn-brand btn-elevate " target="_blank">Default</a>
 							<a href="https://keenthemes.com/metronic/preview/demo1/rtl/index.html" class="btn btn-light btn-elevate" target="_blank">RTL Version</a>
@@ -2071,7 +2053,7 @@
 						Demo 2
 					</div>
 					<div class="kt-demo-panel__item-preview">
-						<img src="{{ env('APP_URL') }}/assets/admin/media//demos/preview/demo2.jpg" alt="" />
+						<img src="/assets/admin/media//demos/preview/demo2.jpg" alt="" />
 						<div class="kt-demo-panel__item-preview-overlay">
 							<a href="https://keenthemes.com/metronic/preview/demo2/index.html" class="btn btn-brand btn-elevate " target="_blank">Default</a>
 							<a href="https://keenthemes.com/metronic/preview/demo2/rtl/index.html" class="btn btn-light btn-elevate" target="_blank">RTL Version</a>
@@ -2083,7 +2065,7 @@
 						Demo 3
 					</div>
 					<div class="kt-demo-panel__item-preview">
-						<img src="{{ env('APP_URL') }}/assets/admin/media//demos/preview/demo3.jpg" alt="" />
+						<img src="/assets/admin/media//demos/preview/demo3.jpg" alt="" />
 						<div class="kt-demo-panel__item-preview-overlay">
 							<a href="https://keenthemes.com/metronic/preview/demo3/index.html" class="btn btn-brand btn-elevate " target="_blank">Default</a>
 							<a href="https://keenthemes.com/metronic/preview/demo3/rtl/index.html" class="btn btn-light btn-elevate" target="_blank">RTL Version</a>
@@ -2095,7 +2077,7 @@
 						Demo 4
 					</div>
 					<div class="kt-demo-panel__item-preview">
-						<img src="{{ env('APP_URL') }}/assets/admin/media//demos/preview/demo4.jpg" alt="" />
+						<img src="/assets/admin/media//demos/preview/demo4.jpg" alt="" />
 						<div class="kt-demo-panel__item-preview-overlay">
 							<a href="https://keenthemes.com/metronic/preview/demo4/index.html" class="btn btn-brand btn-elevate " target="_blank">Default</a>
 							<a href="https://keenthemes.com/metronic/preview/demo4/rtl/index.html" class="btn btn-light btn-elevate" target="_blank">RTL Version</a>
@@ -2107,7 +2089,7 @@
 						Demo 5
 					</div>
 					<div class="kt-demo-panel__item-preview">
-						<img src="{{ env('APP_URL') }}/assets/admin/media//demos/preview/demo5.jpg" alt="" />
+						<img src="/assets/admin/media//demos/preview/demo5.jpg" alt="" />
 						<div class="kt-demo-panel__item-preview-overlay">
 							<a href="https://keenthemes.com/metronic/preview/demo5/index.html" class="btn btn-brand btn-elevate " target="_blank">Default</a>
 							<a href="https://keenthemes.com/metronic/preview/demo5/rtl/index.html" class="btn btn-light btn-elevate" target="_blank">RTL Version</a>
@@ -2119,7 +2101,7 @@
 						Demo 6
 					</div>
 					<div class="kt-demo-panel__item-preview">
-						<img src="{{ env('APP_URL') }}/assets/admin/media//demos/preview/demo6.jpg" alt="" />
+						<img src="/assets/admin/media//demos/preview/demo6.jpg" alt="" />
 						<div class="kt-demo-panel__item-preview-overlay">
 							<a href="https://keenthemes.com/metronic/preview/demo6/index.html" class="btn btn-brand btn-elevate " target="_blank">Default</a>
 							<a href="https://keenthemes.com/metronic/preview/demo6/rtl/index.html" class="btn btn-light btn-elevate" target="_blank">RTL Version</a>
@@ -2131,7 +2113,7 @@
 						Demo 7
 					</div>
 					<div class="kt-demo-panel__item-preview">
-						<img src="{{ env('APP_URL') }}/assets/admin/media//demos/preview/demo7.jpg" alt="" />
+						<img src="/assets/admin/media//demos/preview/demo7.jpg" alt="" />
 						<div class="kt-demo-panel__item-preview-overlay">
 							<a href="https://keenthemes.com/metronic/preview/demo7/index.html" class="btn btn-brand btn-elevate " target="_blank">Default</a>
 							<a href="https://keenthemes.com/metronic/preview/demo7/rtl/index.html" class="btn btn-light btn-elevate" target="_blank">RTL Version</a>
@@ -2143,7 +2125,7 @@
 						Demo 8
 					</div>
 					<div class="kt-demo-panel__item-preview">
-						<img src="{{ env('APP_URL') }}/assets/admin/media//demos/preview/demo8.jpg" alt="" />
+						<img src="/assets/admin/media//demos/preview/demo8.jpg" alt="" />
 						<div class="kt-demo-panel__item-preview-overlay">
 							<a href="https://keenthemes.com/metronic/preview/demo8/index.html" class="btn btn-brand btn-elevate " target="_blank">Default</a>
 							<a href="https://keenthemes.com/metronic/preview/demo8/rtl/index.html" class="btn btn-light btn-elevate" target="_blank">RTL Version</a>
@@ -2155,7 +2137,7 @@
 						Demo 9
 					</div>
 					<div class="kt-demo-panel__item-preview">
-						<img src="{{ env('APP_URL') }}/assets/admin/media//demos/preview/demo9.jpg" alt="" />
+						<img src="/assets/admin/media//demos/preview/demo9.jpg" alt="" />
 						<div class="kt-demo-panel__item-preview-overlay">
 							<a href="https://keenthemes.com/metronic/preview/demo9/index.html" class="btn btn-brand btn-elevate " target="_blank">Default</a>
 							<a href="https://keenthemes.com/metronic/preview/demo9/rtl/index.html" class="btn btn-light btn-elevate" target="_blank">RTL Version</a>
@@ -2167,7 +2149,7 @@
 						Demo 10
 					</div>
 					<div class="kt-demo-panel__item-preview">
-						<img src="{{ env('APP_URL') }}/assets/admin/media//demos/preview/demo10.jpg" alt="" />
+						<img src="/assets/admin/media//demos/preview/demo10.jpg" alt="" />
 						<div class="kt-demo-panel__item-preview-overlay">
 							<a href="https://keenthemes.com/metronic/preview/demo10/index.html" class="btn btn-brand btn-elevate " target="_blank">Default</a>
 							<a href="https://keenthemes.com/metronic/preview/demo10/rtl/index.html" class="btn btn-light btn-elevate" target="_blank">RTL Version</a>
@@ -2179,7 +2161,7 @@
 						Demo 11
 					</div>
 					<div class="kt-demo-panel__item-preview">
-						<img src="{{ env('APP_URL') }}/assets/admin/media//demos/preview/demo11.jpg" alt="" />
+						<img src="/assets/admin/media//demos/preview/demo11.jpg" alt="" />
 						<div class="kt-demo-panel__item-preview-overlay">
 							<a href="https://keenthemes.com/metronic/preview/demo11/index.html" class="btn btn-brand btn-elevate " target="_blank">Default</a>
 							<a href="https://keenthemes.com/metronic/preview/demo11/rtl/index.html" class="btn btn-light btn-elevate" target="_blank">RTL Version</a>
@@ -2191,7 +2173,7 @@
 						Demo 12
 					</div>
 					<div class="kt-demo-panel__item-preview">
-						<img src="{{ env('APP_URL') }}/assets/admin/media//demos/preview/demo12.jpg" alt="" />
+						<img src="/assets/admin/media//demos/preview/demo12.jpg" alt="" />
 						<div class="kt-demo-panel__item-preview-overlay">
 							<a href="https://keenthemes.com/metronic/preview/demo12/index.html" class="btn btn-brand btn-elevate " target="_blank">Default</a>
 							<a href="https://keenthemes.com/metronic/preview/demo12/rtl/index.html" class="btn btn-light btn-elevate" target="_blank">RTL Version</a>
@@ -2203,7 +2185,7 @@
 						Demo 13
 					</div>
 					<div class="kt-demo-panel__item-preview">
-						<img src="{{ env('APP_URL') }}/assets/admin/media//demos/preview/demo13.jpg" alt="" />
+						<img src="/assets/admin/media//demos/preview/demo13.jpg" alt="" />
 						<div class="kt-demo-panel__item-preview-overlay">
 							<a href="#" class="btn btn-brand btn-elevate disabled">Coming soon</a>
 						</div>
@@ -2214,7 +2196,7 @@
 						Demo 14
 					</div>
 					<div class="kt-demo-panel__item-preview">
-						<img src="{{ env('APP_URL') }}/assets/admin/media//demos/preview/demo14.jpg" alt="" />
+						<img src="/assets/admin/media//demos/preview/demo14.jpg" alt="" />
 						<div class="kt-demo-panel__item-preview-overlay">
 							<a href="#" class="btn btn-brand btn-elevate disabled">Coming soon</a>
 						</div>
@@ -2225,7 +2207,7 @@
 						Demo 15
 					</div>
 					<div class="kt-demo-panel__item-preview">
-						<img src="{{ env('APP_URL') }}/assets/admin/media//demos/preview/demo15.jpg" alt="" />
+						<img src="/assets/admin/media//demos/preview/demo15.jpg" alt="" />
 						<div class="kt-demo-panel__item-preview-overlay">
 							<a href="#" class="btn btn-brand btn-elevate disabled">Coming soon</a>
 						</div>
@@ -2236,7 +2218,7 @@
 						Demo 16
 					</div>
 					<div class="kt-demo-panel__item-preview">
-						<img src="{{ env('APP_URL') }}/assets/admin/media//demos/preview/demo16.jpg" alt="" />
+						<img src="/assets/admin/media//demos/preview/demo16.jpg" alt="" />
 						<div class="kt-demo-panel__item-preview-overlay">
 							<a href="#" class="btn btn-brand btn-elevate disabled">Coming soon</a>
 						</div>
@@ -2247,7 +2229,7 @@
 						Demo 17
 					</div>
 					<div class="kt-demo-panel__item-preview">
-						<img src="{{ env('APP_URL') }}/assets/admin/media//demos/preview/demo17.jpg" alt="" />
+						<img src="/assets/admin/media//demos/preview/demo17.jpg" alt="" />
 						<div class="kt-demo-panel__item-preview-overlay">
 							<a href="#" class="btn btn-brand btn-elevate disabled">Coming soon</a>
 						</div>
@@ -2346,7 +2328,7 @@
 										<div class="kt-chat__message kt-chat__message--success">
 											<div class="kt-chat__user">
 												<span class="kt-media kt-media--circle kt-media--sm">
-													<img src="{{ env('APP_URL') }}/assets/admin/media/users/100_12.jpg" alt="image">
+													<img src="/assets/admin/media/users/100_12.jpg" alt="image">
 												</span>
 												<a href="#" class="kt-chat__username">Jason Muller</span></a>
 												<span class="kt-chat__datetime">2 Hours</span>
@@ -2360,7 +2342,7 @@
 												<span class="kt-chat__datetime">30 Seconds</span>
 												<a href="#" class="kt-chat__username">You</span></a>
 												<span class="kt-media kt-media--circle kt-media--sm">
-													<img src="{{ env('APP_URL') }}/assets/admin/media/users/300_21.jpg" alt="image">
+													<img src="/assets/admin/media/users/300_21.jpg" alt="image">
 												</span>
 											</div>
 											<div class="kt-chat__text">
@@ -2370,7 +2352,7 @@
 										<div class="kt-chat__message kt-chat__message--success">
 											<div class="kt-chat__user">
 												<span class="kt-media kt-media--circle kt-media--sm">
-													<img src="{{ env('APP_URL') }}/assets/admin/media/users/100_12.jpg" alt="image">
+													<img src="/assets/admin/media/users/100_12.jpg" alt="image">
 												</span>
 												<a href="#" class="kt-chat__username">Jason Muller</span></a>
 												<span class="kt-chat__datetime">30 Seconds</span>
@@ -2384,7 +2366,7 @@
 												<span class="kt-chat__datetime">Just Now</span>
 												<a href="#" class="kt-chat__username">You</span></a>
 												<span class="kt-media kt-media--circle kt-media--sm">
-													<img src="{{ env('APP_URL') }}/assets/admin/media/users/300_21.jpg" alt="image">
+													<img src="/assets/admin/media/users/300_21.jpg" alt="image">
 												</span>
 											</div>
 											<div class="kt-chat__text">
@@ -2394,7 +2376,7 @@
 										<div class="kt-chat__message kt-chat__message--success">
 											<div class="kt-chat__user">
 												<span class="kt-media kt-media--circle kt-media--sm">
-													<img src="{{ env('APP_URL') }}/assets/admin/media/users/100_12.jpg" alt="image">
+													<img src="/assets/admin/media/users/100_12.jpg" alt="image">
 												</span>
 												<a href="#" class="kt-chat__username">Jason Muller</span></a>
 												<span class="kt-chat__datetime">2 Hours</span>
@@ -2408,7 +2390,7 @@
 												<span class="kt-chat__datetime">30 Seconds</span>
 												<a href="#" class="kt-chat__username">You</span></a>
 												<span class="kt-media kt-media--circle kt-media--sm">
-													<img src="{{ env('APP_URL') }}/assets/admin/media/users/300_21.jpg" alt="image">
+													<img src="/assets/admin/media/users/300_21.jpg" alt="image">
 												</span>
 											</div>
 											<div class="kt-chat__text">
@@ -2418,7 +2400,7 @@
 										<div class="kt-chat__message kt-chat__message--success">
 											<div class="kt-chat__user">
 												<span class="kt-media kt-media--circle kt-media--sm">
-													<img src="{{ env('APP_URL') }}/assets/admin/media/users/100_12.jpg" alt="image">
+													<img src="/assets/admin/media/users/100_12.jpg" alt="image">
 												</span>
 												<a href="#" class="kt-chat__username">Jason Muller</span></a>
 												<span class="kt-chat__datetime">30 Seconds</span>
@@ -2432,7 +2414,7 @@
 												<span class="kt-chat__datetime">Just Now</span>
 												<a href="#" class="kt-chat__username">You</span></a>
 												<span class="kt-media kt-media--circle kt-media--sm">
-													<img src="{{ env('APP_URL') }}/assets/admin/media/users/300_21.jpg" alt="image">
+													<img src="/assets/admin/media/users/300_21.jpg" alt="image">
 												</span>
 											</div>
 											<div class="kt-chat__text">
@@ -2492,15 +2474,15 @@
 		<!-- end::Global Config -->
 
 		<!--begin::Global Theme Bundle(used by all pages) -->
-		<script src="{{ env('APP_URL') }}/assets/admin/plugins/global/plugins.bundle.js" type="text/javascript"></script>
-		<script src="{{ env('APP_URL') }}/assets/admin/js/scripts.bundle.js" type="text/javascript"></script>
+		<script src="/assets/admin/plugins/global/plugins.bundle.js" type="text/javascript"></script>
+		<script src="/assets/admin/js/scripts.bundle.js" type="text/javascript"></script>
 
 		<!--end::Global Theme Bundle -->
 
 		<!--begin::Page Vendors(used by this page) -->
-		<script src="{{ env('APP_URL') }}/assets/admin/plugins/custom/fullcalendar/fullcalendar.bundle.js" type="text/javascript"></script>
+		<script src="/assets/admin/plugins/custom/fullcalendar/fullcalendar.bundle.js" type="text/javascript"></script>
 		<script src="//maps.google.com/maps/api/js?key=AIzaSyBTGnKT7dt597vo9QgeQ7BFhvSRP4eiMSM" type="text/javascript"></script>
-		<script src="{{ env('APP_URL') }}/assets/admin/plugins/custom/gmaps/gmaps.js" type="text/javascript"></script>
+		<script src="/assets/admin/plugins/custom/gmaps/gmaps.js" type="text/javascript"></script>
 
 		<!--end::Page Vendors -->
 

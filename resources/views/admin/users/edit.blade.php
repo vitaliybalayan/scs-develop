@@ -5,12 +5,11 @@
 @endsection
 
 @section('vendor_styles')
-<link href="{{ env('APP_URL') }}/assets/admin/css/pages/wizard/wizard-4.css" rel="stylesheet" type="text/css" />
+<link href="/assets/admin/css/pages/wizard/wizard-4.css" rel="stylesheet" type="text/css" />
 @endsection
 
 @section('content')
 <div class="kt-content  kt-grid__item kt-grid__item--fluid kt-grid kt-grid--hor" id="kt_content">
-
 {{Form::open([
 	'route'		=>	['users.update', $user->id],
 	'method'	=>	'put',
@@ -44,8 +43,10 @@
 	</div>
 	<!-- end:: Content Head -->
 
+
 	<!-- begin:: Content -->
 	<div class="kt-container  kt-container--fluid  kt-grid__item kt-grid__item--fluid">
+		@include('admin.errors')
 		<div class="kt-portlet kt-portlet--tabs">
 			<div class="kt-portlet__head">
 				<div class="kt-portlet__head-toolbar">
@@ -131,13 +132,13 @@
 
 														@if(Auth::user()->admin == $user->id)
 															@if($user->admin == 1)
-																<option value="1">Суперпользователь</option>
+																<option value="1" checked>Суперпользователь</option>
 															@endif
 															@if($user->admin == 2)
-																<option value="2">Администратор</option>
+																<option value="2" checked>Администратор</option>
 															@endif
 															@if($user->admin == 3)
-																<option value="3">Редактор</option>
+																<option value="3" checked>Редактор</option>
 															@endif
 														@else
 															@if(Auth::user()->admin == 1)
@@ -168,5 +169,5 @@
 @endsection
 
 @section('vendor_scripts')
-<script src="{{ env('APP_URL') }}/assets/admin/js/pages/custom/user/edit-user.js" type="text/javascript"></script>
+<script src="/assets/admin/js/pages/custom/user/edit-user.js" type="text/javascript"></script>
 @endsection

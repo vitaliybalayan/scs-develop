@@ -99,7 +99,8 @@ class UsersController extends Controller
 				'email',
 				Rule::unique('users')->ignore($user->id),
 			],
-			'image'    =>  'nullable|image'
+			'image'    =>  'nullable|image',
+			'password' => 'confirmed',
 		]);
 
 		$user->edit($request->all()); //name,email
