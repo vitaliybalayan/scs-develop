@@ -21,9 +21,10 @@ class CreateMenuTable extends Migration
             $table->string('link_ru')->nullable();
             $table->string('link_en')->nullable();
             $table->string('link_kz')->nullable();
-            $table->integer('parent')->nullable();
+            $table->integer('parent_id')->default(0);
             $table->integer('user_id');
             $table->integer('is_public')->default(0);
+            $table->integer('position')->default(0);
             $table->timestamps();
         });
     }

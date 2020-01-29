@@ -28,7 +28,7 @@
 			<div class="kt-subheader__toolbar">
 				<a href="{{ route('menu.index') }}" class="btn btn-default btn-bold">Назад</a>
 				<div class="btn-group">
-					<button type="button" class="btn btn-brand btn-bold">Создать ссылку</button>
+					<button type="submit" class="btn btn-brand btn-bold">Создать ссылку</button>
 				</div>
 			</div>
 		</div>
@@ -38,6 +38,9 @@
 
 	<!-- begin:: Content -->
 	<div class="kt-container  kt-container--fluid  kt-grid__item kt-grid__item--fluid">
+
+		@include('admin.errors')
+
 		<div class="kt-portlet kt-portlet--tabs">
 			<div class="kt-portlet__head">
 				<div class="kt-portlet__head-toolbar">
@@ -64,103 +67,23 @@
 				</div>
 			</div>
 			<div class="kt-portlet__body">
-				<form action="" method="">
-					<input type="hidden" name="user_id" value="{{ Auth::user()->id }}">
-					<div class="tab-content">
-						<div class="tab-pane active" id="kt_user_edit_tab_1" role="tabpanel">
-							<div class="kt-form kt-form--label-right">
-								<div class="kt-form__body">
-									<div class="kt-section kt-section--first">
-										<div class="kt-section__body">
-											<div class="form-group row">
-												<label class="col-xl-3 col-lg-3 col-form-label">Заголовок</label>
-												<div class="col-lg-9 col-xl-6">
-													<input class="form-control" type="text" placeholder="Введите заголовок на русском" name="title_ru">
-												</div>
-											</div>
-											<div class="form-group row">
-												<label class="col-xl-3 col-lg-3 col-form-label">SEO Ссылка</label>
-												<div class="col-lg-9 col-xl-6">
-													<input class="form-control" type="text" name="link_ru" placeholder="Введите SEO ссылку">
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-						<div class="tab-pane" id="kt_user_edit_tab_2" role="tabpanel">
-							<div class="kt-form kt-form--label-right">
-								<div class="kt-form__body">
-									<div class="kt-section kt-section--first">
-										<div class="kt-section__body">
-											<div class="form-group row">
-												<label class="col-xl-3 col-lg-3 col-form-label">Заголовок</label>
-												<div class="col-lg-9 col-xl-6">
-													<input class="form-control" type="text" placeholder="Введите заголовок на казахском" name="title_kz">
-												</div>
-											</div>
-											<div class="form-group row">
-												<label class="col-xl-3 col-lg-3 col-form-label">SEO Ссылка</label>
-												<div class="col-lg-9 col-xl-6">
-													<input class="form-control" type="text" name="link_kz" placeholder="Введите SEO ссылку">
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-						<div class="tab-pane" id="kt_user_edit_tab_3" role="tabpanel">
-							<div class="kt-form kt-form--label-right">
-								<div class="kt-form__body">
-									<div class="kt-section kt-section--first">
-										<div class="kt-section__body">
-											<div class="form-group row">
-												<label class="col-xl-3 col-lg-3 col-form-label">Заголовок</label>
-												<div class="col-lg-9 col-xl-6">
-													<input class="form-control" type="text" placeholder="Введите заголовок на русском" name="title_en">
-												</div>
-											</div>
-											<div class="form-group row">
-												<label class="col-xl-3 col-lg-3 col-form-label">SEO Ссылка</label>
-												<div class="col-lg-9 col-xl-6">
-													<input class="form-control" type="text" name="link_en" placeholder="Введите SEO ссылку">
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
+				<input type="hidden" name="user_id" value="{{ Auth::user()->id }}">
+				<div class="tab-content">
+					<div class="tab-pane active" id="kt_user_edit_tab_1" role="tabpanel">
 						<div class="kt-form kt-form--label-right">
 							<div class="kt-form__body">
 								<div class="kt-section kt-section--first">
 									<div class="kt-section__body">
 										<div class="form-group row">
-											<label class="col-xl-3 col-lg-3 col-form-label">Выберите родителя</label>
+											<label class="col-xl-3 col-lg-3 col-form-label">Заголовок *</label>
 											<div class="col-lg-9 col-xl-6">
-												<select class="form-control">
-													<option>Родитель...</option>
-													<option value="id">Bahasa Indonesia - Indonesian</option>
-												</select>
+												<input class="form-control" type="text" placeholder="Введите заголовок на русском" name="title_ru">
 											</div>
 										</div>
-										<div class="row">
-											<label class="col-xl-3"></label>
+										<div class="form-group row">
+											<label class="col-xl-3 col-lg-3 col-form-label">Ссылка</label>
 											<div class="col-lg-9 col-xl-6">
-												<h3 class="kt-section__title kt-section__title-sm">Отображение ссылки:</h3>
-											</div>
-										</div>
-										<div class="form-group form-group-sm row">
-											<label class="col-xl-3 col-lg-3 col-form-label">Опубликованно</label>
-											<div class="col-lg-9 col-xl-6">
-												<span class="kt-switch">
-													<label>
-														<input type="checkbox" checked="checked" name="is_public">
-														<span></span>
-													</label>
-												</span>
+												<input class="form-control" type="text" name="link_ru" placeholder="Введите RU ссылку">
 											</div>
 										</div>
 									</div>
@@ -168,7 +91,93 @@
 							</div>
 						</div>
 					</div>
-				</form>
+					<div class="tab-pane" id="kt_user_edit_tab_2" role="tabpanel">
+						<div class="kt-form kt-form--label-right">
+							<div class="kt-form__body">
+								<div class="kt-section kt-section--first">
+									<div class="kt-section__body">
+										<div class="form-group row">
+											<label class="col-xl-3 col-lg-3 col-form-label">Заголовок *</label>
+											<div class="col-lg-9 col-xl-6">
+												<input class="form-control" type="text" placeholder="Введите заголовок на казахском" name="title_kz">
+											</div>
+										</div>
+										<div class="form-group row">
+											<label class="col-xl-3 col-lg-3 col-form-label">Ссылка</label>
+											<div class="col-lg-9 col-xl-6">
+												<input class="form-control" type="text" name="link_kz" placeholder="Введите KZ ссылку">
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="tab-pane" id="kt_user_edit_tab_3" role="tabpanel">
+						<div class="kt-form kt-form--label-right">
+							<div class="kt-form__body">
+								<div class="kt-section kt-section--first">
+									<div class="kt-section__body">
+										<div class="form-group row">
+											<label class="col-xl-3 col-lg-3 col-form-label">Заголовок *</label>
+											<div class="col-lg-9 col-xl-6">
+												<input class="form-control" type="text" placeholder="Введите заголовок на русском" name="title_en">
+											</div>
+										</div>
+										<div class="form-group row">
+											<label class="col-xl-3 col-lg-3 col-form-label">Ссылка</label>
+											<div class="col-lg-9 col-xl-6">
+												<input class="form-control" type="text" name="link_en" placeholder="Введите EN ссылку">
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="kt-form kt-form--label-right">
+						<div class="kt-form__body">
+							<div class="kt-section kt-section--first">
+								<div class="kt-section__body">
+									<div class="form-group row">
+										<label class="col-xl-3 col-lg-3 col-form-label">Порядок</label>
+										<div class="col-lg-9 col-xl-6">
+											<input class="form-control" type="text" name="position" placeholder="Установите порядок" value="1">
+										</div>
+									</div>
+									<div class="form-group row">
+										<label class="col-xl-3 col-lg-3 col-form-label">Выберите родителя</label>
+										<div class="col-lg-9 col-xl-6">
+											<select class="form-control" name="parent_id">
+												<option value="0" checked>Выберите родителя</option>
+												@foreach($menus as $menu)
+												<option value="{{ $menu->id }}">{{ $menu->title_ru }}</option>
+												@endforeach
+											</select>
+										</div>
+									</div>
+									<div class="row">
+										<label class="col-xl-3"></label>
+										<div class="col-lg-9 col-xl-6">
+											<h3 class="kt-section__title kt-section__title-sm">Отображение ссылки:</h3>
+										</div>
+									</div>
+									<div class="form-group form-group-sm row">
+										<label class="col-xl-3 col-lg-3 col-form-label">Опубликованно</label>
+										<div class="col-lg-9 col-xl-6">
+											<span class="kt-switch">
+												<label>
+													<input type="checkbox" checked="checked" name="is_public">
+													<span></span>
+												</label>
+											</span>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
 			</div>
 		</div>
 	</div>

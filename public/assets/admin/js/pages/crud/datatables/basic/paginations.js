@@ -96,11 +96,11 @@ var KTDatatablesBasicPaginations = function() {
 		});
 	};
 
-	var table_user = function() {
-		var manu_table = $('#kt_table_menu');
+	var table_menu = function() {
+		var menu_table = $('#kt_table_menu');
 
 		// begin first table
-		manu_table.DataTable({
+		menu_table.DataTable({
 			responsive: true,
 			pagingType: 'full_numbers',
 			columnDefs: [
@@ -136,8 +136,8 @@ var KTDatatablesBasicPaginations = function() {
 			table_user();
 		},
 
-		manu_table: function() {
-			manu_table();
+		menu_table: function() {
+			table_menu();
 		},
 
 	};
@@ -147,5 +147,5 @@ var KTDatatablesBasicPaginations = function() {
 jQuery(document).ready(function() {
 	KTDatatablesBasicPaginations.init();
 	KTDatatablesBasicPaginations.table_user();
-	KTDatatablesBasicPaginations.manu_table();
+	KTDatatablesBasicPaginations.menu_table();
 });

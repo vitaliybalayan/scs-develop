@@ -140,7 +140,7 @@
 							<th>ID</th>
 							<th>Заголовок</th>
 							<th>Ссылка</th>
-							<th>Создатель</th>
+							<th>Родитель</th>
 							<th>Дата создания</th>
 							<th class="is_public">Статус</th>
 							<th>Действие</th>
@@ -150,19 +150,18 @@
 						@foreach($menus as $menu)
 						<tr>
 							<td>{{ $menu->id }}</td>
-							<td>{{ $menu->first_name }}</td>
-							<td>{{ $menu->last_name }}</td>
-							<td>{{ $menu->email }}</td>
+							<td>{{ $menu->title_ru }}</td>
+							<td>{{ $menu->link_ru }}</td>
+							<td>{{ $menu->parentTitle('ru') }}</td>
 							<td>{{ $menu->created_at->format('d.m.Y') }}</td>
-							<td>{{ $menu->admin }}</td>
+							<td>{{ $menu->is_public }}</td>
 							<td nowrap>
 								<a href="{{ route('menu.edit', $menu->id) }}" class="btn btn-sm btn-clean btn-icon btn-icon-md" title="Просмотреть"><i class="la la-edit"></i></a>
 								
 								<span class="dropdown">
 									<a href="#" class="btn btn-sm btn-clean btn-icon btn-icon-md" data-toggle="dropdown" aria-expanded="true"><i class="la la-ellipsis-h"></i></a>
 									<div class="dropdown-menu dropdown-menu-right">
-										<a class="dropdown-item" href="{{ route('menu.show', $menu->id) }}"><i class="la la-external-link"></i> Просмотреть</a>
-										<a class="dropdown-item" href="#" data-toggle="modal" data-target="#menudestroy-{{$menu->id}}"><i class="la la-trash"></i> Удалить</a>
+										<a class="dropdown-item" href="#" data-toggle="modal" data-target="#menu_destroy-{{$menu->id}}"><i class="la la-trash"></i> Удалить</a>
 									</div>
 								</span>
 							</td>
@@ -178,6 +177,31 @@
 
 	<!-- end:: Content -->
 </div>
+
+@foreach($menus as $menu)
+<div class="modal fade" id="menu_destroy-{{$menu->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+	<div class="modal-dialog modal-dialog-centered" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title" id="exampleModalLongTitle">Подтвердить действие</h5>
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+				</button>
+			</div>
+			<div class="modal-body">
+				<p>Вы действительно хотите удалить ссылку <span class="kt-badge kt-badge--dark  kt-badge--inline kt-badge--pill">{{ $menu->title_ru }}</span>?</p>
+				<p>Подссылки автоматический выключаться.</p>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-secondary" data-dismiss="modal">Отменить</button>
+
+				{{Form::open(['route'=>['menu.destroy', $menu->id], 'method'=>'delete'])}}
+				<button type="submit" class="btn btn-primary">Удалить ссылку</button>
+                {{Form::close()}}
+			</div>
+		</div>
+	</div>
+</div>
+@endforeach
 
 @endsection
 
