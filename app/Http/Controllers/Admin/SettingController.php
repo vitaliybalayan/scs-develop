@@ -10,7 +10,7 @@ class SettingController extends Controller
 {
     public function index()
     {
-    	$setting = Setting::where('id', 1)->first();
+    	$setting = Setting::all()->first();
 
     	if (!$setting) {
     		return view('admin.settings.index');
@@ -21,8 +21,26 @@ class SettingController extends Controller
 
     public function store(Request $request)
     {
-    	$this->validate($request, [
-    		'title' => 'required',
-    	]);
+    	$setting = Setting::add($request->all());
+
+        $setting->uploadLogotype($request->file('logotype'));
+        $setting->uploadFavicon($request->file('favicon'));
+        $setting->uploadFaviconRetina($request->file('favicon_retina'));
+        $setting->uploadOgImage($request->file('og_image'));
+
+        return $data = array('status' => 'Настройки успешно сохранены.', 'type' => 'create');
+    }
+
+    public function update(Request $request, $id)
+    {
+        $setting = Setting::find($id);
+
+        $setting->edit($request->all());
+        $setting->uploadLogotype($request->file('logotype'));
+        $setting->uploadFavicon($request->file('favicon'));
+        $setting->uploadFaviconRetina($request->file('favicon_retina'));
+        $setting->uploadOgImage($request->file('og_image'));
+
+        return $data = array('status' => 'Настройки успешно сохранены.', );
     }
 }

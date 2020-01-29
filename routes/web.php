@@ -11,10 +11,7 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
+Route::get('/', 'PageController@index')->name('index');
 
 Route::group(['prefix'=>'parallaxpanel', 'namespace'=>'Admin', 'middleware'=>'auth_custom'], function(){
 	Route::get('/', 'AuthController@index')->name('panel.index');
@@ -30,9 +27,10 @@ Route::group(['prefix'=>'admin','namespace'=>'Admin', 'middleware'	=>	'admin'], 
 
 	Route::get('/settings', 'SettingController@index')->name('admin.settings');
 	Route::post('/settings/store', 'SettingController@store')->name('admin.settings.store');
-	Route::post('/settings/update', 'SettingController@update')->name('admin.settings.update');
+	Route::post('/settings/update/{id}', 'SettingController@update')->name('admin.settings.update');
 	
 	Route::resource('/users', 'UsersController');
+	Route::resource('/menu', 'MenuController');
 
 });
 

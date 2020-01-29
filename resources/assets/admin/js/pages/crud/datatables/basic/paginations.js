@@ -96,6 +96,35 @@ var KTDatatablesBasicPaginations = function() {
 		});
 	};
 
+	var table_user = function() {
+		var manu_table = $('#kt_table_menu');
+
+		// begin first table
+		manu_table.DataTable({
+			responsive: true,
+			pagingType: 'full_numbers',
+			columnDefs: [
+				{
+					targets: 'is_public',
+					render: function(data, type, full, meta) {
+						var status = {
+							0: {'title': 'Не опубликован', 'state': 'danger'},
+							1: {'title': 'Опубликован', 'state': 'success'},
+						};
+						if (typeof status[data] === 'undefined') {
+							return data;
+						}
+						return '<span class="kt-badge kt-badge--' + status[data].state + ' kt-badge--dot"></span>&nbsp;' +
+							'<span class="kt-font-bold kt-font-' + status[data].state + '">' + status[data].title + '</span>';
+					},
+				},
+			],
+			language: {
+                "url": "//cdn.datatables.net/plug-ins/1.10.20/i18n/Russian.json"
+            }
+		});
+	};
+
 	return {
 
 		//main function to initiate the module
@@ -107,6 +136,10 @@ var KTDatatablesBasicPaginations = function() {
 			table_user();
 		},
 
+		manu_table: function() {
+			manu_table();
+		},
+
 	};
 
 }();
@@ -114,4 +147,5 @@ var KTDatatablesBasicPaginations = function() {
 jQuery(document).ready(function() {
 	KTDatatablesBasicPaginations.init();
 	KTDatatablesBasicPaginations.table_user();
+	KTDatatablesBasicPaginations.manu_table();
 });
