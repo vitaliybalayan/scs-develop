@@ -27,7 +27,7 @@
 		<!--begin::Layout Skins(used by all pages) -->
 
 		<!--end::Layout Skins -->
-		<link rel="shortcut icon" href="/assets/admin/media/logos/favicon.ico" />
+		<link rel="icon" href="/assets/admin/media/logos/favicon.png" />
 	</head>
 
 	<!-- end::Head -->

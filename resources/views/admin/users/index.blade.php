@@ -194,7 +194,11 @@
 				</button>
 			</div>
 			<div class="modal-body">
+				@if($user->id == Auth::user()->id)
+				<p>Вы действительно хотите удалить свою учетную запись?</p>
+				@else
 				<p>Вы действительно хотите удалить аккаунт <span class="kt-badge kt-badge--dark  kt-badge--inline kt-badge--pill">{{ $user->first_name }} {{ $user->last_name }}</span>?</p>
+				@endif
 			</div>
 			<div class="modal-footer">
 				<button type="button" class="btn btn-secondary" data-dismiss="modal">Отменить</button>

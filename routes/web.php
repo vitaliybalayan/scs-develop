@@ -23,7 +23,7 @@ Route::group(['prefix'=>'parallaxpanel', 'namespace'=>'Admin', 'middleware'=>'au
 
 Route::group(['prefix'=>'admin','namespace'=>'Admin', 'middleware'	=>	'admin'], function(){
 
-	Route::get('/', 'PageController@index')->name('admin.dashboard');
+	Route::get('/', 'HomeController@index')->name('admin.dashboard');
 
 	Route::get('/settings', 'SettingController@index')->name('admin.settings');
 	Route::post('/settings/store', 'SettingController@store')->name('admin.settings.store');
@@ -31,6 +31,7 @@ Route::group(['prefix'=>'admin','namespace'=>'Admin', 'middleware'	=>	'admin'], 
 	
 	Route::resource('/users', 'UsersController');
 	Route::resource('/menu', 'MenuController');
+	Route::resource('/pages', 'PagesController');
 
 });
 

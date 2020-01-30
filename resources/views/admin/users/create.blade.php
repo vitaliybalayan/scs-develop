@@ -120,13 +120,8 @@
 												<div class="col-lg-9 col-xl-6">
 													<select class="form-control" name="admin">
 														<option disabled>Выберите группу пользователя</option>
-
-														@if(Auth::user()->admin == 1)
-															<option value="1">Суперпользователь</option>
-														@endif
 														<option value="2">Администратор</option>
 														<option value="3">Редактор</option>
-
 													</select>
 												</div>
 											</div>

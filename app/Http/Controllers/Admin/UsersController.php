@@ -124,6 +124,12 @@ class UsersController extends Controller
 			return redirect()->back()->with('status', 'Удаление суперпользователя невозможно.');
 		}
 
+		if (Auth::user()->id == $user->id) {
+			Auth::logout();
+			$user->remove();
+			return redirect()->route('index');
+		}
+
 		$user->remove();
 		return redirect()->route('users.index');
 	}
