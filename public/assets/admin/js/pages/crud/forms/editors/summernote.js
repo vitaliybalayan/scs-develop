@@ -5,7 +5,8 @@ var KTSummernoteDemo = function () {
     // Private functions
     var demos = function () {
         $('.summernote').summernote({
-            height: 150
+            height: 400,
+            placeholder: 'Введите текст'
         });
     }
 

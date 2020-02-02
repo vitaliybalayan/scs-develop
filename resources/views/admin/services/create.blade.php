@@ -94,6 +94,7 @@
 						<div class="kt-form kt-form--label-right">
 							<div class="kt-form__body">
 								<div class="kt-section kt-section--first">
+
 									<div class="kt-section__body">
 										<div class="form-group row">
 											<label class="col-xl-3 col-lg-3 col-form-label">Заголовок *</label>
@@ -104,10 +105,29 @@
 										<div class="form-group row">
 											<label class="col-xl-3 col-lg-3 col-form-label">Ссылка</label>
 											<div class="col-lg-9 col-xl-6">
-												<input class="form-control" type="text" name="locale[ru][link]" placeholder="Введите RU ссылку">
+												<input class="form-control" type="text" name="locale[ru][slug]" placeholder="Введите RU ссылку">
+											</div>
+										</div>
+										<div class="form-group row">
+											<label class="col-xl-3 col-lg-3 col-form-label">Введите краткий заголовок</label>
+											<div class="col-lg-9 col-xl-6">
+												<input class="form-control" type="text" name="locale[ru][sub_title]" placeholder="Введите краткий заголовок">
+											</div>
+										</div>
+										<div class="form-group row">
+											<label class="col-xl-3 col-lg-3 col-form-label">Цитата</label>
+											<div class="col-lg-9 col-xl-6">
+												<input class="form-control" type="text" name="locale[ru][blockquote]" placeholder="Введите краткий заголовок">
+											</div>
+										</div>
+										<div class="form-group row">
+											<label class="col-xl-3 col-lg-3 col-form-label">Контент</label>
+											<div class="col-lg-9 col-xl-6">
+												<textarea class="summernote" id="summernote" name="locale[ru][content]"></textarea>
 											</div>
 										</div>
 									</div>
+
 								</div>
 							</div>
 						</div>
@@ -162,6 +182,8 @@
 						</div>
 					</div>
 
+					<div class="kt-separator kt-separator--border-dashed kt-separator--space-lg kt-separator--portlet-fit"></div>
+
 					<div class="kt-form kt-form--label-right">
 						<div class="kt-form__body">
 							<div class="kt-section kt-section--first">
@@ -197,6 +219,7 @@
 				</div>
 			</div>
 		</div>
+
 	</div>
 
 	<!-- end:: Content -->
@@ -209,4 +232,5 @@
 @section('vendor_scripts')
 <script src="/assets/admin/js/pages/custom/user/edit-user.js" type="text/javascript"></script>
 <script src="/assets/admin/js/pages/crud/file-upload/dropzonejs.js" type="text/javascript"></script>
+<script src="/assets/admin/js/pages/crud/forms/editors/summernote.js" type="text/javascript"></script>
 @endsection

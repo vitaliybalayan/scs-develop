@@ -1,6 +1,8 @@
 @extends('admin.layout')
 
-@section('title')Услуги@endsection
+@section('title')
+Услуги
+@endsection
 
 @section('content')
 

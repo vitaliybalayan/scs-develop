@@ -41,7 +41,7 @@ class ServicesController extends Controller
 	{
 		$service = Service::add($request->all());
 
-		// dd($request->get('locale'));
+		// dd($request->all());
 		
 		foreach ($request->get('locale') as $key => $value) {
 		    
