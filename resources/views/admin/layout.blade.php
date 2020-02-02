@@ -30,6 +30,7 @@
 		<!--end::Layout Skins -->
 
 		<link rel="shortcut icon" href="/assets/admin/media/logos/favicon.png" />
+		<meta name="csrf-token" content="{{ csrf_token() }}">
 	</head>
 
 	<!-- end::Head -->
@@ -84,8 +85,8 @@
 								</li>
 
 								<li class="kt-menu__item  kt-menu__item" aria-haspopup="true">
-									<a href="{{ route('pages.index') }}" class="kt-menu__link ">
-										<i class="kt-menu__link-icon flaticon2-user"></i><span class="kt-menu__link-text">Страницы</span>
+									<a href="{{ route('services.index') }}" class="kt-menu__link ">
+										<i class="kt-menu__link-icon flaticon2-file"></i><span class="kt-menu__link-text">Услуги</span>
 									</a>
 								</li>
 

@@ -82,6 +82,7 @@
             <div class="content">
                 <div class="title m-b-md">
                     Laravel
+                    {{$service->scopeGetLocalize('ru', 'title')}}
                 </div>
 
                 <div class="links">

@@ -52,6 +52,28 @@ var KTDropzoneDemo = function () {
                 }
             }
         });
+
+        // serivice preview
+        $('#services_preview_upload').dropzone({
+            url: "/admin/services/image_upload", // Set the url for your upload script location
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            },
+            paramName: "file", // The name that will be used to transfer the file
+            maxFiles: 1,
+            maxFilesize: 10, // MB
+            addRemoveLinks: true,
+            acceptedFiles: "image/*",
+            accept: function(file, done) {
+                if (file.name == "justinbieber.jpg") {
+                    done("Naha, you don't.");
+                } else {
+                    done();
+                    $('#services_preview').attr('value', file.name);
+
+                }
+            }
+        });
     }
 
     var demo2 = function () {

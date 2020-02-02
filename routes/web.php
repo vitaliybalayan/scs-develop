@@ -11,7 +11,7 @@
 |
 */
 
-Route::get('/', 'PageController@index')->name('index');
+Route::get('/', 'PagesController@index')->name('index');
 
 Route::group(['prefix'=>'parallaxpanel', 'namespace'=>'Admin', 'middleware'=>'auth_custom'], function(){
 	Route::get('/', 'AuthController@index')->name('panel.index');
@@ -32,6 +32,8 @@ Route::group(['prefix'=>'admin','namespace'=>'Admin', 'middleware'	=>	'admin'], 
 	Route::resource('/users', 'UsersController');
 	Route::resource('/menu', 'MenuController');
 	Route::resource('/pages', 'PagesController');
+	Route::resource('/services', 'ServicesController');
+	Route::post('/services/image_upload', 'ServicesController@preview_upload')->name('services.preview_uplaod');
 
 });
 
