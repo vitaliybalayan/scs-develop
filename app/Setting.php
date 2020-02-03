@@ -162,8 +162,6 @@ class Setting extends Model
 	{
 		if($this->favicon_retina != null)
 		{
-			Storage::disk('public')->delete('uploads/logotypes/' . '48x48-' . $this->favicon_retina);
-			Storage::disk('public')->delete('uploads/logotypes/' . '57x57-' . $this->favicon_retina);
 			Storage::disk('public')->delete('uploads/logotypes/' . '72x72-' . $this->favicon_retina);
 			Storage::disk('public')->delete('uploads/logotypes/' . '114x114-' . $this->favicon_retina);
 		}

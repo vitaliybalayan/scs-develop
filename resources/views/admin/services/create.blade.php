@@ -77,10 +77,15 @@
 									<div class="form-group row">
 										<label class="col-form-label col-lg-3 col-sm-12">Изображение</label>
 										<div class="col-lg-4 col-md-9 col-sm-12">
-											<div class="dropzone dropzone-default" id="services_preview_upload">
-												<div class="dropzone-msg dz-message needsclick">
-													<h3 class="dropzone-msg-title">Перетащите файлы сюда или нажмите для загруки</h3>
-												</div>
+											<div class="kt-avatar kt-avatar--outline" id="kt_user_avatar_1">
+												<div class="kt-avatar__holder" style="background-image: url('/assets/noimage.png'); background-size: 100% auto; background-position: center;"></div>
+												<label class="kt-avatar__upload" data-toggle="kt-tooltip" title="" data-original-title="Добавить превью">
+												<i class="fa fa-pen"></i>
+												<input type="file" name="preview" accept=".png, .jpg, .jpeg">
+												</label>
+												<span class="kt-avatar__cancel" data-toggle="kt-tooltip" title="" data-original-title="Добавить превью">
+												<i class="fa fa-times"></i>
+												</span>
 											</div>
 										</div>
 										<input type="hidden" id="services_preview" name="preview">
@@ -99,13 +104,13 @@
 										<div class="form-group row">
 											<label class="col-xl-3 col-lg-3 col-form-label">Заголовок *</label>
 											<div class="col-lg-9 col-xl-6">
-												<input class="form-control" type="text" placeholder="Введите заголовок на русском" name="locale[ru][title]">
+												<input class="form-control" type="text" placeholder="Введите заголовок на русском" name="locale[ru][title]" id="ru_title">
 											</div>
 										</div>
 										<div class="form-group row">
 											<label class="col-xl-3 col-lg-3 col-form-label">Ссылка</label>
 											<div class="col-lg-9 col-xl-6">
-												<input class="form-control" type="text" name="locale[ru][slug]" placeholder="Введите RU ссылку">
+												<input class="form-control" type="text" id="ru_slug" name="locale[ru][slug]" placeholder="Введите свой вариант ссылки">
 											</div>
 										</div>
 										<div class="form-group row">
@@ -117,13 +122,25 @@
 										<div class="form-group row">
 											<label class="col-xl-3 col-lg-3 col-form-label">Цитата</label>
 											<div class="col-lg-9 col-xl-6">
-												<input class="form-control" type="text" name="locale[ru][blockquote]" placeholder="Введите краткий заголовок">
+												<input class="form-control" type="text" name="locale[ru][blockquote]" placeholder="Введите цитату">
+											</div>
+										</div>
+										<div class="form-group row">
+											<label class="col-xl-3 col-lg-3 col-form-label">Описание</label>
+											<div class="col-lg-9 col-xl-6">
+												<textarea name="locale[ru][desc]" class="form-control" id="kt_autosize_4" placeholder="Введите краткое описание"></textarea>
 											</div>
 										</div>
 										<div class="form-group row">
 											<label class="col-xl-3 col-lg-3 col-form-label">Контент</label>
 											<div class="col-lg-9 col-xl-6">
 												<textarea class="summernote" id="summernote" name="locale[ru][content]"></textarea>
+											</div>
+										</div>
+										<div class="form-group row">
+											<label class="col-xl-3 col-lg-3 col-form-label">Мета-теги</label>
+											<div class="col-lg-9 col-xl-6">
+												<input class="form-control" type="text" name="locale[ru][meta_tags]" placeholder="Введите мета-теги через запятую">
 											</div>
 										</div>
 									</div>
@@ -136,25 +153,52 @@
 						<div class="kt-form kt-form--label-right">
 							<div class="kt-form__body">
 								<div class="kt-section kt-section--first">
+
 									<div class="kt-section__body">
 										<div class="form-group row">
 											<label class="col-xl-3 col-lg-3 col-form-label">Заголовок *</label>
 											<div class="col-lg-9 col-xl-6">
-
-												<input class="form-control" type="text" placeholder="Введите заголовок на казахском" name="locale[kz][title]">
-
+												<input class="form-control" type="text" placeholder="Введите заголовок на русском" name="locale[kz][title]" id="kz_title">
 											</div>
 										</div>
 										<div class="form-group row">
 											<label class="col-xl-3 col-lg-3 col-form-label">Ссылка</label>
 											<div class="col-lg-9 col-xl-6">
-
-												<input class="form-control" type="text"
-												name="locale[kz][link]" placeholder="Введите KZ ссылку">
-
+												<input class="form-control" type="text" name="locale[kz][slug]" placeholder="Введите свой вариант ссылки" id="kz_slug">
+											</div>
+										</div>
+										<div class="form-group row">
+											<label class="col-xl-3 col-lg-3 col-form-label">Введите краткий заголовок</label>
+											<div class="col-lg-9 col-xl-6">
+												<input class="form-control" type="text" name="locale[kz][sub_title]" placeholder="Введите краткий заголовок">
+											</div>
+										</div>
+										<div class="form-group row">
+											<label class="col-xl-3 col-lg-3 col-form-label">Цитата</label>
+											<div class="col-lg-9 col-xl-6">
+												<input class="form-control" type="text" name="locale[kz][blockquote]" placeholder="Введите цитату">
+											</div>
+										</div>
+										<div class="form-group row">
+											<label class="col-xl-3 col-lg-3 col-form-label">Описание</label>
+											<div class="col-lg-9 col-xl-6">
+												<textarea name="locale[kz][desc]" class="form-control" id="kt_autosize_4" placeholder="Введите краткое описание"></textarea>
+											</div>
+										</div>
+										<div class="form-group row">
+											<label class="col-xl-3 col-lg-3 col-form-label">Контент</label>
+											<div class="col-lg-9 col-xl-6">
+												<textarea class="summernote" id="summernote" name="locale[kz][content]"></textarea>
+											</div>
+										</div>
+										<div class="form-group row">
+											<label class="col-xl-3 col-lg-3 col-form-label">Мета-теги</label>
+											<div class="col-lg-9 col-xl-6">
+												<input class="form-control" type="text" name="locale[kz][meta_tags]" placeholder="Введите мета-теги через запятую">
 											</div>
 										</div>
 									</div>
+
 								</div>
 							</div>
 						</div>
@@ -163,20 +207,52 @@
 						<div class="kt-form kt-form--label-right">
 							<div class="kt-form__body">
 								<div class="kt-section kt-section--first">
+
 									<div class="kt-section__body">
 										<div class="form-group row">
 											<label class="col-xl-3 col-lg-3 col-form-label">Заголовок *</label>
 											<div class="col-lg-9 col-xl-6">
-												<input class="form-control" type="text" placeholder="Введите заголовок на русском" name="locale[en][title]">
+												<input class="form-control" type="text" placeholder="Введите заголовок на русском" name="locale[en][title]" id="en_title">
 											</div>
 										</div>
 										<div class="form-group row">
 											<label class="col-xl-3 col-lg-3 col-form-label">Ссылка</label>
 											<div class="col-lg-9 col-xl-6">
-												<input class="form-control" type="text" name="locale[en][link]" placeholder="Введите EN ссылку">
+												<input class="form-control" type="text" name="locale[en][slug]" placeholder="Введите свой вариант ссылки" id="en_slug">
+											</div>
+										</div>
+										<div class="form-group row">
+											<label class="col-xl-3 col-lg-3 col-form-label">Введите краткий заголовок</label>
+											<div class="col-lg-9 col-xl-6">
+												<input class="form-control" type="text" name="locale[en][sub_title]" placeholder="Введите краткий заголовок">
+											</div>
+										</div>
+										<div class="form-group row">
+											<label class="col-xl-3 col-lg-3 col-form-label">Цитата</label>
+											<div class="col-lg-9 col-xl-6">
+												<input class="form-control" type="text" name="locale[en][blockquote]" placeholder="Введите краткий заголовок">
+											</div>
+										</div>
+										<div class="form-group row">
+											<label class="col-xl-3 col-lg-3 col-form-label">Описание</label>
+											<div class="col-lg-9 col-xl-6">
+												<textarea name="locale[en][desc]" class="form-control" id="kt_autosize_4" placeholder="Введите цитату"></textarea>
+											</div>
+										</div>
+										<div class="form-group row">
+											<label class="col-xl-3 col-lg-3 col-form-label">Контент</label>
+											<div class="col-lg-9 col-xl-6">
+												<textarea class="summernote" id="summernote" name="locale[en][content]"></textarea>
+											</div>
+										</div>
+										<div class="form-group row">
+											<label class="col-xl-3 col-lg-3 col-form-label">Мета-теги</label>
+											<div class="col-lg-9 col-xl-6">
+												<input class="form-control" type="text" name="locale[en][meta_tags]" placeholder="Введите мета-теги через запятую">
 											</div>
 										</div>
 									</div>
+
 								</div>
 							</div>
 						</div>
@@ -189,12 +265,21 @@
 							<div class="kt-section kt-section--first">
 								<div class="kt-section__body">
 									<div class="form-group row">
+										<label class="col-xl-3 col-lg-3 col-form-label">OG Image</label>
+										<div class="col-lg-9 col-xl-6">
+											<div class="custom-file">
+												<input type="file" class="custom-file-input" name="og_image" id="customFile">
+												<label class="custom-file-label" for="customFile">Choose file</label>
+											</div>
+										</div>
+									</div>
+									<div class="form-group row">
 										<label class="col-xl-3 col-lg-3 col-form-label">Порядок</label>
 										<div class="col-lg-9 col-xl-6">
 											<input class="form-control" type="text" name="position" placeholder="Установите порядок" value="1">
 										</div>
 									</div>
-									<div class="row">
+									<div class="form-group row">
 										<label class="col-xl-3"></label>
 										<div class="col-lg-9 col-xl-6">
 											<h3 class="kt-section__title kt-section__title-sm">Отображение ссылки:</h3>
@@ -231,6 +316,18 @@
 
 @section('vendor_scripts')
 <script src="/assets/admin/js/pages/custom/user/edit-user.js" type="text/javascript"></script>
-<script src="/assets/admin/js/pages/crud/file-upload/dropzonejs.js" type="text/javascript"></script>
+
+<script src="/assets/admin/js/pages/crud/file-upload/ktavatar.js" type="text/javascript"></script>
+
 <script src="/assets/admin/js/pages/crud/forms/editors/summernote.js" type="text/javascript"></script>
+<script src="/assets/admin/js/pages/crud/forms/widgets/autosize.js" type="text/javascript"></script>
+
+<script src="/assets/admin/speakingurl-master/speakingurl.min.js" type="text/javascript"></script>
+<script src="/assets/admin/jquery-slugify-master/dist/slugify.min.js" type="text/javascript"></script>
+
+<script>
+	$('#ru_slug').slugify('#ru_title');
+	$('#en_slug').slugify('#en_title');
+	$('#kz_slug').slugify('#kz_title');
+</script>
 @endsection

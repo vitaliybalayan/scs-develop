@@ -4,6 +4,10 @@
 Услуги
 @endsection
 
+@section('vendor_styles')
+<link href="/assets/admin/plugins/custom/datatables/datatables.bundle.css" rel="stylesheet" type="text/css" />
+@endsection
+
 @section('content')
 
 <div class="kt-content  kt-grid__item kt-grid__item--fluid kt-grid kt-grid--hor" id="kt_content">
@@ -18,24 +22,6 @@
 				<span class="kt-subheader__separator kt-subheader__separator--v"></span>
 				<div class="kt-subheader__group" id="kt_subheader_search">
 					<span class="kt-subheader__desc" id="kt_subheader_total">{{ $services->count() }} услуг</span>
-					<form class="kt-margin-l-20" id="kt_subheader_search_form">
-						<div class="kt-input-icon kt-input-icon--right kt-subheader__search">
-							<input type="text" class="form-control" placeholder="Search..." id="generalSearch">
-							<span class="kt-input-icon__icon kt-input-icon__icon--right">
-								<span>
-									<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1" class="kt-svg-icon">
-										<g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-											<rect x="0" y="0" width="24" height="24" />
-											<path d="M14.2928932,16.7071068 C13.9023689,16.3165825 13.9023689,15.6834175 14.2928932,15.2928932 C14.6834175,14.9023689 15.3165825,14.9023689 15.7071068,15.2928932 L19.7071068,19.2928932 C20.0976311,19.6834175 20.0976311,20.3165825 19.7071068,20.7071068 C19.3165825,21.0976311 18.6834175,21.0976311 18.2928932,20.7071068 L14.2928932,16.7071068 Z" fill="#000000" fill-rule="nonzero" opacity="0.3" />
-											<path d="M11,16 C13.7614237,16 16,13.7614237 16,11 C16,8.23857625 13.7614237,6 11,6 C8.23857625,6 6,8.23857625 6,11 C6,13.7614237 8.23857625,16 11,16 Z M11,18 C7.13400675,18 4,14.8659932 4,11 C4,7.13400675 7.13400675,4 11,4 C14.8659932,4 18,7.13400675 18,11 C18,14.8659932 14.8659932,18 11,18 Z" fill="#000000" fill-rule="nonzero" />
-										</g>
-									</svg>
-
-									<!--<i class="flaticon2-search-1"></i>-->
-								</span>
-							</span>
-						</div>
-					</form>
 				</div>
 				<div class="kt-subheader__group kt-hidden" id="kt_subheader_group_actions">
 					<div class="kt-subheader__desc"><span id="kt_subheader_group_selected_rows"></span> Selected:</div>
@@ -159,174 +145,112 @@
 		</div>
 		@endif
 
-		<!--Begin::Section-->
-		<div class="row">
+		@if(session('status'))
+			<div class="alert alert-danger fade show" role="alert">
+				<div class="alert-icon"><i class="flaticon-warning"></i></div>
+				<div class="alert-text">{{session('status')}}</div>
+				<div class="alert-close">
+					<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+						<span aria-hidden="true"><i class="la la-close"></i></span>
+					</button>
+				</div>
+			</div>
+        @endif
 
-			@foreach($services as $service)
-			<div class="col-xl-6">
-				<!--begin:: Portlet-->
-				<div class="kt-portlet kt-portlet--height-fluid">
-					<div class="kt-portlet__body kt-portlet__body--fit">
-
-						<!--begin::Widget -->
-						<div class="kt-widget kt-widget--project-1">
-							<div class="kt-widget__head">
-								<div class="kt-widget__label">
-									<div class="kt-widget__media">
-										<span class="kt-media kt-media--lg kt-media--circle">
-											<img src="assets/media/project-logos/3.png" alt="image">
-										</span>
-									</div>
-									<div class="kt-widget__info kt-margin-t-5">
-										<a href="#" class="kt-widget__title">
-											Nexa - Next generation SAAS
-										</a>
-										<span class="kt-widget__desc">
-											Creates Limitless possibilities
-										</span>
-									</div>
-								</div>
-								<div class="kt-portlet__head-toolbar">
-									<a href="#" class="btn btn-clean btn-sm btn-icon btn-icon-md" data-toggle="dropdown">
-										<i class="flaticon-more-1"></i>
-									</a>
-									<div class="dropdown-menu dropdown-menu-fit dropdown-menu-right">
-										<ul class="kt-nav">
-											<li class="kt-nav__item">
-												<a href="#" class="kt-nav__link">
-													<i class="kt-nav__link-icon flaticon2-line-chart"></i>
-													<span class="kt-nav__link-text">Reports</span>
-												</a>
-											</li>
-											<li class="kt-nav__item">
-												<a href="#" class="kt-nav__link">
-													<i class="kt-nav__link-icon flaticon2-send"></i>
-													<span class="kt-nav__link-text">Messages</span>
-												</a>
-											</li>
-											<li class="kt-nav__item">
-												<a href="#" class="kt-nav__link">
-													<i class="kt-nav__link-icon flaticon2-pie-chart-1"></i>
-													<span class="kt-nav__link-text">Charts</span>
-												</a>
-											</li>
-											<li class="kt-nav__item">
-												<a href="#" class="kt-nav__link">
-													<i class="kt-nav__link-icon flaticon2-avatar"></i>
-													<span class="kt-nav__link-text">Members</span>
-												</a>
-											</li>
-											<li class="kt-nav__item">
-												<a href="#" class="kt-nav__link">
-													<i class="kt-nav__link-icon flaticon2-settings"></i>
-													<span class="kt-nav__link-text">Settings</span>
-												</a>
-											</li>
-										</ul>
-									</div>
-								</div>
-							</div>
-							<div class="kt-widget__body">
-								<div class="kt-widget__stats">
-									<div class="kt-widget__item">
-										<span class="kt-widget__date">
-											Start Date
-										</span>
-										<div class="kt-widget__label">
-											<span class="btn btn-label-brand btn-sm btn-bold btn-upper">07 may, 18</span>
-										</div>
-									</div>
-									<div class="kt-widget__item">
-										<span class="kt-widget__date">
-											Due Date
-										</span>
-										<div class="kt-widget__label">
-											<span class="btn btn-label-danger btn-sm btn-bold btn-upper">07 0ct, 18</span>
-										</div>
-									</div>
-									<div class="kt-widget__item flex-fill">
-										<span class="kt-widget__subtitel">Progress</span>
-										<div class="kt-widget__progress d-flex  align-items-center">
-											<div class="progress" style="height: 5px;width: 100%;">
-												<div class="progress-bar kt-bg-warning" role="progressbar" style="width: 78%;" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
-											</div>
-											<span class="kt-widget__stat">
-												78%
-											</span>
-										</div>
-									</div>
-								</div>
-								<span class="kt-widget__text">
-									I distinguish three main text objecttives.First, your objective could
-									be merely to inform people.A second be to persuade people.
-								</span>
-								<div class="kt-widget__content">
-									<div class="kt-widget__details">
-										<span class="kt-widget__subtitle">Budget</span>
-										<span class="kt-widget__value"><span>$</span>249,500</span>
-									</div>
-									<div class="kt-widget__details">
-										<span class="kt-widget__subtitle">Expances</span>
-										<span class="kt-widget__value"><span>$</span>76,810</span>
-									</div>
-									<div class="kt-widget__details">
-										<span class="kt-widget__subtitle">Members</span>
-										<div class="kt-media-group">
-											<a href="#" class="kt-media kt-media--sm kt-media--circle" data-toggle="kt-tooltip" data-skin="brand" data-placement="top" title="" data-original-title="John Myer">
-												<img src="assets/media/users/100_7.jpg" alt="image">
-											</a>
-											<a href="#" class="kt-media kt-media--sm kt-media--circle" data-toggle="kt-tooltip" data-skin="brand" data-placement="top" title="" data-original-title="Alison Brandy">
-												<img src="assets/media/users/100_3.jpg" alt="image">
-											</a>
-											<a href="#" class="kt-media kt-media--sm kt-media--circle" data-toggle="kt-tooltip" data-skin="brand" data-placement="top" title="" data-original-title="Selina Cranson">
-												<img src="assets/media/users/100_2.jpg" alt="image">
-											</a>
-											<a href="#" class="kt-media kt-media--sm kt-media--circle" data-toggle="kt-tooltip" data-skin="brand" data-placement="top" title="" data-original-title="Luke Walls">
-												<img src="assets/media/users/100_13.jpg" alt="image">
-											</a>
-											<a href="#" class="kt-media kt-media--sm kt-media--circle" data-toggle="kt-tooltip" data-skin="brand" data-placement="top" title="" data-original-title="Micheal York">
-												<img src="assets/media/users/100_4.jpg" alt="image">
-											</a>
-											<a href="#" class="kt-media kt-media--sm kt-media--circle" data-toggle="kt-tooltip" data-skin="brand" data-placement="top" title="" data-original-title="Micheal York">
-												<span>+3</span>
-											</a>
-										</div>
-									</div>
-								</div>
-							</div>
-							<div class="kt-widget__footer">
-								<div class="kt-widget__wrapper">
-									<div class="kt-widget__section">
-										<div class="kt-widget__blog">
-											<i class="flaticon2-list-1"></i>
-											<a href="#" class="kt-widget__value kt-font-brand">72 Tasks</a>
-										</div>
-										<div class="kt-widget__blog">
-											<i class="flaticon2-talk"></i>
-											<a href="#" class="kt-widget__value kt-font-brand">648 Comments</a>
-										</div>
-									</div>
-									<div class="kt-widget__section">
-										<button type="button" class="btn btn-brand btn-sm btn-upper btn-bold">details</button>
-									</div>
-								</div>
-							</div>
+		<div class="kt-portlet kt-portlet--mobile">
+			<div class="kt-portlet__head kt-portlet__head--lg">
+				<div class="kt-portlet__head-label">
+					<span class="kt-portlet__head-icon">
+						<i class="kt-font-brand flaticon2-line-chart"></i>
+					</span>
+					<h3 class="kt-portlet__head-title">
+						Список услуг
+					</h3>
+				</div>
+				<div class="kt-portlet__head-toolbar">
+					<div class="kt-portlet__head-wrapper">
+						<div class="kt-portlet__head-actions">
+							<a href="{{ route('services.create') }}" class="btn btn-brand btn-elevate btn-icon-sm">
+								<i class="la la-plus"></i>
+								Новая услуга
+							</a>
 						</div>
-
-						<!--end::Widget -->
 					</div>
 				</div>
-				<!--end:: Portlet-->
 			</div>
-			@endforeach
+			<div class="kt-portlet__body">
 
-
+				<!--begin: Datatable -->
+				<table class="table table-striped- table-bordered table-hover table-checkable" id="kt_table_menu">
+					<thead>
+						<tr>
+							<th>ID</th>
+							<th>Картинка</th>
+							<th>Заголовок</th>
+							<th>Описание</th>
+							<th>Дата создания</th>
+							<th class="is_public">Статус</th>
+							<th>Действие</th>
+						</tr>
+					</thead>
+					<tbody>
+						@foreach($services as $service)
+						<tr>
+							<td>{{ $service->id }}</td>
+							<td><img src="{{ $service->getImage() }}" style="max-width: 100px"></td>
+							<td>{{ $service->getLocalize('ru', 'title') }}</td>
+							<td>{{ $service->getLocalize('ru', 'desc') }}</td>
+							<td>{{ $service->created_at->format('d.m.Y') }}</td>
+							<td>{{ $service->is_public }}</td>
+							<td nowrap>
+								<a href="{{ route('services.edit', $service->id) }}" class="btn btn-sm btn-clean btn-icon btn-icon-md" title="Просмотреть"><i class="la la-edit"></i></a>
+								
+								<span class="dropdown">
+									<a href="#" class="btn btn-sm btn-clean btn-icon btn-icon-md" data-toggle="dropdown" aria-expanded="true"><i class="la la-ellipsis-h"></i></a>
+									<div class="dropdown-menu dropdown-menu-right">
+										<a class="dropdown-item" href="#" data-toggle="modal" data-target="#menu_destroy-{{$service->id}}"><i class="la la-trash"></i> Удалить</a>
+									</div>
+								</span>
+							</td>
+						</tr>
+						@endforeach
+					</tbody>
+				</table>
+				<!--end: Datatable -->
+				
+			</div>
 		</div>
-		<!--End::Section-->
-
 	</div>
-
 	<!-- end:: Content -->
 </div>
 
+@foreach($services as $service)
+<div class="modal fade" id="menu_destroy-{{$service->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+	<div class="modal-dialog modal-dialog-centered" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title" id="exampleModalLongTitle">Подтвердить действие</h5>
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+				</button>
+			</div>
+			<div class="modal-body">
+				<p>Вы действительно хотите удалить услугу <span class="kt-badge kt-badge--dark  kt-badge--inline kt-badge--pill">{{ $service->getLocalize('ru', 'title') }}</span>?</p>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-secondary" data-dismiss="modal">Отменить</button>
+
+				{{Form::open(['route'=>['services.destroy', $service->id], 'method'=>'delete'])}}
+				<button type="submit" class="btn btn-primary">Удалить услугу</button>
+                {{Form::close()}}
+			</div>
+		</div>
+	</div>
+</div>
+@endforeach
+
+@endsection
+
+@section('vendor_scripts')
+<script src="/assets/admin/plugins/custom/datatables/datatables.bundle.js" type="text/javascript"></script>
+<script src="/assets/admin/js/pages/crud/datatables/basic/paginations.js" type="text/javascript"></script>
 @endsection

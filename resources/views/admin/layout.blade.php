@@ -91,6 +91,12 @@
 								</li>
 
 								<li class="kt-menu__item  kt-menu__item" aria-haspopup="true">
+									<a href="{{ route('clients.index') }}" class="kt-menu__link ">
+										<i class="kt-menu__link-icon flaticon-users-1"></i><span class="kt-menu__link-text">Клиенты</span>
+									</a>
+								</li>
+
+								<li class="kt-menu__item  kt-menu__item" aria-haspopup="true">
 									<a href="{{ route('menu.index') }}" class="kt-menu__link ">
 										<i class="kt-menu__link-icon flaticon-grid-menu"></i><span class="kt-menu__link-text">Меню</span>
 									</a>
@@ -120,7 +126,7 @@
 						<div class="kt-header-menu-wrapper" id="kt_header_menu_wrapper">
 							<div id="kt_header_menu" class="kt-header-menu kt-header-menu-mobile  kt-header-menu--layout-tab ">
 								<ul class="kt-menu__nav ">
-									<li class="kt-menu__item kt-menu__item--active" aria-haspopup="true"><a href="{{ route('index') }}" class="kt-menu__link "><span class="kt-menu__link-text">Перейти на сайт</span></a></li>
+									<li class="kt-menu__item kt-menu__item--active" aria-haspopup="true"><a href="{{ route('index', 'ru') }}" class="kt-menu__link "><span class="kt-menu__link-text">Перейти на сайт</span></a></li>
 								</ul>
 							</div>
 						</div>

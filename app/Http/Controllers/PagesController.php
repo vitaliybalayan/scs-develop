@@ -2,16 +2,24 @@
 
 namespace App\Http\Controllers;
 
+use App\Client;
 use App\Service;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
 class PagesController extends Controller
 {
-    public function index()
+    public function index($lang)
     {
-    	$service = Service::find(58);
+    	// dd($lang);
+    	
+    	$services = Service::where('is_public', 1)->get();
+    	$clients = Client::where('is_public', 1)->get();
 
-    	return view('welcome', compact('service'));
+    	return view('home.index', compact(
+    		'lang',
+    		'services',
+    		'clients'
+    	));
     }
 }

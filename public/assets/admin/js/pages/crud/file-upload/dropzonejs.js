@@ -69,8 +69,9 @@ var KTDropzoneDemo = function () {
                     done("Naha, you don't.");
                 } else {
                     done();
-                    $('#services_preview').attr('value', file.name);
-
+                    console.log(file);
+                    console.log(done);
+                    // $('#services_preview').attr('value', file.name);
                 }
             }
         });

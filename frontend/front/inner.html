@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+
+	<meta charset="utf-8">
+
+	<title>SCS — Inner page</title>
+	<meta name="description" content="">
+
+	<link href="https://fonts.googleapis.com/css?family=Lato:100,100i,300,300i,400,400i,700,700i,900,900i&display=swap" rel="stylesheet">
+
+
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+	<meta property="og:image" content="path/to/image.jpg">
+	<link rel="shortcut icon" href="img/favicon/favicon-64x64.png" type="image/x-icon">
+	<link rel="apple-touch-icon" href="img/favicon/apple-touch-icon.png">
+	<link rel="apple-touch-icon" sizes="72x72" href="img/favicon/apple-touch-icon-72x72.png">
+	<link rel="apple-touch-icon" sizes="114x114" href="img/favicon/apple-touch-icon-114x114.png">
+
+	<!-- Chrome, Firefox OS and Opera -->
+	<meta name="theme-color" content="#005b96">
+	<!-- Windows Phone -->
+	<meta name="msapplication-navbutton-color" content="#005b96">
+	<!-- iOS Safari -->
+	<meta name="apple-mobile-web-app-status-bar-style" content="#005b96"></div>
+
+	<link rel="stylesheet" href="css/main.min.css">
+
+</head>
+
+<body>
+
+	<!-- HEADER -->
+	<header class="fixed-header">
+		<!-- TOP Header -->
+		<div class="top-header">
+			<div class="container">
+				<div class="top-header__content inline-middle">
+					<div class="top-h_dropdown__menu">
+						<div class="dropdown-default__value inline-middle" id="dropdown__button" onclick="showDropdown(1)">
+							<span>RU</span>
+							<img src="img/icons/arrow-down.svg">
+						</div>
+						<div class="dropdown-_value top_header--dropdown" style="display: none;" data-dropdown_list="1">
+							<a href="#">EN</a>
+						</div>
+					</div>
+					<div class="top-h_link"><a href="#" title="Карьера">Карьера</a></div>
+				</div>
+			</div>
+		</div>
+		<!-- TOP Header -->
+		<!-- Mobile menu -->
+		<div class="nav-menu_mobile">
+			<div class="g-content">
+				<div class="nav-menu_mobile-content col-2">
+					
+					<div class="nav-menu_mobile-logotype">
+						<a href="#">
+							<img src="img/logo.svg" alt="SCS">
+						</a>
+					</div>
+					<div class="nav-menu_mobile-hamburger">
+						
+						<div class="menu_hamburger-button" onclick="showMobileMenu();">
+							<span class="menu_hamburder-icon"></span>
+						</div>
+
+						<div class="mobile-menu_block">
+
+							<div class="mobile-menu-item">
+								<a href="#" class="mobile-submenu_link" data-menu="1">Услуги</a>
+								<div class="mobile-submenu" data-menu_item="1">
+									<a href="#">Корпоративное питание</a>
+									<a href="#">Прачечные услуги</a>
+								</div>
+							</div>
+
+							<div class="mobile-menu-item">
+								<a href="#" class="mobile-submenu_link" data-menu="2">O SCS</a>
+								<div class="mobile-submenu" data-menu_item="2">
+									<a href="#">Корпоративное питание</a>
+								</div>
+							</div>
+
+							<a href="#" class="mobile-submenu_link">Сертификация</a>
+							<a href="/clients.html" class="mobile-submenu_link">Наши клиенты</a>
+							<a href="#" class="mobile-submenu_link">Новости</a>
+							<a href="#" class="mobile-submenu_link">Контакты</a>
+						</div>
+
+					</div>
+
+				</div>
+			</div>
+		</div>
+		<!-- Mobile menu -->
+		<!-- Main menu -->
+		<div class="nav-menu">
+
+			<div class="g-content">
+				<div class="nav-menu__content">
+					<div class="container">
+						<div class="col-a_1">
+							<div class="logotype">
+								<a href="/">
+									<img src="img/logo.svg" alt="Ships Catering Supply">
+								</a>
+							</div>
+							<nav class="menu__list">
+								<a href="#" class="submenu_link" data-submenu="1">Услуги</a>
+								<a href="#" class="submenu_link" data-submenu="2">O SCS</a>
+								<a href="#" class="submenu_link" data-submenu="3">Сертификация</a>
+								<a href="/clients.html" class="submenu_link" data-submenu="4">Наши клиенты</a>
+								<a href="#" class="submenu_link" data-submenu="5">Новости</a>
+								<a href="#" class="submenu_link">Контакты</a>
+							</nav>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="submenu-conainer">
+				<div class="g-content">
+					<div class="container">
+						
+						<div class="submenu-content">
+							
+							<div class="submenu-item" data-submenu_item="1">
+								<a href="#" onclick="return false;">1</a>
+								<a href="#" onclick="return false;">2</a>
+								<a href="#" onclick="return false;">3</a>
+							</div>
+
+							<div class="submenu-item" data-submenu_item="2">
+								<a href="#" onclick="return false;">О компании</a>
+								<a href="#" onclick="return false;">Миссия и ценности</a>
+								<a href="#" onclick="return false;">Статистика</a>
+							</div>
+
+							<div class="submenu-item" data-submenu_item="3">
+								<a href="#" onclick="return false;">1</a>
+								<a href="#" onclick="return false;">3</a>
+								<a href="#" onclick="return false;">2</a>
+							</div>
+
+							<div class="submenu-item" data-submenu_item="4">
+								<a href="#" onclick="return false;">3</a>
+								<a href="#" onclick="return false;">1</a>
+								<a href="#" onclick="return false;">2</a>
+							</div>
+
+							<div class="submenu-item" data-submenu_item="5">
+								<a href="#" onclick="return false;">2</a>
+								<a href="#" onclick="return false;">1</a>
+								<a href="#" onclick="return false;">3</a>
+							</div>
+
+						</div>
+
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- Main menu -->
+	</header>
+	<!-- HEADER -->
+
+	<!-- Main content -->
+	<main class="inner-content">
+
+		<section class="inner-page_banner-container">
+			<div class="inner-page_banner-item" style="background: linear-gradient(0deg, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(img/slider/slider-photo.jpg) 50% no-repeat; background-size: cover;">
+				<div class="g-content">
+					<div class="container">
+						<div class="inner-page_banner-content">
+							<div class="inner_banner-desc">
+								<h1>Поддержим<br>порядок</h1>
+							</div>
+							<a href="#page" class="arrow-down_link anchor_link"></a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<div class="white__content" id="page">
+			<div class="g-content">
+				<div class="container">
+					<div class="blockquote-right">
+						<blockquote>Чистота — это не только залог здоровья, это основа продуктивности и успешности ваших сотрудников</blockquote>
+					</div>
+					<div class="inner-page">
+						<h1>Промышленная уборка</h1>
+						<h5>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt.</h5>
+						<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi.</p>
+						<p>Lorem ipsum dolor sit amet, cons ectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.</p>
+						<div class="col-2 gap-30">
+							<div class="inner-block">
+								<h4>Подзаголовок</h4>
+								<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad</p>
+							</div>
+							<div class="inner-block">
+								<h4>Подзаголовок</h4>
+								<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad</p>
+							</div>
+						</div>
+						<div class="col-2 gap-30">
+							<div class="inner-block">
+								<h4>Подзаголовок</h4>
+								<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad</p>
+							</div>
+							<div class="inner-block">
+								<h4>Подзаголовок</h4>
+								<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad</p>
+							</div>
+						</div>
+					</div>
+
+				</div>
+			</div>
+		</div>
+
+
+	</main>
+	<!-- Main content -->
+
+	<div class="footer_line"></div>
+
+	<!-- Footer -->
+	<footer class="main__footer inner-page__footer">
+		<div class="container">
+
+			<div class="infooter-block">
+				
+				<div class="contact__infooter-block">
+					<a href="#" onclick="return false;" class="contact__infooter-block_link" style="background: linear-gradient(0deg, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(img/slider/slider-photo.jpg) 50% no-repeat; background-size: cover;">
+						<span class="text__button white" data-size="middle">Корпоративное питание</span>
+					</a>
+				</div>
+
+			</div>
+
+
+			<div class="col-2">
+				<div class="footer__block">
+
+					<div class="footer__head inline-middle">
+						<div class="footer__logotype">
+							<img src="/img/SCS-footer-logo.svg" alt="SCS">
+						</div>
+						<div class="footer__phone inline-middle"><a href="tel:+77292533525">+7 (7292) <span class="hightlight">533 525</span><img src="/img/icons/call-white.svg" alt="Телефон"></a></div>
+					</div>
+
+					<div class="footer__content">
+						<div class="col-a_a gap-50">
+							<div class="footer_copyrite">
+								© 2019–2020 <br> Ships Catering Supply 
+							</div>
+							<div class="footer__address">
+								
+								<div class="footer__address-head inline-middle">
+									<a href="javascript:void(0)" class="tab_block active" data-tab_block="aktau_address" onclick="showBlock('aktau_address');">Офис в Актау</a>
+									<a href="javascript:void(0)" class="tab_block" data-tab_block="atyrau_address" onclick="showBlock('atyrau_address');">Офис в Атырау</a>
+								</div>
+
+								<div class="footer__address-content active" id="f__a-content" data-tab="aktau_address">
+									130000, Казахстан, Мангистауская обл., микрорайон 10, дом 2, офис 2
+								</div>
+
+								<div class="footer__address-content" id="f__a-content" data-tab="atyrau_address">
+									130000, Казахстан, Атырауская обл., микрорайон 10, дом 2, офис 2
+								</div>
+
+							</div>
+
+						</div>
+						<div class="footer__foo">
+							<div class="col-2">
+								<span class="custom_tooltip-container" data-custom_tooltip="develop">
+									<div class="custom_tooltip-item" data-custom_tooltip_item="develop">
+										<div class="col-2 gap-30">
+											<div>
+												<h5>Разработка</h5>
+												<span>PARALLAX PRO</span>
+												<a href="https://parallax.pro/" target="_blank">https://parallax.pro/</a>
+											</div>
+											<div>
+												<h5>Дизайн</h5>
+												<span>a.shine</span>
+												<a href="tel:+77779126669">+7 (777) 912-66-69</a>
+											</div>
+										</div>
+									</div>
+									<span class="footer__link">Devolepers</span>
+								</span>
+								<a href="#" class="footer__link">office@s-c-s.kz</a>
+							</div>
+						</div>
+					</div>
+
+				</div>
+				<div class="footer__block">
+					<div class="footer__block-logotypes">
+						<div class="inline-middle">
+							<div class="footer__block-logo_item"><a href="img/slider/slider-photo.jpg" class="popup-link_image"><img src="/img/logotypes/ISO-9001.svg" alt="9001"></a></div>
+							<div class="footer__block-logo_item"><a href="img/slider/slider-photo.jpg" class="popup-link_image"><img src="/img/logotypes/ISO-22000.svg" alt="22000"></a></div>
+							<div class="footer__block-logo_item"><a href="img/slider/slider-photo.jpg" class="popup-link_image"><img src="/img/logotypes/UKAS.svg" alt="UKAS"></a></div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</footer>
+	<!-- Footer -->
+
+	<script src="js/scripts.min.js"></script>
+
+</body>
+</html>

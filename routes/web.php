@@ -11,7 +11,25 @@
 |
 */
 
-Route::get('/', 'PagesController@index')->name('index');
+Route::get('/', function() {
+	return redirect(app()->getLocale());
+});
+
+Route::group([
+	'prefix' => '{locale}',
+	'where' => ['locale' => '[a-zA-Z]{2}'],
+	'middleware' => 'setlocale'
+], function()
+{
+	Route::get('/', 'PagesController@index')->name('index');
+
+	// Route::get('/services/', 'ServicesController@index')->name('_services.index');
+	Route::get('/services/{slug}', 'ServicesController@show')->name('_services.show');
+
+	Route::get('/clients/', 'ClientsController@index')->name('_clients.index');
+	Route::get('/clients/{slug}', 'ClientsController@show')->name('_clients.show');
+});
+
 
 Route::group(['prefix'=>'parallaxpanel', 'namespace'=>'Admin', 'middleware'=>'auth_custom'], function(){
 	Route::get('/', 'AuthController@index')->name('panel.index');
@@ -33,6 +51,8 @@ Route::group(['prefix'=>'admin','namespace'=>'Admin', 'middleware'	=>	'admin'], 
 	Route::resource('/menu', 'MenuController');
 	Route::resource('/pages', 'PagesController');
 	Route::resource('/services', 'ServicesController');
+	Route::resource('/languages', 'LanguagesController');
+	Route::resource('/clients', 'ClientsController');
 	Route::post('/services/image_upload', 'ServicesController@preview_upload')->name('services.preview_uplaod');
 
 });

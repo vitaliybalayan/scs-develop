@@ -17,7 +17,7 @@ class CreateLocalizationTable extends Migration
 			$table->bigIncrements('id');
 			$table->string('field')->nullable();
 			$table->string('language')->nullable();
-			$table->string('value')->nullable();
+			$table->text('value')->nullable();
 			$table->string('lozalizable_type');
 			$table->integer('lozalizable_id');
 			$table->timestamps();

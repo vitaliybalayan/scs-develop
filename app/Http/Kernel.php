@@ -64,6 +64,7 @@ class Kernel extends HttpKernel
 
         'auth_custom' => \App\Http\Middleware\AuthMiddleware::class,
         'admin' => \App\Http\Middleware\AdminMiddleware::class,
+        'setlocale' => \App\Http\Middleware\SetLocale::class,
     ];
 
     /**

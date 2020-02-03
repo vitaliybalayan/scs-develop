@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers\Admin;
 
+use Str;
+use Image;
 use App\Service;
 use App\Localization;
 use App\Http\Controllers\Controller;
@@ -41,7 +43,9 @@ class ServicesController extends Controller
 	{
 		$service = Service::add($request->all());
 
-		// dd($request->all());
+		$service->uploadImage($request->file('preview'));
+		$service->uploadOgImage($request->file('og_image'));
+		$service->is_public($request->get('is_public'));
 		
 		foreach ($request->get('locale') as $key => $value) {
 		    
@@ -58,6 +62,8 @@ class ServicesController extends Controller
 		    }
 		    
 		}
+
+		return redirect()->route('services.index');
 
 	}
 
@@ -80,7 +86,11 @@ class ServicesController extends Controller
 	 */
 	public function edit($id)
 	{
-		//
+		$service = Service::find($id);
+
+		return view('admin.services.edit', compact(
+			'service'
+		));
 	}
 
 	/**
@@ -92,7 +102,31 @@ class ServicesController extends Controller
 	 */
 	public function update(Request $request, $id)
 	{
-		//
+		$service = Service::find($id);
+
+		$service->edit($request->all());
+
+		$service->uploadImage($request->file('preview'));
+		$service->uploadOgImage($request->file('og_image'));
+		$service->is_public($request->get('is_public'));
+
+		$service->localRemove($service->id);
+
+		foreach ($request->get('locale') as $key => $value) {
+			foreach($value as $l_field => $l_value) {
+
+				$localization = new Localization;
+				$localization->language = $key;
+
+				$localization->field = $l_field;
+				$localization->value = $l_value;
+
+				$service->localization()->save($localization);
+
+			}
+		}
+
+		return redirect()->route('services.index');
 	}
 
 	/**
@@ -104,10 +138,5 @@ class ServicesController extends Controller
 	public function destroy($id)
 	{
 		//
-	}
-
-	public function preview_upload(Request $request)
-	{
-		dd($request->all());
 	}
 }

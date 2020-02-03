@@ -16,6 +16,7 @@ class CreateServicesTable extends Migration
         Schema::create('services', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('preview')->nullable();
+            $table->string('og_image')->nullable();
             $table->integer('user_id');
             $table->integer('is_public')->default(0);
             $table->integer('position')->default(1);
