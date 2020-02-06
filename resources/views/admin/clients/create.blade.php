@@ -1,7 +1,7 @@
 @extends('admin.layout')
 
 @section('title')
-Добавление услуги
+Добавление клиента
 @endsection
 
 @section('vendor_styles')
@@ -22,7 +22,7 @@
 		<div class="kt-container  kt-container--fluid ">
 			<div class="kt-subheader__main">
 				<h3 class="kt-subheader__title">
-					Добавление услуги
+					Добавление клиента
 				</h3>
 			</div>
 			<div class="kt-subheader__toolbar">
@@ -56,8 +56,8 @@
 
 						@foreach($g_languages as $lang)
 						<li class="nav-item">
-							<a class="nav-link @if ($lang->code == 'ru') active @endif" data-toggle="tab" href="#kt_user_edit_tab_{{ $lang->id }}" role="tab">
-								<img src="{{ $lang->getImage() }}" alt="RU" class="kt-svg-icon" style="margin-right: 0.5rem;">
+							<a class="nav-link @if ($lang->is_default == 1) active @endif" data-toggle="tab" href="#kt_user_edit_tab_{{ $lang->id }}" role="tab">
+								<img src="{{ $lang->getImage() }}" alt="{{ $lang->code }}" class="kt-svg-icon" style="margin-right: 0.5rem;">
 								{{ $lang->name }}
 							</a>
 						</li>
@@ -134,7 +134,7 @@
 					</div>
 
 					@foreach ($g_languages as $lang)
-					<div class="tab-pane @if ($lang->code == 'ru') active @endif" id="kt_user_edit_tab_{{ $lang->id }}" role="tabpanel">
+					<div class="tab-pane @if ($lang->is_default == 1) active @endif" id="kt_user_edit_tab_{{ $lang->id }}" role="tabpanel">
 						<div class="kt-form kt-form--label-right">
 							<div class="kt-form__body">
 								<div class="kt-section kt-section--first">
@@ -183,7 +183,7 @@
 										<div class="col-lg-9 col-xl-6">
 											<div class="custom-file">
 												<input type="file" class="custom-file-input" name="og_image" id="customFile">
-												<label class="custom-file-label" for="customFile">Choose file</label>
+												<label class="custom-file-label" for="customFile" style="text-align: left;">Выберите файл</label>
 											</div>
 										</div>
 									</div>

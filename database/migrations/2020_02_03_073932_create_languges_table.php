@@ -18,8 +18,9 @@ class CreateLangugesTable extends Migration
             $table->string('name');
             $table->string('code');
             $table->string('icon')->nullable();
+            $table->integer('is_default')->default(0);
             $table->integer('is_public')->default(0);
-            $table->integer('user_id');
+            $table->integer('user_id')->nullable();
             $table->timestamps();
         });
     }

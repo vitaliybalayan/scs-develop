@@ -107,6 +107,14 @@
 										<i class="kt-menu__link-icon flaticon2-gear"></i><span class="kt-menu__link-text">Настройки</span>
 									</a>
 								</li>
+								
+								@if (Auth::user()->admin == 1)
+								<li class="kt-menu__item  kt-menu__item" aria-haspopup="true">
+									<a href="{{ route('languages.index') }}" class="kt-menu__link ">
+										<i class="kt-menu__link-icon flaticon2-sort-alphabetically"></i><span class="kt-menu__link-text">Языки</span>
+									</a>
+								</li>
+								@endif
 
 							</ul>
 						</div>

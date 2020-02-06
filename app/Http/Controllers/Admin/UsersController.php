@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use Auth;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;

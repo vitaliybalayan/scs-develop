@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use Str;
 use Image;
 use App\Service;
+use App\Language;
 use App\Localization;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
@@ -30,7 +31,11 @@ class ServicesController extends Controller
 	 */
 	public function create()
 	{
-		return view('admin.services.create');
+		$g_languages = Language::where('is_public', 1)->get();
+
+		return view('admin.services.create', compact(
+			'g_languages'
+		));
 	}
 
 	/**
@@ -87,9 +92,11 @@ class ServicesController extends Controller
 	public function edit($id)
 	{
 		$service = Service::find($id);
+		$g_languages = Language::where('is_public', 1)->get();
 
 		return view('admin.services.edit', compact(
-			'service'
+			'service',
+			'g_languages'
 		));
 	}
 
@@ -137,6 +144,10 @@ class ServicesController extends Controller
 	 */
 	public function destroy($id)
 	{
-		//
+		$service = Service::find($id);
+		$service->localRemove($service->id);
+		$service->remove();
+
+		return redirect()->route('services.index');
 	}
 }

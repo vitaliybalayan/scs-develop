@@ -25,6 +25,7 @@ class AppServiceProvider extends ServiceProvider
         view()->composer('layout', function($view) {
             $view->with('site', Setting::all()->first());
             $view->with('menus', Menu::where('is_public', 1)->get());
+            $view->with('g_languages', Language::where('is_public', 1)->where('code', '!=', app()->getLocale())->get());
         });
 
         view()->composer('home.index', function($view) {

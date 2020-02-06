@@ -9,6 +9,7 @@ var KTAutosize = function () {
         var demo2 = $('#kt_autosize_2');
         var demo3 = $('#kt_autosize_3');
         var demo4 = $('#kt_autosize_4');
+        var demo4 = $('.autosize');
 
         autosize(demo1);
 

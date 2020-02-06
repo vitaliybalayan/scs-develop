@@ -102,6 +102,17 @@
 												</div>
 											</div>
 											<div class="form-group form-group-sm row">
+												<label class="col-xl-3 col-lg-3 col-form-label">Основной язык</label>
+												<div class="col-lg-9 col-xl-6">
+													<span class="kt-switch">
+														<label>
+															<input type="checkbox" checked="checked" name="is_default">
+															<span></span>
+														</label>
+													</span>
+												</div>
+											</div>
+											<div class="form-group form-group-sm row">
 												<label class="col-xl-3 col-lg-3 col-form-label">Опубликованно</label>
 												<div class="col-lg-9 col-xl-6">
 													<span class="kt-switch">

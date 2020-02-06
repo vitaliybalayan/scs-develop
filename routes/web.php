@@ -43,6 +43,9 @@ Route::group(['prefix'=>'admin','namespace'=>'Admin', 'middleware'	=>	'admin'], 
 
 	Route::get('/', 'HomeController@index')->name('admin.dashboard');
 
+	Route::post('/fileupload', 'FilesController@upload')->name('admin.file_upload');
+	Route::post('/fileupload/remove', 'FilesController@remove')->name('admin.file_upload.remove');
+
 	Route::get('/settings', 'SettingController@index')->name('admin.settings');
 	Route::post('/settings/store', 'SettingController@store')->name('admin.settings.store');
 	Route::post('/settings/update/{id}', 'SettingController@update')->name('admin.settings.update');

@@ -89,6 +89,7 @@ var KTDatatablesBasicPaginations = function() {
 						return '<span class="kt-badge ' + status[data].class + ' kt-badge--inline kt-badge--pill">' + status[data].title + '</span>';
 					},
 				},
+
 			],
 			language: {
                 "url": "//cdn.datatables.net/plug-ins/1.10.20/i18n/Russian.json"
@@ -116,6 +117,19 @@ var KTDatatablesBasicPaginations = function() {
 						}
 						return '<span class="kt-badge kt-badge--' + status[data].state + ' kt-badge--dot"></span>&nbsp;' +
 							'<span class="kt-font-bold kt-font-' + status[data].state + '">' + status[data].title + '</span>';
+					},
+				},
+				{
+					targets: 'is_default',
+					render: function(data, type, full, meta) {
+						var status = {
+							0: {'title': 'Обычный', 'class': ' kt-badge--primary'},
+							1: {'title': 'Основной', 'class': ' kt-badge--danger'},
+						};
+						if (typeof status[data] === 'undefined') {
+							return data;
+						}
+						return '<span class="kt-badge ' + status[data].class + ' kt-badge--inline kt-badge--pill">' + status[data].title + '</span>';
 					},
 				},
 			],

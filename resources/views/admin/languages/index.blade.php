@@ -81,7 +81,8 @@
 							<th>Название</th>
 							<th>Код</th>
 							<th>Дата создания</th>
-							<th class="is_public">Статус</th>
+							<th class="is_public">Отоброжение</th>
+							<th class="is_default">Статус</th>
 							<th>Действие</th>
 						</tr>
 					</thead>
@@ -94,6 +95,7 @@
 							<td>{{ $language->code }}</td>
 							<td>{{ $language->created_at->format('d.m.Y') }}</td>
 							<td>{{ $language->is_public }}</td>
+							<td>{{ $language->is_default }}</td>
 							<td nowrap>
 								<a href="{{ route('languages.edit', $language->id) }}" class="btn btn-sm btn-clean btn-icon btn-icon-md" title="Просмотреть"><i class="la la-edit"></i></a>
 								
@@ -128,12 +130,13 @@
 			</div>
 			<div class="modal-body">
 				<p>Вы действительно хотите удалить язык <span class="kt-badge kt-badge--dark  kt-badge--inline kt-badge--pill">{{ $language->name }}</span>?</p>
+				<p>ВНИМАНИЕ! После удаления языка, удалится весь перевод что привязан к нему!</p>
 			</div>
 			<div class="modal-footer">
 				<button type="button" class="btn btn-secondary" data-dismiss="modal">Отменить</button>
 
 				{{Form::open(['route'=>['languages.destroy', $language->id], 'method'=>'delete'])}}
-				<button type="submit" class="btn btn-primary">Удалить ссылку</button>
+				<button type="submit" class="btn btn-primary">Удалить язык</button>
                 {{Form::close()}}
 			</div>
 		</div>

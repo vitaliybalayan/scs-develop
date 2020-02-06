@@ -19,11 +19,11 @@
 			<div class="big__slider-content">
 				<div class="container">
 					<div class="big__slider-content_container">
-						<div class="big__slider-title">{{ $service->getLocalize($lang, 'title') }}</div>
-						<div class="big__slider-content">{{ $service->getLocalize($lang, 'desc') }}</div>
+						<div class="big__slider-title">{{ $service->getLocalize(app()->getLocale(), 'title') }}</div>
+						<div class="big__slider-content">{{ $service->getLocalize(app()->getLocale(), 'desc') }}</div>
 						<div class="big__slider-buttons inline-middle">
 							<div class="big__slider-button">
-								<a href="{{ route('_services.show', ['locale' => $lang, 'slug' => $service->getLocalize($lang, 'slug')]) }}" class="stadrt__button green">@lang('function.more')</a>
+								<a href="{{ route('_services.show', ['locale' => app()->getLocale(), 'slug' => $service->getLocalize(app()->getLocale(), 'slug')]) }}" class="stadrt__button green">@lang('function.more')</a>
 							</div>
 						</div>
 					</div>
@@ -39,7 +39,7 @@
 			@foreach($services as $service)
 			<div class="big__slider-dot_item">
 				<div class="big__slider-dot_line"></div>
-				<div class="big__slider-dot_title">{{ $service->getLocalize($lang, 'sub_title') }}</div>
+				<div class="big__slider-dot_title">{{ $service->getLocalize(app()->getLocale(), 'sub_title') }}</div>
 			</div>
 			@endforeach
 
@@ -55,7 +55,7 @@
 			@foreach($clients as $client)
 				@if ($client->getLogo())
 					<div class="ff-images__block">
-						<a href="{{ route('_clients.show', ['locale' => $lang, 'slug' => $client->slug]) }}"><img src="{{ $client->getLogo() }}" alt="{{ $client->name }}"></a>
+						<a href="{{ route('_clients.show', ['locale' => app()->getLocale(), 'slug' => $client->slug]) }}"><img src="{{ $client->getLogo() }}" alt="{{ $client->name }}"></a>
 					</div>
 				@endif
 			@endforeach

@@ -53,6 +53,31 @@ class Client extends Model
 		$this->save();
 	}
 
+	public function saveContent($value)
+	{
+		foreach ($value as $key => $value) {
+			foreach($value as $l_field => $l_value) {
+
+				$localization = new Localization;
+				$localization->language = $key;
+
+				$localization->field = $l_field;
+				$localization->value = $l_value;
+
+				$this->localization()->save($localization);
+			}
+		}
+	}
+
+	public function localRemove($id)
+	{
+		$locals = Localization::where('lozalizable_id', $id)->get();
+		
+		foreach ($locals as $local) {
+			$local->delete();
+		}
+	}
+
 	public function uploadImage($image)
 	{
 		if($image == null) { return; }

@@ -36,7 +36,7 @@ class Language extends Model
 		$this->removeImage();
 
 		$filename = Str::random(12) . '.' . $image->getClientOriginalExtension();
-		$path = '/public/uploads/languges/' . $filename;
+		$path = '/public/uploads/languages/' . $filename;
 		$img = Image::make($image)->heighten(50);
 
 		Storage::put($path, (string) $img->encode());
@@ -52,14 +52,14 @@ class Language extends Model
 			return '/assets/noimage.png';
 		}
 
-		return '/storage/uploads/languges/' . $this->icon;
+		return '/storage/uploads/languages/' . $this->icon;
 	}
 
 	public function removeImage()
 	{
 		if($this->icon != null)
 		{
-			Storage::disk('public')->delete('uploads/languges/' . $this->icon);
+			Storage::disk('public')->delete('uploads/languages/' . $this->icon);
 		}
 	}
 
@@ -70,6 +70,58 @@ class Language extends Model
 		} else {
 			$this->setDraft();
 		}
+	}
+
+	public function is_default($value)
+	{
+		// Если язык сделали основным
+		if ($value != null) {
+
+			// Ищем основной язык в базе данных
+			$old_default = Language::where('is_default', 1)->first();
+
+			// Если основной язык был найден, то делаем его обычным
+			if ($old_default) {
+				$old_default->setNoDefault();
+			}
+
+			// И делаем основным редактируемый язык
+			$this->setDefault();
+
+		} else {
+
+			// Получаем все варианты языка
+			$languages = Language::all();
+			
+			// Если язык единсвенный, возвращаем сообщение
+			if ($languages->count() == 1) {
+				return redirect()->route('languages.index')->with('status', 'Вы не можете сделать единственный язык, обычным');
+			} else {
+
+				// Если язык БЫЛ основным, то делаем основым рядомстоящий язык
+				if ($this->is_default == 1) {
+					$language = Language::where('id', '<>', $this->id)->first();			
+					$language->setDefault();
+				}
+
+				// Делаем редактируемый язык обычным
+				$this->setNoDefault();
+
+			}
+
+		}
+	}
+
+	public function setNoDefault()
+	{
+		$this->is_default = 0;
+		$this->save();
+	}
+
+	public function setDefault()
+	{
+		$this->is_default = 1;
+		$this->save();
 	}
 
 	public function setPublic()
@@ -84,9 +136,20 @@ class Language extends Model
 		$this->save();
 	}
 
+	public function hasNext()
+	{
+		return self::where('id', '>', $this->id)->min('id');
+	}
+
 	public function remove()
 	{
 		$this->removeImage();
+
+		if ($this->is_default == 1) {
+			$language = Language::where('id', '<>', $this->id)->first();			
+			$language->setDefault();
+		}
+
 		$this->delete();
 	}
 }

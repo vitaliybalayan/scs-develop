@@ -17,41 +17,33 @@
 				<!--begin::Nav-->
 				<ul class="kt-nav">
 					<li class="kt-nav__head">
-						Быстроый переход к созданию
-						<i class="flaticon2-information" data-toggle="kt-tooltip" data-placement="right" title="Быстроый переход к созданию"></i>
+						Быстрое добавление
+						<i class="flaticon2-information" data-toggle="kt-tooltip" data-placement="right" title="Быстроый переход к странице добавления"></i>
 					</li>
 					<li class="kt-nav__separator"></li>
 					<li class="kt-nav__item">
 						<a href="{{ route('users.create') }}" class="kt-nav__link">
-							<i class="kt-nav__link-icon flaticon2-drop"></i>
+							<i class="kt-nav__link-icon flaticon2-user"></i>
 							<span class="kt-nav__link-text">Пользователя</span>
 						</a>
 					</li>
 					<li class="kt-nav__item">
 						<a href="{{ route('services.create') }}" class="kt-nav__link">
-							<i class="kt-nav__link-icon flaticon2-calendar-8"></i>
-							<span class="kt-nav__link-text">Услуги</span>
+							<i class="kt-nav__link-icon flaticon2-file"></i>
+							<span class="kt-nav__link-text">Услугу</span>
 						</a>
 					</li>
 					<li class="kt-nav__item">
 						<a href="{{ route('menu.create') }}" class="kt-nav__link">
-							<i class="kt-nav__link-icon flaticon2-telegram-logo"></i>
-							<span class="kt-nav__link-text">Ссылки меню</span>
+							<i class="kt-nav__link-icon flaticon-grid-menu"></i>
+							<span class="kt-nav__link-text">Ссылку меню</span>
 						</a>
 					</li>
 					<li class="kt-nav__item">
-						<a href="#" class="kt-nav__link">
-							<i class="kt-nav__link-icon flaticon2-new-email"></i>
-							<span class="kt-nav__link-text">Support Case</span>
-							<span class="kt-nav__link-badge">
-								<span class="kt-badge kt-badge--brand kt-badge--rounded">5</span>
-							</span>
+						<a href="{{ route('clients.create') }}" class="kt-nav__link">
+							<i class="kt-nav__link-icon flaticon-users-1"></i>
+							<span class="kt-nav__link-text">Клиента</span>
 						</a>
-					</li>
-					<li class="kt-nav__separator"></li>
-					<li class="kt-nav__foot">
-						<a class="btn btn-label-brand btn-bold btn-sm" href="#">Upgrade plan</a>
-						<a class="btn btn-clean btn-bold btn-sm kt-hidden" href="#" data-toggle="kt-tooltip" data-placement="right" title="Click to learn more...">Learn more</a>
 					</li>
 				</ul>
 

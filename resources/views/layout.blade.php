@@ -45,15 +45,9 @@
 							<img src="/assets/frontend/img/icons/arrow-down.svg">
 						</div>
 						<div class="dropdown-_value top_header--dropdown" style="display: none;" data-dropdown_list="1">
-							@if(app()->getLocale() != 'en')
-							<a href="/en">EN</a>
-							@endif
-							@if(app()->getLocale() != 'kz')
-							<a href="/kz">kz</a>
-							@endif
-							@if(app()->getLocale() != 'ru')
-							<a href="/ru">ru</a>
-							@endif
+							@foreach($g_languages as $lang)
+								<a href="/{{ $lang->code }}">{{ $lang->code }}</a>
+							@endforeach
 						</div>
 					</div>
 					<div class="top-h_link"><a href="#" title="Карьера">Карьера</a></div>
@@ -67,7 +61,7 @@
 				<div class="nav-menu_mobile-content col-2">
 					
 					<div class="nav-menu_mobile-logotype">
-						<a href="{{ route('index', $lang) }}">
+						<a href="{{ route('index', app()->getLocale()) }}">
 							<img src="{{ $site->getLogotype() }}" alt="{{ $site->name }}">
 						</a>
 					</div>
@@ -114,7 +108,7 @@
 					<div class="container">
 						<div class="col-a_1">
 							<div class="logotype">
-								<a href="{{ route('index', $lang) }}">
+								<a href="{{ route('index', app()->getLocale()) }}">
 									<img src="{{ $site->getLogotype() }}" alt="{{ $site-> name }}">
 								</a>
 							</div>

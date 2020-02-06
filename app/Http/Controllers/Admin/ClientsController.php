@@ -91,9 +91,11 @@ class ClientsController extends Controller
 	public function edit($id)
 	{
 		$client = Client::find($id);
+		$default_lang = Language::where('is_default')->fisrt();
 
 		return view('admin.clients.edit', compact(
-			'client'
+			'client',
+			'default_lang'
 		));
 	}
 
@@ -106,7 +108,18 @@ class ClientsController extends Controller
 	 */
 	public function update(Request $request, $id)
 	{
-		//
+		$client = Client::find($id);
+
+		$client->edit($request->all());
+
+		$client->uploadImage($request->file('preview'));
+		$client->uploadOgImage($request->file('og_image'));
+		$client->is_public($request->get('is_public'));
+
+		$client->localRemove($client->id);
+		$client->saveContent($request->get('locale'));
+
+		return redirect()->route('services.index');
 	}
 
 	/**
@@ -117,6 +130,10 @@ class ClientsController extends Controller
 	 */
 	public function destroy($id)
 	{
-		//
+		$client = Client::find($id);
+		$client->localRemove($client->id);
+		$client->remove();
+
+		return redirect()->route('services.index');
 	}
 }

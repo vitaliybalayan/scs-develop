@@ -45,31 +45,33 @@
 			<div class="kt-portlet__head">
 				<div class="kt-portlet__head-toolbar">
 					<ul class="nav nav-tabs nav-tabs-space-xl nav-tabs-line nav-tabs-bold nav-tabs-line-3x nav-tabs-line-brand" role="tablist">
+
+						@if ($g_languages->count() == 0)
+							<li class="nav-item">
+								<a class="nav-link" href="{{ route('languages.create') }}">
+									Нет доступной локализации. Добавить?
+								</a>
+							</li>
+						@endif
+
+						@foreach($g_languages as $lang)
 						<li class="nav-item">
-							<a class="nav-link active" data-toggle="tab" href="#kt_user_edit_tab_1" role="tab">
-								<img src="/assets/admin/media/icons/country/russia.svg" alt="RU" class="kt-svg-icon" style="margin-right: 0.5rem;">
-								Русский
+							<a class="nav-link @if ($lang->is_default == 1) active @endif" data-toggle="tab" href="#kt_user_edit_tab_{{ $lang->id }}" role="tab">
+								<img src="{{ $lang->getImage() }}" alt="{{ $lang->code }}" class="kt-svg-icon" style="margin-right: 0.5rem;">
+								{{ $lang->name }}
 							</a>
 						</li>
-						<li class="nav-item">
-							<a class="nav-link" data-toggle="tab" href="#kt_user_edit_tab_2" role="tab">
-								<img src="/assets/admin/media/icons/country/kazakhstan.svg" alt="KZ" class="kt-svg-icon" style="margin-right: 0.5rem;">
-								Казахский
-							</a>
-						</li>
-						<li class="nav-item">
-							<a class="nav-link" data-toggle="tab" href="#kt_user_edit_tab_3" role="tab">
-								<img src="/assets/admin/media/icons/country/usa.svg" alt="USA" class="kt-svg-icon" style="margin-right: 0.5rem;">
-								Английский
-							</a>
-						</li>
+						@endforeach
+	
 					</ul>
 				</div>
 			</div>
 			<div class="kt-portlet__body">
 				<input type="hidden" name="user_id" value="{{ Auth::user()->id }}">
 				<div class="tab-content">
-					<div class="tab-pane active" id="kt_user_edit_tab_1" role="tabpanel">
+
+					@foreach ($g_languages as $lang)
+					<div class="tab-pane @if ($lang->is_default == 1) active @endif" id="kt_user_edit_tab_{{ $lang->code }}" role="tabpanel">
 						<div class="kt-form kt-form--label-right">
 							<div class="kt-form__body">
 								<div class="kt-section kt-section--first">
@@ -77,13 +79,13 @@
 										<div class="form-group row">
 											<label class="col-xl-3 col-lg-3 col-form-label">Заголовок *</label>
 											<div class="col-lg-9 col-xl-6">
-												<input class="form-control" type="text" placeholder="Введите заголовок на русском" name="title_ru">
+												<input class="form-control" type="text" placeholder="Введите заголовок на русском" id="{{ $lang->code }}_title" name="locale[{{ $lang->code }}][title]">
 											</div>
 										</div>
 										<div class="form-group row">
 											<label class="col-xl-3 col-lg-3 col-form-label">Ссылка</label>
 											<div class="col-lg-9 col-xl-6">
-												<input class="form-control" type="text" name="link_ru" placeholder="Введите RU ссылку">
+												<input class="form-control" type="text" name="locale[{{ $lang->code }}][link]" id="{{ $lang->code }}_slug" placeholder="Введите RU ссылку">
 											</div>
 										</div>
 									</div>
@@ -91,50 +93,8 @@
 							</div>
 						</div>
 					</div>
-					<div class="tab-pane" id="kt_user_edit_tab_2" role="tabpanel">
-						<div class="kt-form kt-form--label-right">
-							<div class="kt-form__body">
-								<div class="kt-section kt-section--first">
-									<div class="kt-section__body">
-										<div class="form-group row">
-											<label class="col-xl-3 col-lg-3 col-form-label">Заголовок *</label>
-											<div class="col-lg-9 col-xl-6">
-												<input class="form-control" type="text" placeholder="Введите заголовок на казахском" name="title_kz">
-											</div>
-										</div>
-										<div class="form-group row">
-											<label class="col-xl-3 col-lg-3 col-form-label">Ссылка</label>
-											<div class="col-lg-9 col-xl-6">
-												<input class="form-control" type="text" name="link_kz" placeholder="Введите KZ ссылку">
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-					<div class="tab-pane" id="kt_user_edit_tab_3" role="tabpanel">
-						<div class="kt-form kt-form--label-right">
-							<div class="kt-form__body">
-								<div class="kt-section kt-section--first">
-									<div class="kt-section__body">
-										<div class="form-group row">
-											<label class="col-xl-3 col-lg-3 col-form-label">Заголовок *</label>
-											<div class="col-lg-9 col-xl-6">
-												<input class="form-control" type="text" placeholder="Введите заголовок на русском" name="title_en">
-											</div>
-										</div>
-										<div class="form-group row">
-											<label class="col-xl-3 col-lg-3 col-form-label">Ссылка</label>
-											<div class="col-lg-9 col-xl-6">
-												<input class="form-control" type="text" name="link_en" placeholder="Введите EN ссылку">
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
+					@endforeach
+
 					<div class="kt-form kt-form--label-right">
 						<div class="kt-form__body">
 							<div class="kt-section kt-section--first">
@@ -192,3 +152,9 @@
 @section('vendor_scripts')
 <script src="assets/admin/js/pages/custom/user/edit-user.js" type="text/javascript"></script>
 @endsection
+
+@foreach($g_languages as $lang)
+<script>
+	$('#{{ $lang->code }}_slug').slugify('#{{ $lang->code }}_title');
+</script>
+@endforeach

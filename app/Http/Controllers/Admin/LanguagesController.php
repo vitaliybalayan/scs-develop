@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use DB;
 use App\Language;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
@@ -48,6 +49,7 @@ class LanguagesController extends Controller
         $language = Language::add($request->all());
         $language->uploadImage($request->file('icon'));
         $language->is_public($request->get('is_public'));
+        $language->is_default($request->get('is_default'));
 
         return redirect()->route('languages.index');
     }
@@ -74,7 +76,7 @@ class LanguagesController extends Controller
         $language = Language::find($id);
 
         return view('admin.languages.edit', compact(
-            'languge'
+            'language'
         ));
     }
 
@@ -97,6 +99,7 @@ class LanguagesController extends Controller
         $language->edit($request->all());
         $language->uploadImage($request->file('icon'));
         $language->is_public($request->get('is_public'));
+        $language->is_default($request->get('is_default'));
 
         return redirect()->route('languages.index');
     }
@@ -110,6 +113,9 @@ class LanguagesController extends Controller
     public function destroy($id)
     {
         $language = Language::find($id);
-        $language->remove();
+        DB::delete('delete from localization where language = ?', [$language->code]);
+        $language->remove($id);
+
+        return redirect()->route('languages.index');
     }
 }

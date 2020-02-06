@@ -40,14 +40,10 @@ class MenuController extends Controller
 	 */
 	public function store(Request $request)
 	{
-		$this->validate($request, [
-			'title_ru' => 'required',
-			'title_en' => 'required',
-			'title_kz' => 'required',
-		]);
-
 		$menu = Menu::add($request->all());
 		$menu->is_public($request->get('is_public'));
+
+		$client->saveContent($request->get('locale'));
 
 		return redirect()->route('menu.index');
 	}
@@ -89,18 +85,11 @@ class MenuController extends Controller
 	{
 		$menu = Menu::find($id);
 
-		$this->validate($request, [
-			'title_ru' => 'required',
-			'title_en' => 'required',
-			'title_kz' => 'required',
-		]);
-
 		$menu->edit($request->all());
 		$menu->is_public($request->get('is_public'));
 
-		$slugs = [
-			'link_ru' => $menu->link_ru
-		];
+		$client->localRemove($client->id);
+		$client->saveContent($request->get('locale'));
 
 		return $data = array('status' => 'Сохранение успешно!', 'slugs' => $slugs);
 	}
