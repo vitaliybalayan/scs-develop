@@ -71,7 +71,7 @@ class Client extends Model
 
 	public function localRemove($id)
 	{
-		$locals = Localization::where('lozalizable_id', $id)->get();
+		$locals = Localization::where('lozalizable_id', $id)->where('lozalizable_type', Client::class)->get();
 		
 		foreach ($locals as $local) {
 			$local->delete();
@@ -86,7 +86,7 @@ class Client extends Model
 
 		$filename = Str::random(12) . '.' . $image->getClientOriginalExtension();
 		$path = '/public/uploads/clients/' . $filename;
-		$img = Image::make($image)->heighten(50);
+		$img = Image::make($image);
 
 		Storage::put($path, (string) $img->encode());
 

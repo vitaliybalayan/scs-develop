@@ -37,9 +37,6 @@
 
 	</div>
 
-	<!-- Footer LINE -->
-	<div class="footer_line"></div>
-	<!-- Footer LINE -->
 </div>
 @endsection
 

@@ -11,7 +11,7 @@
 @section('content')
 
 {{Form::open([
-	'route'		=>	'clients.update',
+	'route'		=>	['clients.update', $client->id],
 	'method'	=>	'put',
 	'files'		=>	true,
 ])}}
@@ -187,7 +187,7 @@
 											<div class="custom-file">
 												<input type="file" class="custom-file-input" name="og_image" id="customFile">
 												<label class="custom-file-label" for="customFile" style="text-align: left;">Выберите файл</label>
-												<img src="{{ $client->getOgImage() }}" alt="{{ $service->getLocalize($default_lang, 'name') }}" style="max-height: 200px">
+												<img src="{{ $client->getOgImage() }}" style="max-height: 200px">
 											</div>
 										</div>
 									</div>

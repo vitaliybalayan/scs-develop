@@ -149,7 +149,18 @@
 										<div class="form-group row">
 											<label class="col-xl-3 col-lg-3 col-form-label">Превью Контент</label>
 											<div class="col-lg-9 col-xl-6">
-												<textarea class="summernote" id="summernote" name="locale[{{ $lang->code }}][preview_content]"></textarea>
+												<textarea class="summernote" id="summernote" name="locale[{{ $lang->code }}][preview_content]">
+													<div class="c-g_b__desc-hover">
+														<div class="c-g_b__desc-h_block">
+															<div class="c-g_b__desc">Предоставляемые услуги:</div>
+															<p>Lorem ipsum.</p>
+														</div>
+														<div class="c-g_b__desc-h_block">
+															<div class="c-g_b__desc">Услуги:</div>
+															<p>Lorem ipsum.</p>
+														</div>
+													</div>
+												</textarea>
 											</div>
 										</div>
 										<div class="form-group row">

@@ -7,13 +7,22 @@ use Illuminate\Database\Eloquent\Model;
 
 class Menu extends Model
 {
-	use Sluggable;
-
 	protected $table = 'menu';
 
 	protected $fillable = [
-		'title_ru', 'title_en', 'title_kz', 'link_ru', 'link_en', 'link_kz', 'parent_id', 'user_id', 'position'
+		'parent_id', 'user_id', 'position'
 	];
+
+	public function localization()
+	{
+		return $this->morphOne(Localization::class, 'lozalizable');
+	}
+
+	public function getLocalize($language, $field){
+		return $this->localization()
+					->where(['language' => $language, 'field' => $field])
+					->firstOrFail()->value;
+	}
 
 	public function parent()
     {
@@ -26,13 +35,17 @@ class Menu extends Model
             return '-';
         }
 
-        return $this->parent->title_ru;
+        return $this->parent->getLocalize($lang, 'title');
     }
 
 	public function creator()
 	{
 		return $this->belongsTo(User::class, 'user_id');
 	}
+
+	public function sub_menu(){
+		return $this->hasMany(Menu::class, 'parent_id');
+    }
 
 	public function saveContent($value)
 	{
@@ -52,7 +65,7 @@ class Menu extends Model
 
 	public function localRemove($id)
 	{
-		$locals = Localization::where('lozalizable_id', $id)->get();
+		$locals = Localization::where('lozalizable_id', $id)->where('lozalizable_type', Menu::class)->get();
 		
 		foreach ($locals as $local) {
 			$local->delete();
@@ -113,20 +126,5 @@ class Menu extends Model
 		}
 
 		$this->delete();
-	}
-
-	public function sluggable()
-	{
-		return [
-			'link_ru' => [
-				'source' => 'title_ru'
-			],
-			'link_kz' => [
-				'source' => 'title_kz'
-			],
-			'link_en' => [
-				'source' => 'title_en'
-			],
-		];
 	}
 }

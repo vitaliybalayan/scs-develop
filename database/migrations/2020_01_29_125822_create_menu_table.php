@@ -15,12 +15,6 @@ class CreateMenuTable extends Migration
     {
         Schema::create('menu', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('title_ru')->nullable();
-            $table->string('title_en')->nullable();
-            $table->string('title_kz')->nullable();
-            $table->string('link_ru')->nullable();
-            $table->string('link_en')->nullable();
-            $table->string('link_kz')->nullable();
             $table->integer('parent_id')->default(0);
             $table->integer('user_id');
             $table->integer('is_public')->default(0);

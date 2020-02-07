@@ -56,7 +56,7 @@
 
 						@foreach($g_languages as $lang)
 						<li class="nav-item">
-							<a class="nav-link @if ($lang->is_default == 1) active @endif" data-toggle="tab" href="#kt_user_edit_tab_{{ $lang->id }}" role="tab">
+							<a class="nav-link @if ($lang->is_default == 1) active @endif" data-toggle="tab" href="#kt_user_edit_tab_{{ $lang->code }}" role="tab">
 								<img src="{{ $lang->getImage() }}" alt="{{ $lang->code }}" class="kt-svg-icon" style="margin-right: 0.5rem;">
 								{{ $lang->name }}
 							</a>
@@ -79,13 +79,13 @@
 										<div class="form-group row">
 											<label class="col-xl-3 col-lg-3 col-form-label">Заголовок *</label>
 											<div class="col-lg-9 col-xl-6">
-												<input class="form-control" type="text" placeholder="Введите заголовок на русском" id="{{ $lang->code }}_title" name="locale[{{ $lang->code }}][title]">
+												<input class="form-control" type="text" placeholder="Введите заголовок" id="{{ $lang->code }}_title" name="locale[{{ $lang->code }}][title]">
 											</div>
 										</div>
 										<div class="form-group row">
 											<label class="col-xl-3 col-lg-3 col-form-label">Ссылка</label>
 											<div class="col-lg-9 col-xl-6">
-												<input class="form-control" type="text" name="locale[{{ $lang->code }}][link]" id="{{ $lang->code }}_slug" placeholder="Введите RU ссылку">
+												<input class="form-control" type="text" name="locale[{{ $lang->code }}][link]" id="{{ $lang->code }}_slug" placeholder="Введите ссылку">
 											</div>
 										</div>
 									</div>
@@ -111,7 +111,7 @@
 											<select class="form-control" name="parent_id">
 												<option value="0" checked>Выберите родителя</option>
 												@foreach($menus as $menu)
-												<option value="{{ $menu->id }}">{{ $menu->title_ru }}</option>
+												<option value="{{ $menu->id }}">{{ $menu->getLocalize($default_lang, 'title') }}</option>
 												@endforeach
 											</select>
 										</div>
@@ -151,6 +151,7 @@
 
 @section('vendor_scripts')
 <script src="assets/admin/js/pages/custom/user/edit-user.js" type="text/javascript"></script>
+<script src="/assets/admin/jquery-slugify-master/dist/slugify.min.js" type="text/javascript"></script>
 @endsection
 
 @foreach($g_languages as $lang)

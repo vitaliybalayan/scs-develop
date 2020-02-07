@@ -144,7 +144,7 @@ class Service extends Model
 
 	public function localRemove($id)
 	{
-		$locals = Localization::where('lozalizable_id', $id)->get();
+		$locals = Localization::where('lozalizable_id', $id)->where('lozalizable_type', Service::class)->get();
 		// dd($locals);
 		foreach ($locals as $local) {
 			$local->delete();

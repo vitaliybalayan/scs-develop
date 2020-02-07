@@ -73,25 +73,25 @@
 
 						<div class="mobile-menu_block">
 
-							<div class="mobile-menu-item">
-								<a href="#" class="mobile-submenu_link" data-menu="1">Услуги</a>
-								<div class="mobile-submenu" data-menu_item="1">
-									<a href="#">Корпоративное питание</a>
-									<a href="#">Прачечные услуги</a>
+							@if ($menus->count() != 0)
+								@foreach ($menus as $menu)
+								<div class="mobile-menu-item">
+									@if($menu->parent_id == null)
+									<a href="{{ $menu->getLocalize(app()->getLocale(), 'link') }}" class="mobile-submenu_link" data-menu="{{ $menu->id }}">{{ $menu->getLocalize(app()->getLocale(), 'title') }}</a>
+									@endif
+									@if ($menu->sub_menu->count())
+										<div class="mobile-submenu" data-menu_item="{{ $menu->id }}">
+										@foreach ($menu->sub_menu as $sub_menu)
+											<a href="{{ $sub_menu->getLocalize(app()->getLocale(), 'link') }}">{{ $sub_menu->getLocalize(app()->getLocale(), 'title') }}</a>
+										@endforeach
+										</div>
+									@endif
 								</div>
-							</div>
+								@endforeach
+							@else
+								<a href="/" onclick="return false;" class="mobile-submenu_link">Нет ссылок</a>
+							@endif
 
-							<div class="mobile-menu-item">
-								<a href="#" class="mobile-submenu_link" data-menu="2">O SCS</a>
-								<div class="mobile-submenu" data-menu_item="2">
-									<a href="#">Корпоративное питание</a>
-								</div>
-							</div>
-
-							<a href="#" class="mobile-submenu_link">Сертификация</a>
-							<a href="/clients.html" class="mobile-submenu_link">Наши клиенты</a>
-							<a href="#" class="mobile-submenu_link">Новости</a>
-							<a href="#" class="mobile-submenu_link">Контакты</a>
 						</div>
 
 					</div>
@@ -113,12 +113,19 @@
 								</a>
 							</div>
 							<nav class="menu__list">
-								<a href="#" class="submenu_link" data-submenu="1">Услуги</a>
-								<a href="#" class="submenu_link" data-submenu="2">O SCS</a>
-								<a href="#" class="submenu_link" data-submenu="3">Сертификация</a>
-								<a href="/clients.html" class="submenu_link" data-submenu="4">Наши клиенты</a>
-								<a href="#" class="submenu_link" data-submenu="5">Новости</a>
-								<a href="#" class="submenu_link">Контакты</a>
+
+								@if ($menus->count() != 0)
+									@foreach ($menus as $menu)
+										@if($menu->parent_id == null)
+											<a href="{{ $menu->getLocalize(app()->getLocale(), 'link') }}" class="submenu_link" @if($menu->sub_menu->count() != 0) data-submenu="{{ $menu->id }}" @endif>{{ $menu->getLocalize(app()->getLocale(), 'title') }}</a>
+										@endif
+									@endforeach
+								@else
+									<div class="submenu_link">
+										<a href="/" onclick="return false;">Нет ссылок</a>
+									</div>
+								@endif
+
 							</nav>
 						</div>
 					</div>
@@ -130,36 +137,22 @@
 					<div class="container">
 						
 						<div class="submenu-content">
-							
-							<div class="submenu-item" data-submenu_item="1">
-								<a href="#" onclick="return false;">1</a>
-								<a href="#" onclick="return false;">2</a>
-								<a href="#" onclick="return false;">3</a>
-							</div>
 
-							<div class="submenu-item" data-submenu_item="2">
-								<a href="#" onclick="return false;">О компании</a>
-								<a href="#" onclick="return false;">Миссия и ценности</a>
-								<a href="#" onclick="return false;">Статистика</a>
-							</div>
-
-							<div class="submenu-item" data-submenu_item="3">
-								<a href="#" onclick="return false;">1</a>
-								<a href="#" onclick="return false;">3</a>
-								<a href="#" onclick="return false;">2</a>
-							</div>
-
-							<div class="submenu-item" data-submenu_item="4">
-								<a href="#" onclick="return false;">3</a>
-								<a href="#" onclick="return false;">1</a>
-								<a href="#" onclick="return false;">2</a>
-							</div>
-
-							<div class="submenu-item" data-submenu_item="5">
-								<a href="#" onclick="return false;">2</a>
-								<a href="#" onclick="return false;">1</a>
-								<a href="#" onclick="return false;">3</a>
-							</div>
+							@if ($menus->count() != 0)
+								@foreach ($menus as $menu)
+									@if ($menu->sub_menu->count() != 0)
+										<div class="submenu-item" data-submenu_item="{{ $menu->id }}">
+											@foreach ($menu->sub_menu as $submenu)
+												<a href="{{ $submenu->getLocalize(app()->getLocale(), 'link') }}">{{ $submenu->getLocalize(app()->getLocale(), 'title') }}</a>
+											@endforeach
+										</div>
+									@endif
+								@endforeach
+							@else
+								<div class="submenu-item">
+									<a href="/" onclick="return false;">Нет ссылок</a>
+								</div>
+							@endif
 
 						</div>
 

@@ -121,9 +121,9 @@
 												@endif
 												@foreach($menus as $item)
 													@if($item->id == $menu->parent_id)
-														<option value="{{ $item->id }}" checked>{{ $item->title_ru }}</option>
+														<option value="{{ $item->id }}" checked>{{ $item->{{ $menu->getLocalize($default_lang, 'title') }} }}</option>
 													@endif
-													<option value="{{ $item->id }}" checked>{{ $item->title_ru }}</option>
+													<option value="{{ $item->id }}">{{ $item->{{ $menu->getLocalize($default_lang, 'title') }} }}</option>
 												@endforeach
 											</select>
 										</div>

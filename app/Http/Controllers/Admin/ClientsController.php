@@ -19,9 +19,11 @@ class ClientsController extends Controller
 	public function index()
 	{
 		$clients = Client::all();
+		$default_lang = Language::where('is_default', 1)->first()->code;
 
 		return view('admin.clients.index', compact(
-			'clients'
+			'clients',
+			'default_lang'
 		));
 	}
 
@@ -33,7 +35,7 @@ class ClientsController extends Controller
 	public function create()
 	{
 		$g_languages = Language::where('is_public', 1)->get();
-		$services = Service::all();
+		$services = Service::where('is_public', 1)->get();
 
 		return view('admin.clients.create', compact(
 			'g_languages',
@@ -91,11 +93,15 @@ class ClientsController extends Controller
 	public function edit($id)
 	{
 		$client = Client::find($id);
-		$default_lang = Language::where('is_default')->fisrt();
+		$default_lang = Language::where('is_default', 1)->first()->code;
+		$g_languages = Language::where('is_public', 1)->get();
+		$services = Service::where('is_public', 1)->get();
 
 		return view('admin.clients.edit', compact(
 			'client',
-			'default_lang'
+			'default_lang',
+			'g_languages',
+			'services'
 		));
 	}
 
@@ -119,7 +125,7 @@ class ClientsController extends Controller
 		$client->localRemove($client->id);
 		$client->saveContent($request->get('locale'));
 
-		return redirect()->route('services.index');
+		return redirect()->route('clients.index');
 	}
 
 	/**
@@ -134,6 +140,6 @@ class ClientsController extends Controller
 		$client->localRemove($client->id);
 		$client->remove();
 
-		return redirect()->route('services.index');
+		return redirect()->route('clients.index');
 	}
 }

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Menu;
+use App\Language;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
@@ -16,8 +17,12 @@ class MenuController extends Controller
 	public function index()
 	{
 		$menus = Menu::all();
+		$default_lang = Language::where('is_default', 1)->first()->code;
 
-		return view('admin.menu.index', compact('menus'));
+		return view('admin.menu.index', compact(
+			'menus',
+			'default_lang'
+		));
 	}
 
 	/**
@@ -28,8 +33,14 @@ class MenuController extends Controller
 	public function create()
 	{
 		$menus = Menu::all();
+		$g_languages = Language::where('is_public', 1)->get();
+		$default_lang = Language::where('is_default', 1)->first()->code;
 
-		return view('admin.menu.create', compact('menus'));
+		return view('admin.menu.create', compact(
+			'menus',
+			'g_languages',
+			'default_lang'
+		));
 	}
 
 	/**
@@ -43,7 +54,7 @@ class MenuController extends Controller
 		$menu = Menu::add($request->all());
 		$menu->is_public($request->get('is_public'));
 
-		$client->saveContent($request->get('locale'));
+		$menu->saveContent($request->get('locale'));
 
 		return redirect()->route('menu.index');
 	}
@@ -68,10 +79,16 @@ class MenuController extends Controller
 	public function edit($id)
 	{
 		$menus = Menu::all();
-
 		$menu = Menu::find($id);
+		$g_languages = Language::where('is_public', 1)->get();
+		$default_lang = Language::where('is_default', 1)->first()->code;
 
-		return view('admin.menu.edit', compact('menus', 'menu'));
+		return view('admin.menu.edit', compact(
+			'menus',
+			'menu',
+			'g_languages',
+			'default_lang'
+		));
 	}
 
 	/**
@@ -88,8 +105,8 @@ class MenuController extends Controller
 		$menu->edit($request->all());
 		$menu->is_public($request->get('is_public'));
 
-		$client->localRemove($client->id);
-		$client->saveContent($request->get('locale'));
+		$menu->localRemove($menu->id);
+		$menu->saveContent($request->get('locale'));
 
 		return $data = array('status' => 'Сохранение успешно!', 'slugs' => $slugs);
 	}

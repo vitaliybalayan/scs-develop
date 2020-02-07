@@ -2,7 +2,10 @@
 
 return [
 
-    'more' => 'Больше',
+    'buttons' => [
+    	'more' => 'Больше',
+    	'all_object' => 'Все объекты'
+    ],
 
     'titles' => [
     	'clients' => 'Объекты обслуживания'

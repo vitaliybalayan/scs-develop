@@ -91,8 +91,8 @@
 							<td>{{ $client->id }}</td>
 							<td><img src="{{ $client->getLogo() }}" alt="{{ $client->name }}" style="max-height: 50px"></td>
 							<td>{{ $client->name }}</td>
-							<td>{{ $client->getLocalize('ru', 'object') }}</td>
-							<td>{{ $client->service->getLocalize('ru', 'title') }}</td>
+							<td>{{ $client->getLocalize($default_lang, 'object') }}</td>
+							<td>{{ $client->service->getLocalize($default_lang, 'title') }}</td>
 							<td>{{ $client->is_public }}</td>
 							<td nowrap>
 								<a href="{{ route('clients.edit', $client->id) }}" class="btn btn-sm btn-clean btn-icon btn-icon-md" title="Редактировать"><i class="la la-edit"></i></a>

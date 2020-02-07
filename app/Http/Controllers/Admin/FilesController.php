@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use Image;
 use Storage;
+use Illuminate\View\View;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -36,5 +37,25 @@ class FilesController extends Controller
         Storage::disk('public')->delete('uploads/' . $row);
 
     	dd($row);
+    }
+
+    public function get()
+    {
+        $folder = 'blocks';
+        $view = 'qwerty';
+        // $view = view('blocks.qwerty');
+
+        // dd(View::getPaths());
+        // dd($view->render());
+
+
+        $code = file_get_contents(resource_path('views/'. $folder .'/'. $view .'.blade.php'));
+        // dd($code);
+        echo $code;
+
+        $content = '312';
+
+        $new_code = file_put_contents(resource_path('views/'. $folder .'/'. $view .'.blade.php'), $content);
+
     }
 }
