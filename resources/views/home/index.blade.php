@@ -162,28 +162,28 @@
 
 	<section class="advantages">
 		<div class="section-title__hightlight">
-			<h4>Наши преимущества</h4>
+			<h4>@lang('function.titles.advantages')</h4>
 		</div>
 		<div class="section-advan__container">
 			<div class="container">
 				<div class="col-4 gap-30">
 					<div class="section-advan__item">
-						<div class="section-advan__item-image"><img src="/img/icons/experience-icon.svg" alt="Опыт"></div>
+						<div class="section-advan__item-image"><img src="/assets/frontend/img/icons/experience-icon.svg" alt="Опыт"></div>
 						<div class="section-advan__item-title">Опыт</div>
 						<div class="section-advan__item-desc">Lorem ipsum dolor sit amet, consec</div>
 					</div>
 					<div class="section-advan__item">
-						<div class="section-advan__item-image"><img src="/img/icons/quality-icon.svg" alt="Система  качества"></div>
+						<div class="section-advan__item-image"><img src="/assets/frontend/img/icons/quality-icon.svg" alt="Система  качества"></div>
 						<div class="section-advan__item-title">Система качества</div>
 						<div class="section-advan__item-desc">Lorem ipsum dolor sit amet, consec</div>
 					</div>
 					<div class="section-advan__item">
-						<div class="section-advan__item-image"><img src="/img/icons/complex-services-icon.svg" alt="Комплексные  услуги"></div>
+						<div class="section-advan__item-image"><img src="/assets/frontend/img/icons/complex-services-icon.svg" alt="Комплексные  услуги"></div>
 						<div class="section-advan__item-title">Комплексные услуги</div>
 						<div class="section-advan__item-desc">Lorem ipsum dolor sit amet, consec</div>
 					</div>
 					<div class="section-advan__item">
-						<div class="section-advan__item-image"><img src="/img/icons/qualified-personnel.svg" alt="Специалисты  высшего класса"></div>
+						<div class="section-advan__item-image"><img src="/assets/frontend/img/icons/qualified-personnel.svg" alt="Специалисты  высшего класса"></div>
 						<div class="section-advan__item-title">Специалисты высшего класса</div>
 						<div class="section-advan__item-desc">Lorem ipsum dolor sit amet, consec</div>
 					</div>
@@ -192,14 +192,14 @@
 		</div>
 	</section>
 
-	<section class="fullwidht_video" style="background: linear-gradient(288.47deg, rgba(215, 237, 118, 0.9) -2.3%, rgba(195, 233, 165, 0.9) 59.17%, rgba(156, 224, 255, 0.9) 91.37%), url('/img/slider/slider-photo.jpg') 50% no-repeat; background-size: cover;">
+	<section class="fullwidht_video" style="background: linear-gradient(288.47deg, rgba(215, 237, 118, 0.9) -2.3%, rgba(195, 233, 165, 0.9) 59.17%, rgba(156, 224, 255, 0.9) 91.37%), url('/assets/frontend/img/slider/slider-photo.jpg') 50% no-repeat; background-size: cover;">
 		<a href="https://www.youtube.com/watch?v=Q3bPNZbRVhk" class="popup-link_video">
 			<div class="container">
 				<div class="video__container inline-middle">
-					<div class="video__title">Видео о SCS</div>
+					<div class="video__title">@lang('function.titles.video')</div>
 					<div class="video__icon">
 						<div class="video__icon-block pulse">
-							<img src="/img/icons/play.svg" alt="Посмотреть">
+							<img src="/assets/frontend/img/icons/play.svg" alt="Посмотреть">
 						</div>
 					</div>
 				</div>
@@ -215,29 +215,25 @@
 			<div class="footer__custom-section_first-container">
 				<div class="footer__custom-section_first f__c-s_f-footer">
 					<div class="owl-carousel f__c-section_first-slider">
+
+						@foreach($articles as $article)
 						<div class="f__c-section_f-slider__item">
 							<div class="f__c-s_f-s__item-title">
-								<h2>Мы внедрили facility management</h2>
+								<h2>{{ $article->getLocalize(app()->getLocale(), 'title') }}</h2>
 							</div>
-							<div class="f__c-s_f-s__item-subtitle">18.02.2020</div>
-							<div class="f__c-s_f-s__item-content">Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.</div>
-							<div class="f__c-s_f-s__item-footer"><a href="#" class="stadrt__button green">Узнать больше</a></div>
+							<div class="f__c-s_f-s__item-subtitle">{{ $article->created_at->format('d.m.Y') }}</div>
+							<div class="f__c-s_f-s__item-content">{{ $article->getLocalize(app()->getLocale(), 'desc') }}</div>
+							<div class="f__c-s_f-s__item-footer"><a href="{{ route('_articles.show', ['locale' => app()->getLocale(), 'slug' => $article->getLocalize(app()->getLocale(), 'slug')]) }}" class="stadrt__button green">@lang('function.buttons.learn_more')</a></div>
 						</div>
-						<div class="f__c-section_f-slider__item">
-							<div class="f__c-s_f-s__item-title">
-								<h2>Мы не внедрили facility management</h2>
-							</div>
-							<div class="f__c-s_f-s__item-subtitle">18.02.2020</div>
-							<div class="f__c-s_f-s__item-content">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eaque, error.</div>
-							<div class="f__c-s_f-s__item-footer"><a href="#" class="stadrt__button green">Узнать больше</a></div>
-						</div>
+						@endforeach
+
 					</div>
 				</div>
 				<div class="footer__custom-section_second">
 					<div class="f__c-section_second-title">
-						<h4>Карьера</h4>
+						<h4>@lang('function.titles.сareer')</h4>
 					</div>
-					<div class="f__c-section_second-content" style="background: linear-gradient(0deg, rgba(0, 91, 150, 0.75), rgba(0, 91, 150, 0.75)), url('/img/backgrounds/index-page-career-background.jpg') 50% no-repeat; background-size: cover;">
+					<div class="f__c-section_second-content" style="background: linear-gradient(0deg, rgba(0, 91, 150, 0.75), rgba(0, 91, 150, 0.75)), url('/assets/frontend/img/backgrounds/index-page-career-background.jpg') 50% no-repeat; background-size: cover;">
 						<div class="f__c-s_s-c__title">Стань частью команды SCS</div>
 						<div class="f__c-s_s-c__content">Вместе мы становимся сильнее</div>
 						<div class="f__c-s_s-c__footer"><a href="#" class="text__button white">Вакансии</a></div>

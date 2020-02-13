@@ -37,18 +37,18 @@
 						<div class="custom_tooltip-item" data-custom_tooltip_item="develop">
 							<div class="col-2 gap-30">
 								<div>
-									<h5>Разработка</h5>
+									<h5>@lang('function.titles.development')</h5>
 									<span>PARALLAX PRO</span>
 									<a href="https://parallax.pro/" target="_blank">https://parallax.pro/</a>
 								</div>
 								<div>
-									<h5>Дизайн</h5>
+									<h5>@lang('function.titles.design')</h5>
 									<span>a.shine</span>
 									<a href="tel:+77779126669">+7 (777) 912-66-69</a>
 								</div>
 							</div>
 						</div>
-						<span class="footer__link">Devolepers</span>
+						<span class="footer__link">@lang('function.titles.developers')</span>
 					</span>
 					<a href="#" class="footer__link">office@s-c-s.kz</a>
 				</div>

@@ -50,7 +50,7 @@
 							@endforeach
 						</div>
 					</div>
-					<div class="top-h_link"><a href="#" title="Карьера">Карьера</a></div>
+					<div class="top-h_link"><a href="#" title="@lang('function.titles.сareer')">@lang('function.titles.сareer')</a></div>
 				</div>
 			</div>
 		</div>

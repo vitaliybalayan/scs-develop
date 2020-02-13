@@ -22,6 +22,12 @@
 					</li>
 					<li class="kt-nav__separator"></li>
 					<li class="kt-nav__item">
+						<a href="{{ route('articles.create') }}" class="kt-nav__link">
+							<i class="kt-nav__link-icon flaticon-doc"></i>
+							<span class="kt-nav__link-text">Новость</span>
+						</a>
+					</li>
+					<li class="kt-nav__item">
 						<a href="{{ route('users.create') }}" class="kt-nav__link">
 							<i class="kt-nav__link-icon flaticon2-user"></i>
 							<span class="kt-nav__link-text">Пользователя</span>

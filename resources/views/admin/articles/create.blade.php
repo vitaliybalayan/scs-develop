@@ -1,7 +1,7 @@
 @extends('admin.layout')
 
 @section('title')
-Редактирование клиента
+Добавление статьи
 @endsection
 
 @section('vendor_styles')
@@ -11,8 +11,7 @@
 @section('content')
 
 {{Form::open([
-	'route'		=>	['clients.update', $client->id],
-	'method'	=>	'put',
+	'route'		=>	'articles.store',
 	'files'		=>	true,
 ])}}
 
@@ -23,13 +22,13 @@
 		<div class="kt-container  kt-container--fluid ">
 			<div class="kt-subheader__main">
 				<h3 class="kt-subheader__title">
-					Редактирование клиента
+					Добавление статьи
 				</h3>
 			</div>
 			<div class="kt-subheader__toolbar">
 				<a href="{{ route('clients.index') }}" class="btn btn-default btn-bold">Назад</a>
 				<div class="btn-group">
-					<button type="submit" class="btn btn-brand btn-bold">Сохранить</button>
+					<button type="submit" class="btn btn-brand btn-bold">Добавить</button>
 				</div>
 			</div>
 		</div>
@@ -80,53 +79,15 @@
 										<label class="col-form-label col-lg-3 col-sm-12">Изображение</label>
 										<div class="col-lg-4 col-md-9 col-sm-12">
 											<div class="kt-avatar kt-avatar--outline" id="kt_user_avatar_1">
-												<div class="kt-avatar__holder" style="background-image: url('{{ $client->getImage() }}'); background-size: 100% auto; background-position: center;"></div>
+												<div class="kt-avatar__holder" style="background-image: url('/assets/noimage.png'); background-size: 100% auto; background-position: center;"></div>
 												<label class="kt-avatar__upload" data-toggle="kt-tooltip" title="" data-original-title="Добавить превью">
 												<i class="fa fa-pen"></i>
 												<input type="file" name="preview" accept=".png, .jpg, .jpeg">
 												</label>
-												<span class="kt-avatar__cancel" data-toggle="kt-tooltip" title="" data-original-title="Удалить изображение">
+												<span class="kt-avatar__cancel" data-toggle="kt-tooltip" title="" data-original-title="Добавить превью">
 												<i class="fa fa-times"></i>
 												</span>
 											</div>
-										</div>
-									</div>
-									<div class="form-group row">
-										<label class="col-form-label col-lg-3 col-sm-12">Логотип</label>
-										<div class="col-lg-4 col-md-9 col-sm-12">
-											<div class="kt-avatar kt-avatar--outline" id="kt_user_avatar_2">
-												<div class="kt-avatar__holder" style="background-image: url('{{ $client->getLogo() }}'); background-size: 100% auto; background-position: center;"></div>
-												<label class="kt-avatar__upload" data-toggle="kt-tooltip" title="" data-original-title="Добавить логотип">
-												<i class="fa fa-pen"></i>
-												<input type="file" name="logotype" accept=".png, .jpg, .jpeg">
-												</label>
-												<span class="kt-avatar__cancel" data-toggle="kt-tooltip" title="" data-original-title="Удалить изображение">
-												<i class="fa fa-times"></i>
-												</span>
-											</div>
-										</div>
-									</div>
-									<div class="form-group row">
-										<label class="col-xl-3 col-lg-3 col-form-label">Название клиента *</label>
-										<div class="col-lg-9 col-xl-6">
-											<input class="form-control" type="text" placeholder="Введите имя клиента" name="name" id="title" value="{{ $client->name }}">
-										</div>
-									</div>
-									<div class="form-group row">
-										<label class="col-xl-3 col-lg-3 col-form-label">Ссылка</label>
-										<div class="col-lg-9 col-xl-6">
-											<input class="form-control" type="text" id="slug" name="slug" placeholder="Введите свой вариант ссылки" value="{{ $client->slug }}">
-										</div>
-									</div>
-									<div class="form-group row">
-										<label class="col-xl-3 col-lg-3 col-form-label">Услуга</label>
-										<div class="col-lg-9 col-xl-6">
-											<select class="form-control" name="service_id">
-												<option disabled>Выберите услугу</option>
-												@foreach($services as $service)
-												<option value="{{ $service->id }}">{{ $service->getLocalize($default_lang, 'title') }}</option>
-												@endforeach
-											</select>
 										</div>
 									</div>
 								</div>
@@ -141,30 +102,39 @@
 								<div class="kt-section kt-section--first">
 
 									<div class="kt-section__body">
+
 										<div class="form-group row">
-											<label class="col-xl-3 col-lg-3 col-form-label">Объект обслуживания</label>
+											<label class="col-xl-3 col-lg-3 col-form-label">Название статьи</label>
 											<div class="col-lg-9 col-xl-6">
-												<input class="form-control" type="text" name="locale[{{ $lang->code }}][object]" placeholder="Введите объект обслуживания" value="{{ $client->getLocalize($lang->code, 'object') }}">
+												<input class="form-control" type="text" name="locale[{{ $lang->code }}][title]" id="{{ $lang->code }}_title" placeholder="Название статьи">
 											</div>
-										</div>
-										<div class="form-group row">
-											<label class="col-xl-3 col-lg-3 col-form-label">Превью Контент</label>
-											<div class="col-lg-9 col-xl-6">
-												<textarea class="summernote" id="summernote" name="locale[{{ $lang->code }}][preview_content]">{{ $client->getLocalize($lang->code, 'preview_content') }}"</textarea>
-											</div>
-										</div>
+                                        </div>
+
+                                        <div class="form-group row">
+                                            <label class="col-xl-3 col-lg-3 col-form-label">Ссылка</label>
+                                            <div class="col-lg-9 col-xl-6">
+                                                <input class="form-control" type="text" name="locale[{{ $lang->code }}][slug]" id="{{ $lang->code }}_slug" placeholder="Ссылка">
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group row">
+                                            <label class="col-xl-3 col-lg-3 col-form-label">Описание</label>
+                                            <div class="col-lg-9 col-xl-6">
+                                                <textarea name="locale[{{ $lang->code }}][desc]" id="kt_autosize_2" class="form-control"></textarea>
+                                            </div>
+                                        </div>
+                                        
 										<div class="form-group row">
 											<label class="col-xl-3 col-lg-3 col-form-label">Контент</label>
 											<div class="col-lg-9 col-xl-6">
-												<textarea class="summernote" id="summernote" name="locale[{{ $lang->code }}][content]">
-													{{ $client->getLocalize($lang->code, 'content') }}"
-												</textarea>
+												<textarea class="summernote" id="summernote" name="locale[{{ $lang->code }}][content]"></textarea>
 											</div>
-										</div>
+                                        </div>
+                                        
 										<div class="form-group row">
 											<label class="col-xl-3 col-lg-3 col-form-label">Мета-теги</label>
 											<div class="col-lg-9 col-xl-6">
-												<input class="form-control" type="text" name="locale[{{ $lang->code }}][meta_tags]" placeholder="Введите мета-теги через запятую" value="{{ $client->getLocalize($lang->code, 'meta_tags') }}">
+												<input class="form-control" type="text" name="locale[{{ $lang->code }}][meta_tags]" placeholder="Введите мета-теги через запятую">
 											</div>
 										</div>
 									</div>
@@ -182,22 +152,6 @@
 							<div class="kt-section kt-section--first">
 								<div class="kt-section__body">
 									<div class="form-group row">
-										<label class="col-xl-3 col-lg-3 col-form-label">OG Image</label>
-										<div class="col-lg-9 col-xl-6">
-											<div class="custom-file">
-												<input type="file" class="custom-file-input" name="og_image" id="customFile">
-												<label class="custom-file-label" for="customFile" style="text-align: left;">Выберите файл</label>
-												<img src="{{ $client->getOgImage() }}" style="max-height: 200px">
-											</div>
-										</div>
-									</div>
-									<div class="form-group row">
-										<label class="col-xl-3 col-lg-3 col-form-label">Порядок</label>
-										<div class="col-lg-9 col-xl-6">
-											<input class="form-control" type="text" name="position" placeholder="Установите порядок" value="{{ $client->position }}">
-										</div>
-									</div>
-									<div class="form-group row">
 										<label class="col-xl-3"></label>
 										<div class="col-lg-9 col-xl-6">
 											<h3 class="kt-section__title kt-section__title-sm">Отображение ссылки:</h3>
@@ -208,7 +162,7 @@
 										<div class="col-lg-9 col-xl-6">
 											<span class="kt-switch">
 												<label>
-													<input type="checkbox" @if ($client->is_public == 1) checked="checked" @endif name="is_public">
+													<input type="checkbox" checked="checked" name="is_public">
 													<span></span>
 												</label>
 											</span>
@@ -242,4 +196,10 @@
 
 <script src="/assets/admin/speakingurl-master/speakingurl.min.js" type="text/javascript"></script>
 <script src="/assets/admin/jquery-slugify-master/dist/slugify.min.js" type="text/javascript"></script>
+
+@foreach($g_languages as $lang)
+<script>
+	$('#{{ $lang->code }}_slug').slugify('#{{ $lang->code }}_title');
+</script>
+@endforeach
 @endsection

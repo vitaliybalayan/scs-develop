@@ -28,6 +28,9 @@ Route::group([
 
 	Route::get('/clients/', 'ClientsController@index')->name('_clients.index');
 	Route::get('/clients/{slug}', 'ClientsController@show')->name('_clients.show');
+
+	Route::get('/news/', 'ArticlesController@index')->name('_articles.index');
+	Route::get('/news/{slug}', 'ArticlesController@show')->name('_articles.show');
 });
 
 
@@ -58,6 +61,7 @@ Route::group(['prefix'=>'admin','namespace'=>'Admin', 'middleware'	=>	'admin'], 
 	Route::resource('/services', 'ServicesController');
 	Route::resource('/languages', 'LanguagesController');
 	Route::resource('/clients', 'ClientsController');
+	Route::resource('/articles', 'ArticlesController');
 	Route::post('/services/image_upload', 'ServicesController@preview_upload')->name('services.preview_uplaod');
 
 });
