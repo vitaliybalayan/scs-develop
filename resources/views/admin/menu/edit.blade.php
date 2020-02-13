@@ -14,7 +14,6 @@
 	'route'		=>	['menu.update', $menu->id],
 	'files'		=>	true,
 	'method'	=>	'put',
-	'id'		=>	'form_upload'
 ])}}
 
 <div class="kt-content  kt-grid__item kt-grid__item--fluid kt-grid kt-grid--hor" id="kt_content">
@@ -121,9 +120,9 @@
 												@endif
 												@foreach($menus as $item)
 													@if($item->id == $menu->parent_id)
-														<option value="{{ $item->id }}" checked>{{ $item->{{ $menu->getLocalize($default_lang, 'title') }} }}</option>
+														<option value="{{ $item->id }}" checked>{{ $item->getLocalize($default_lang, 'title') }} }}</option>
 													@endif
-													<option value="{{ $item->id }}">{{ $item->{{ $menu->getLocalize($default_lang, 'title') }} }}</option>
+													<option value="{{ $item->id }}">{{ $item->getLocalize($default_lang, 'title') }} }}</option>
 												@endforeach
 											</select>
 										</div>

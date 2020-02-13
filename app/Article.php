@@ -62,7 +62,7 @@ class Article extends Model
 
 	public function localRemove($id)
 	{
-		$locals = Localization::where('lozalizable_id', $id)->where('lozalizable_type', Client::class)->get();
+		$locals = Localization::where('lozalizable_id', $id)->where('lozalizable_type', Article::class)->get();
 		
 		foreach ($locals as $local) {
 			$local->delete();

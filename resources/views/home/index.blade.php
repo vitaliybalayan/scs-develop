@@ -162,7 +162,7 @@
 
 	<section class="advantages">
 		<div class="section-title__hightlight">
-			<h4>@lang('function.titles.advantages')</h4>
+			<h4>@lang('titles.advantages')</h4>
 		</div>
 		<div class="section-advan__container">
 			<div class="container">
@@ -196,7 +196,7 @@
 		<a href="https://www.youtube.com/watch?v=Q3bPNZbRVhk" class="popup-link_video">
 			<div class="container">
 				<div class="video__container inline-middle">
-					<div class="video__title">@lang('function.titles.video')</div>
+					<div class="video__title">@lang('titles.video')</div>
 					<div class="video__icon">
 						<div class="video__icon-block pulse">
 							<img src="/assets/frontend/img/icons/play.svg" alt="Посмотреть">
@@ -231,7 +231,7 @@
 				</div>
 				<div class="footer__custom-section_second">
 					<div class="f__c-section_second-title">
-						<h4>@lang('function.titles.сareer')</h4>
+						<h4>@lang('titles.сareer')</h4>
 					</div>
 					<div class="f__c-section_second-content" style="background: linear-gradient(0deg, rgba(0, 91, 150, 0.75), rgba(0, 91, 150, 0.75)), url('/assets/frontend/img/backgrounds/index-page-career-background.jpg') 50% no-repeat; background-size: cover;">
 						<div class="f__c-s_s-c__title">Стань частью команды SCS</div>

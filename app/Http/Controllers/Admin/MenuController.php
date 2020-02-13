@@ -108,7 +108,8 @@ class MenuController extends Controller
 		$menu->localRemove($menu->id);
 		$menu->saveContent($request->get('locale'));
 
-		return $data = array('status' => 'Сохранение успешно!', 'slugs' => $slugs);
+
+		return redirect()->route('menu.index');
 	}
 
 	/**

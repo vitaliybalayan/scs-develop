@@ -50,7 +50,7 @@
 							@endforeach
 						</div>
 					</div>
-					<div class="top-h_link"><a href="#" title="@lang('function.titles.сareer')">@lang('function.titles.сareer')</a></div>
+					<div class="top-h_link"><a href="#" title="@lang('titles.сareer')">@lang('titles.сareer')</a></div>
 				</div>
 			</div>
 		</div>
@@ -77,7 +77,7 @@
 								@foreach ($menus as $menu)
 								<div class="mobile-menu-item">
 									@if($menu->parent_id == null)
-									<a href="{{ $menu->getLocalize(app()->getLocale(), 'link') }}" class="mobile-submenu_link" data-menu="{{ $menu->id }}">{{ $menu->getLocalize(app()->getLocale(), 'title') }}</a>
+									<a href="/{{app()->getLocale()}}/{{ $menu->getLocalize(app()->getLocale(), 'link') }}" class="mobile-submenu_link" data-menu="{{ $menu->id }}">{{ $menu->getLocalize(app()->getLocale(), 'title') }}</a>
 									@endif
 									@if ($menu->sub_menu->count())
 										<div class="mobile-submenu" data-menu_item="{{ $menu->id }}">
@@ -117,7 +117,7 @@
 								@if ($menus->count() != 0)
 									@foreach ($menus as $menu)
 										@if($menu->parent_id == null)
-											<a href="{{ $menu->getLocalize(app()->getLocale(), 'link') }}" class="submenu_link" @if($menu->sub_menu->count() != 0) data-submenu="{{ $menu->id }}" @endif>{{ $menu->getLocalize(app()->getLocale(), 'title') }}</a>
+											<a href="/{{app()->getLocale()}}/{{ $menu->getLocalize(app()->getLocale(), 'link') }}" class="submenu_link" @if($menu->sub_menu->count() != 0) data-submenu="{{ $menu->id }}" @endif>{{ $menu->getLocalize(app()->getLocale(), 'title') }}</a>
 										@endif
 									@endforeach
 								@else

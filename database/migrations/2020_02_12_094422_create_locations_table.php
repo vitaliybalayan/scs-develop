@@ -16,8 +16,7 @@ class CreateLocationsTable extends Migration
         Schema::create('locations', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->integer('user_id');
-            $table->integer('is_public');
-            $table->string('email')->nullable();
+            $table->integer('is_public')->default(0);
             $table->integer('position')->default(1);
             $table->timestamps();
         });

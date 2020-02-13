@@ -1,7 +1,7 @@
 @extends('layout')
 
 @section('title')
-@lang('function.titles.clients')
+@lang('titles.clients')
 @endsection
 
 @section('detalis')
@@ -12,7 +12,7 @@
 	<div class="g-content">
 		
 		<div class="container">
-			<h1 class="head__title">@lang('function.titles.clients')</h1>
+			<h1 class="head__title">@lang('titles.clients')</h1>
 		</div>
 
 		<div class="col-3 clients-grid">

@@ -6,6 +6,8 @@ use Auth;
 use App\Menu;
 use App\Setting;
 use App\Language;
+use App\Location;
+use App\Service;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -24,12 +26,20 @@ class AppServiceProvider extends ServiceProvider
 
         view()->composer('layout', function($view) {
             $view->with('site', Setting::all()->first());
-            $view->with('menus', Menu::where('is_public', 1)->get());
+            $view->with('menus', Menu::where('is_public', 1)->orderBy('position', 'desc')->get());
             $view->with('g_languages', Language::where('is_public', 1)->where('code', '!=', app()->getLocale())->get());
         });
 
         view()->composer('home.index', function($view) {
             $view->with('site', Setting::all()->first());
+        });
+
+        view()->composer('blocks.footer', function($view) {
+            $view->with('locations', Location::where('is_public', 1)->get());
+        });
+
+        view()->composer('blocks.footer_service', function($view) {
+            $view->with('service', Service::where('is_public', 1)->inRandomOrder()->first());
         });
     }
 

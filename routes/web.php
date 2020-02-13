@@ -31,6 +31,8 @@ Route::group([
 
 	Route::get('/news/', 'ArticlesController@index')->name('_articles.index');
 	Route::get('/news/{slug}', 'ArticlesController@show')->name('_articles.show');
+
+	Route::get('/contacts/', 'PagesController@contacts')->name('_contacts.index');
 });
 
 
@@ -62,6 +64,7 @@ Route::group(['prefix'=>'admin','namespace'=>'Admin', 'middleware'	=>	'admin'], 
 	Route::resource('/languages', 'LanguagesController');
 	Route::resource('/clients', 'ClientsController');
 	Route::resource('/articles', 'ArticlesController');
+	Route::resource('/locations', 'LocationsController');
 	Route::post('/services/image_upload', 'ServicesController@preview_upload')->name('services.preview_uplaod');
 
 });

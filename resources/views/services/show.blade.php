@@ -51,17 +51,10 @@
 <footer class="main__footer inner-page__footer">
 	<div class="container">
 
-		<div class="infooter-block">
-			
-			<div class="contact__infooter-block">
-				<a href="#" onclick="return false;" class="contact__infooter-block_link" style="background: linear-gradient(0deg, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(img/slider/slider-photo.jpg) 50% no-repeat; background-size: cover;">
-					<span class="text__button white" data-size="middle">Корпоративное питание</span>
-				</a>
-			</div>
-
-		</div>
+		@include('blocks.footer_service')
 
 		@include('blocks.footer')
+		
 	</div>
 </footer>
 <!-- Footer -->
