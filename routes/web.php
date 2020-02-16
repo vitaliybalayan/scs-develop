@@ -29,10 +29,15 @@ Route::group([
 	Route::get('/clients/', 'ClientsController@index')->name('_clients.index');
 	Route::get('/clients/{slug}', 'ClientsController@show')->name('_clients.show');
 
+	Route::get('/about/', 'PagesController@about')->name('_about.index');
+
 	Route::get('/news/', 'ArticlesController@index')->name('_articles.index');
 	Route::get('/news/{slug}', 'ArticlesController@show')->name('_articles.show');
 
 	Route::get('/contacts/', 'PagesController@contacts')->name('_contacts.index');
+	Route::get('/career/', 'PagesController@career')->name('_career.index');
+
+	Route::post('/contacts/send', 'EmailsController@contacts')->name('_emails.contacts');
 });
 
 
@@ -56,6 +61,10 @@ Route::group(['prefix'=>'admin','namespace'=>'Admin', 'middleware'	=>	'admin'], 
 	Route::get('/settings', 'SettingController@index')->name('admin.settings');
 	Route::post('/settings/store', 'SettingController@store')->name('admin.settings.store');
 	Route::post('/settings/update/{id}', 'SettingController@update')->name('admin.settings.update');
+
+	Route::get('/about', 'AboutController@index')->name('about.index');
+	Route::post('/about/store', 'AboutController@store')->name('about.store');
+	Route::post('/about/update/{id}', 'AboutController@update')->name('about.update');
 	
 	Route::resource('/users', 'UsersController');
 	Route::resource('/menu', 'MenuController');
@@ -65,6 +74,7 @@ Route::group(['prefix'=>'admin','namespace'=>'Admin', 'middleware'	=>	'admin'], 
 	Route::resource('/clients', 'ClientsController');
 	Route::resource('/articles', 'ArticlesController');
 	Route::resource('/locations', 'LocationsController');
+	Route::resource('/certificates', 'CertificatesController');
 	Route::post('/services/image_upload', 'ServicesController@preview_upload')->name('services.preview_uplaod');
 
 });

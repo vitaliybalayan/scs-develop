@@ -23,7 +23,7 @@
 						<div class="big__slider-content">{{ $service->getLocalize(app()->getLocale(), 'desc') }}</div>
 						<div class="big__slider-buttons inline-middle">
 							<div class="big__slider-button">
-								<a href="{{ route('_services.show', ['locale' => app()->getLocale(), 'slug' => $service->getLocalize(app()->getLocale(), 'slug')]) }}" class="stadrt__button green">@lang('function.buttons.more')</a>
+								<a href="{{ route('_services.show', ['locale' => app()->getLocale(), 'slug' => $service->getLocalize(app()->getLocale(), 'slug')]) }}" class="stadrt__button green">@lang('buttons.more')</a>
 							</div>
 						</div>
 					</div>
@@ -90,7 +90,7 @@
 					</div>
 
 					<div class="parallelogram__item second">
-						<div class="parallelogram-item__title"><h4>Факты & Цифры</h4></div>
+						<div class="parallelogram-item__title"><h4>@lang('titles.Facts & Figures')</h4></div>
 						<div class="parallelogram-item__content p-i__content-second">
 							
 							<div class="owl-carousel parallelogram__content-slider">
@@ -135,7 +135,7 @@
 		<section class="main__service-slider">
 			<div class="container">
 				<div class="custom-section__title">
-					<h4>Объекты обслуживания</h4>
+					<h4>@lang('titles.clients')</h4>
 				</div>
 			</div>
 			<div class="main__service-slider-container">
@@ -152,7 +152,7 @@
 			</div>
 			<div class="container">
 				<div class="main__service-slider-footer" data-text_align="right">
-					<a href="{{ route('_clients.index', app()->getLocale()) }}" class="stadrt__button green">@lang('function.buttons.all_object')</a>
+					<a href="{{ route('_clients.index', app()->getLocale()) }}" class="stadrt__button green">@lang('buttons.all_object')</a>
 				</div>
 			</div>
 		</section>
@@ -223,7 +223,7 @@
 							</div>
 							<div class="f__c-s_f-s__item-subtitle">{{ $article->created_at->format('d.m.Y') }}</div>
 							<div class="f__c-s_f-s__item-content">{{ $article->getLocalize(app()->getLocale(), 'desc') }}</div>
-							<div class="f__c-s_f-s__item-footer"><a href="{{ route('_articles.show', ['locale' => app()->getLocale(), 'slug' => $article->getLocalize(app()->getLocale(), 'slug')]) }}" class="stadrt__button green">@lang('function.buttons.learn_more')</a></div>
+							<div class="f__c-s_f-s__item-footer"><a href="{{ route('_articles.show', ['locale' => app()->getLocale(), 'slug' => $article->getLocalize(app()->getLocale(), 'slug')]) }}" class="stadrt__button green">@lang('buttons.learn_more')</a></div>
 						</div>
 						@endforeach
 
@@ -234,9 +234,9 @@
 						<h4>@lang('titles.сareer')</h4>
 					</div>
 					<div class="f__c-section_second-content" style="background: linear-gradient(0deg, rgba(0, 91, 150, 0.75), rgba(0, 91, 150, 0.75)), url('/assets/frontend/img/backgrounds/index-page-career-background.jpg') 50% no-repeat; background-size: cover;">
-						<div class="f__c-s_s-c__title">Стань частью команды SCS</div>
-						<div class="f__c-s_s-c__content">Вместе мы становимся сильнее</div>
-						<div class="f__c-s_s-c__footer"><a href="#" class="text__button white">Вакансии</a></div>
+						<div class="f__c-s_s-c__title">@lang('titles.Team')</div>
+						<div class="f__c-s_s-c__content">@lang('titles.Team subtitle')</div>
+						<div class="f__c-s_s-c__footer"><a href="{{ route('_career.index', app()->getLocale()) }}" class="text__button white">@lang('buttons.vacancy')</a></div>
 					</div>
 				</div>
 			</div>

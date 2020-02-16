@@ -50,7 +50,7 @@
 							@endforeach
 						</div>
 					</div>
-					<div class="top-h_link"><a href="#" title="@lang('titles.сareer')">@lang('titles.сareer')</a></div>
+					<div class="top-h_link"><a href="{{ route('_career.index', app()->getLocale()) }}" title="@lang('titles.сareer')">@lang('titles.сareer')</a></div>
 				</div>
 			</div>
 		</div>
@@ -89,7 +89,7 @@
 								</div>
 								@endforeach
 							@else
-								<a href="/" onclick="return false;" class="mobile-submenu_link">Нет ссылок</a>
+								<a href="/" onclick="return false;" class="mobile-submenu_link">NULL</a>
 							@endif
 
 						</div>
@@ -172,5 +172,6 @@
 
 	<script src="/assets/frontend/js/scripts.min.js"></script>
 
+	@yield('scripts')
 </body>
 </html>

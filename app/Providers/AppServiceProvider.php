@@ -8,6 +8,7 @@ use App\Setting;
 use App\Language;
 use App\Location;
 use App\Service;
+use App\Certificate;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -21,7 +22,6 @@ class AppServiceProvider extends ServiceProvider
     {
         view()->composer('admin.layout', function($view) {
             $view->with('user', Auth::user());
-            // $view->with('g_languages', Language::where('is_public', 1)->get());
         });
 
         view()->composer('layout', function($view) {
@@ -36,6 +36,7 @@ class AppServiceProvider extends ServiceProvider
 
         view()->composer('blocks.footer', function($view) {
             $view->with('locations', Location::where('is_public', 1)->get());
+            $view->with('certificates', Certificate::where('is_public', 1)->get());
         });
 
         view()->composer('blocks.footer_service', function($view) {

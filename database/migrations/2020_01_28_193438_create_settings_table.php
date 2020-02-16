@@ -23,6 +23,7 @@ class CreateSettingsTable extends Migration
             $table->string('logotype')->nullable();
             $table->string('favicon')->nullable();
             $table->string('favicon_retina')->nullable();
+            $table->string('footer_logotype')->nullable();
             $table->string('og_image')->nullable();
             $table->text('yandex_metrica')->nullable();
             $table->text('yandex_webmaster')->nullable();

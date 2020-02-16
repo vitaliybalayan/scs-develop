@@ -187,20 +187,20 @@
 							</div>
 
 							<div class="form-group col-6">
-								<label>OG Image</label>
+								<label>Логотип в Footer</label>
 								<div class="custom-file">
-									<div class="kt-avatar kt-avatar--outline" id="kt_user_avatar_2">
+									<div class="kt-avatar kt-avatar--outline" id="kt_user_avatar_1">
 										<div class="kt-avatar__holder" style="background-image: url('/assets/noimage.png'); background-size: 100% auto; background-position: center;"></div>
-										<label class="kt-avatar__upload" data-toggle="kt-tooltip" title="" data-original-title="Сменить OG Image">
+										<label class="kt-avatar__upload" data-toggle="kt-tooltip" title="" data-original-title="Сменить логотип">
 										<i class="fa fa-pen"></i>
-										<input type="file" name="og_image" accept=".png, .jpg, .jpeg">
+										<input type="file" name="footer_logotype" accept=".png, .jpg, .jpeg">
 										</label>
-										<span class="kt-avatar__cancel" data-toggle="kt-tooltip" title="" data-original-title="Сменить OG Image">
+										<span class="kt-avatar__cancel" data-toggle="kt-tooltip" title="" data-original-title="Сменить логотип">
 										<i class="fa fa-times"></i>
 										</span>
 									</div>
 								</div>
-							<span class="form-text text-muted">Формат: .PNG, .JPG, .JPEG.<br>Данное изображение проявляется в виде превью, при отправки ссылки в социальных сетях. Рекомендуемый размер: 1200х630</span>
+							<span class="form-text text-muted">Формат: .PNG, .JPG, .JPEG.<br>Размер должен быть с расчетом для retina. Примерно: 200х200</span>
 							</div>
 
 							<div class="form-group col-6">
@@ -235,6 +235,23 @@
 									</div>
 								</div>
 							<span class="form-text text-muted">Формат: .PNG, .JPG, .JPEG.<br>Данный формат можно не заполнять, если вы последовали рекомендации загрузки favicon. Рекомендуемый размер: 114х114</span>
+							</div>
+
+							<div class="form-group col-6">
+								<label>OG Image</label>
+								<div class="custom-file">
+									<div class="kt-avatar kt-avatar--outline" id="kt_user_avatar_2">
+										<div class="kt-avatar__holder" style="background-image: url('/assets/noimage.png'); background-size: 100% auto; background-position: center;"></div>
+										<label class="kt-avatar__upload" data-toggle="kt-tooltip" title="" data-original-title="Сменить OG Image">
+										<i class="fa fa-pen"></i>
+										<input type="file" name="og_image" accept=".png, .jpg, .jpeg">
+										</label>
+										<span class="kt-avatar__cancel" data-toggle="kt-tooltip" title="" data-original-title="Сменить OG Image">
+										<i class="fa fa-times"></i>
+										</span>
+									</div>
+								</div>
+							<span class="form-text text-muted">Формат: .PNG, .JPG, .JPEG.<br>Данное изображение проявляется в виде превью, при отправки ссылки в социальных сетях. Рекомендуемый размер: 1200х630</span>
 							</div>
 
 						</div>

@@ -11,7 +11,7 @@
 		<div class="footer__content">
 			<div class="col-2 gap-50">
 				<div class="footer_copyrite">
-					© 2019–2020 <br> Ships Catering Supply 
+					© 2019–{{ Carbon\Carbon::today()->year }} <br> Ships Catering Supply 
 				</div>
 				<div class="footer__address">
 					
@@ -58,9 +58,14 @@
 	<div class="footer__block">
 		<div class="footer__block-logotypes">
 			<div class="inline-middle">
-				<div class="footer__block-logo_item"><a href="/assets/frontend/img/slider/slider-photo.jpg" class="popup-link_image"><img src="/assets/frontend/img/logotypes/ISO-9001.svg" alt="9001"></a></div>
-				<div class="footer__block-logo_item"><a href="img/slider/slider-photo.jpg" class="popup-link_image"><img src="/assets/frontend/img/logotypes/ISO-22000.svg" alt="22000"></a></div>
-				<div class="footer__block-logo_item"><a href="img/slider/slider-photo.jpg" class="popup-link_image"><img src="/assets/frontend/img/logotypes/UKAS.svg" alt="UKAS"></a></div>
+
+				@foreach($certificates as $certificate)
+				<div class="footer__block-logo_item">
+					<a href="{{ $certificate->getImage() }}" class="popup-link_image">
+						<img src="{{ $certificate->getIcon() }}" alt="{{ $certificate->title }}">
+					</a>
+				</div>
+				@endforeach
 			</div>
 		</div>
 	</div>

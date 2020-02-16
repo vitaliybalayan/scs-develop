@@ -32,4 +32,9 @@ class PagesController extends Controller
             'locations',
         ));
     }
+
+    public function career($lang)
+    {
+        return view('home.career');
+    }
 }

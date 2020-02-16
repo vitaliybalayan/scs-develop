@@ -67,6 +67,42 @@ class Setting extends Model
 	// End::Logotype
 
 
+	// Footer Logotype
+	public function uploadFooterLogotype($image)
+	{
+		if($image == null) { return; }
+
+		$this->removeLogotype();
+
+		$filename = Str::random(10) . '.' . $image->getClientOriginalExtension();
+		$path = '/public/uploads/logotypes/' . $filename;
+		$img = Image::make($image);
+
+		Storage::put($path, (string) $img->encode());
+
+		$this->footer_logotype = $filename;
+		$this->save();
+	}
+
+	public function removeFooterLogotype()
+	{
+		if($this->footer_logotype != null)
+		{
+			Storage::disk('public')->delete('uploads/logotypes/' . $this->footer_logotype);
+		}
+	}
+
+	public function getFooterLogotype()
+	{
+		if($this->footer_logotype == null)
+		{
+			return '/assets/noimage.png';
+		}
+
+		return '/storage/uploads/logotypes/' . $this->footer_logotype;
+	}
+	// End::Footer Logotype
+
 	// Favicon
 	public function uploadFavicon($image)
 	{

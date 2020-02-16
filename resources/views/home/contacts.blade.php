@@ -48,36 +48,38 @@
 				
 				<h1 class="head__title">@lang('titles.send us msg')</h1>
 
-				<div class="contact_form">
+				{{Form::open([
+					'route'		=>	['_emails.contacts', app()->getLocale()],
+					'id'		=>	'form_upload',
+				])}}
 
+				<div class="contact_form">
+					<input type="hidden" name="ip" value="{{ \Request::ip() }}">
 					<div class="col-2 gap-30">
 						<div class="form-control">
 							<label for="name" class="custom_label">@lang('forms.titles.Introduce myself')</label>
-							<input type="text" id="name" class="default_input" placeholder="@lang('forms.placeholders.Your name')">
+							<input type="text" id="name" class="default_input" name="value[name]" placeholder="@lang('forms.placeholders.Your name')" required>
 						</div>
 						<div class="form-control">
 							<label for="email" class="custom_label">@lang('forms.titles.Email')</label>
-							<input type="text" id="email" class="default_input" placeholder="example@mail.com">
+							<input type="text" id="email" class="default_input" name="value[email]" placeholder="example@mail.com" required>
 						</div>
 					</div>
-
 					<div class="form-control">
 						<label for="subject" class="custom_label">@lang('forms.titles.Message subject')</label>
-						<input type="text" id="subject" class="default_input" placeholder="@lang('forms.placeholders.Enter a topic')">
+						<input type="text" id="subject" class="default_input" name="value[subject]" placeholder="@lang('forms.placeholders.Enter a topic')" required>
 					</div>
-
 					<div class="form-control">
 						<label for="text" class="custom_label">@lang('forms.titles.Message')</label>
-						<textarea name="text" id="text" class="default_textarea" placeholder="@lang('forms.placeholders.Your message is here')"></textarea>
+						<textarea name="value[msg]" id="text" class="default_textarea" placeholder="@lang('forms.placeholders.Your message is here')" required></textarea>
 					</div>
-
 					<div class="col-1_a gap-30">
 						<p class="notify">@lang('forms.rules')</p>
 						<button type="submit" class="text__button white text-left" data-size="middle">@lang('forms.send')</button>
 					</div>
-
 				</div>
-
+				
+				{{ Form::close() }}
 
 			</div>
 
@@ -99,4 +101,37 @@
 	</div>
 </footer>
 <!-- Footer -->
+@endsection
+
+@section('scripts')
+<script>
+$('#form_upload').submit(function(event) {
+	event.preventDefault();
+
+	$('button').attr('disabled', true);
+	
+	$.ajax({
+		type: $(this).attr('method'),
+		url: $(this).attr('action'),
+		data: new FormData(this),
+		contentType: false,
+		cache: false,
+		processData: false,
+		statusCode: {
+			404: function() {
+				alert( "Страница не найдена." );
+			}
+		},
+		success: function(result){
+			alert('@lang('titles.email')')
+			
+			$('button').attr('disabled', false);
+		}, 
+		error: function(result) {
+			$('#dd').html(result);
+			$('button').attr('disabled', false);
+		}
+	})
+});
+</script>
 @endsection

@@ -24,6 +24,7 @@ class SettingController extends Controller
     	$setting = Setting::add($request->all());
 
         $setting->uploadLogotype($request->file('logotype'));
+        $setting->uploadFooterLogotype($request->file('footer_logotype'));
         $setting->uploadFavicon($request->file('favicon'));
         $setting->uploadFaviconRetina($request->file('favicon_retina'));
         $setting->uploadOgImage($request->file('og_image'));
@@ -37,6 +38,7 @@ class SettingController extends Controller
 
         $setting->edit($request->all());
         $setting->uploadLogotype($request->file('logotype'));
+        $setting->uploadFooterLogotype($request->file('footer_logotype'));
         $setting->uploadFavicon($request->file('favicon'));
         $setting->uploadFaviconRetina($request->file('favicon_retina'));
         $setting->uploadOgImage($request->file('og_image'));
