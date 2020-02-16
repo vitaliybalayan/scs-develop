@@ -4,10 +4,11 @@ namespace App\Providers;
 
 use Auth;
 use App\Menu;
+use App\About;
+use App\Service;
 use App\Setting;
 use App\Language;
 use App\Location;
-use App\Service;
 use App\Certificate;
 use Illuminate\Support\ServiceProvider;
 
@@ -32,16 +33,19 @@ class AppServiceProvider extends ServiceProvider
 
         view()->composer('home.index', function($view) {
             $view->with('site', Setting::all()->first());
+            $view->with('about', About::all()->first());
         });
 
         view()->composer('blocks.footer', function($view) {
             $view->with('locations', Location::where('is_public', 1)->get());
             $view->with('certificates', Certificate::where('is_public', 1)->get());
+            $view->with('about', About::all()->first());
         });
 
         view()->composer('blocks.footer_service', function($view) {
             $view->with('service', Service::where('is_public', 1)->inRandomOrder()->first());
         });
+
     }
 
     /**

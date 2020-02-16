@@ -71,22 +71,14 @@
 
 				<div class="col-2_top">
 					<div class="parallelogram__item first">
-						<div class="parallelogram-item__title"><h4>О ships catering supply</h4></div>
-						<div class="parallelogram-item__content">
-							<div class="parallelogram__content-block">
-								<h1>Первая казахстанская сервисная компания</h1>
-								<p data-size="middle" data-font_weight="light">Мы построили нашу репутацию на ценностях профессионализма, инноваций, технических знаний, качества, здоровья и безопасности.</p>
-							</div>
-							<div class="parallelogram__content-block">
-								<h5 data-font_weight="bold">Уверенное развитие</h5>
-								<p data-size="normal" data-font_weight="light">Высокие конкуренция и стандарты качества позволили нам в самые кратчайшие сроки достичь очень высокого уровня сервиса, сравнимого с международными игроками и в некоторых моментах даже превзойти его.</p>
-							</div>
-							<div class="parallelogram__content-block">
-								<div class="parallelogram-links">
-									<a href="#" class="text__button green" data-size="middle">История & Миссия</a>
-								</div>
-							</div>
+						<div class="parallelogram-item__title">
+							@if (app()->getLocale() != 'kz')
+								<h4>@lang('titles.About company') {{ $about->company_name }}</h4>
+								@else
+								<h4>{{ $about->company_name }} @lang('titles.About company')</h4>
+							@endif
 						</div>
+						{!! $about->getLocalize(app()->getLocale(), 'preview_content') !!}
 					</div>
 
 					<div class="parallelogram__item second">
@@ -192,8 +184,8 @@
 		</div>
 	</section>
 
-	<section class="fullwidht_video" style="background: linear-gradient(288.47deg, rgba(215, 237, 118, 0.9) -2.3%, rgba(195, 233, 165, 0.9) 59.17%, rgba(156, 224, 255, 0.9) 91.37%), url('/assets/frontend/img/slider/slider-photo.jpg') 50% no-repeat; background-size: cover;">
-		<a href="https://www.youtube.com/watch?v=Q3bPNZbRVhk" class="popup-link_video">
+	<section class="fullwidht_video" style="background: linear-gradient(288.47deg, rgba(215, 237, 118, 0.9) -2.3%, rgba(195, 233, 165, 0.9) 59.17%, rgba(156, 224, 255, 0.9) 91.37%), url('{{ $about->getImage() }}') 50% no-repeat; background-size: cover;">
+		<a href="{{ $about->video }}" class="popup-link_video">
 			<div class="container">
 				<div class="video__container inline-middle">
 					<div class="video__title">@lang('titles.video')</div>

@@ -7,13 +7,11 @@ use Storage;
 use Illuminate\Support\Str;
 use Illuminate\Database\Eloquent\Model;
 
-class About extends Model
+class Advantage extends Model
 {
 	protected $fillable = [
-		'user_id', 'company_name', 'phone', 'email', 'video'
+		'user_id', 'position',
 	];
-
-	protected $table = 'about';
 
 	public function creator()
 	{
@@ -71,74 +69,6 @@ class About extends Model
 		}
 	}
 
-	public function uploadImage($image)
-	{
-		if($image == null) { return; }
-
-		$this->removeImage();
-
-		$filename = Str::random(12) . '.' . $image->getClientOriginalExtension();
-		$path = '/public/uploads/pages/' . $filename;
-		$img = Image::make($image);
-
-		Storage::put($path, (string) $img->encode());
-
-		$this->image = $filename;
-		$this->save();
-	}
-
-	public function getImage()
-	{
-		if($this->image == null)
-		{
-			return '/assets/noimage.png';
-		}
-
-		return '/storage/uploads/pages/' . $this->image;
-	}
-
-	public function removeImage()
-	{
-		if($this->image != null)
-		{
-			Storage::disk('public')->delete('uploads/pages/' . $this->image);
-		}
-	}
-
-	public function uploadOgImage($image)
-	{
-		if($image == null) { return; }
-
-		$this->removeImage();
-
-		$filename = Str::random(12) . '.' . $image->getClientOriginalExtension();
-		$path = '/public/uploads/pages/og/' . $filename;
-		$img = Image::make($image);
-
-		Storage::put($path, (string) $img->encode());
-
-		$this->og_image = $filename;
-		$this->save();
-	}
-
-	public function getOgImage()
-	{
-		if($this->og_image == null)
-		{
-			return '/assets/noimage.png';
-		}
-
-		return '/storage/uploads/pages/og/' . $this->og_image;
-	}
-
-	public function removeOgImage()
-	{
-		if($this->og_image != null)
-		{
-			Storage::disk('public')->delete('uploads/pages/og/' . $this->og_image);
-		}
-	}
-	
 	public function is_public($value)
 	{
 		if ($value != null) {
@@ -164,5 +94,39 @@ class About extends Model
 	{
 		$this->removeImage();
 		$this->delete();
+	}
+
+	public function uploadImage($image)
+	{
+		if($image == null) { return; }
+
+		$this->removeImage();
+
+		$filename = Str::random(12) . '.' . $image->getClientOriginalExtension();
+		$path = '/public/uploads/other/' . $filename;
+		$img = Image::make($image);
+
+		Storage::put($path, (string) $img->encode());
+
+		$this->image = $filename;
+		$this->save();
+	}
+
+	public function getImage()
+	{
+		if($this->image == null)
+		{
+			return '/assets/noimage.png';
+		}
+
+		return '/storage/uploads/other/' . $this->image;
+	}
+
+	public function removeImage()
+	{
+		if($this->image != null)
+		{
+			Storage::disk('public')->delete('uploads/other/' . $this->image);
+		}
 	}
 }

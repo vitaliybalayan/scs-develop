@@ -141,6 +141,8 @@
 							<div id="kt_header_menu" class="kt-header-menu kt-header-menu-mobile  kt-header-menu--layout-tab ">
 								<ul class="kt-menu__nav ">
 									<li class="kt-menu__item kt-menu__item--active" aria-haspopup="true"><a href="{{ route('index', 'ru') }}" class="kt-menu__link" target="_blank"><span class="kt-menu__link-text">Перейти на сайт</span></a></li>
+
+									<li class="kt-menu__item" aria-haspopup="true"><a href="{{ route('_about.index', 'ru') }}" class="kt-menu__link" target="_blank"><span class="kt-menu__link-text">О компании</span></a></li>
 								</ul>
 							</div>
 						</div>

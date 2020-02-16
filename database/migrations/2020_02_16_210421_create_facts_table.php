@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateAboutTable extends Migration
+class CreateFactsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,15 +13,11 @@ class CreateAboutTable extends Migration
      */
     public function up()
     {
-        Schema::create('about', function (Blueprint $table) {
+        Schema::create('facts', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->integer('user_id');
-            $table->string('company_name');
-            $table->string('phone')->nullable();
-            $table->string('image')->nullable();
-            $table->string('og_image')->nullable();
-            $table->string('email')->nullable();
-            $table->string('video')->nullable();
+            $table->integer('is_public')->default(0);
+            $table->integer('position')->default(1);
             $table->timestamps();
         });
     }
@@ -33,6 +29,6 @@ class CreateAboutTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('about');
+        Schema::dropIfExists('facts');
     }
 }

@@ -448,6 +448,7 @@ class ComposerStaticInit09d270110d788090f84c24ea6759f743
     public static $classMap = array (
         'App\\About' => __DIR__ . '/../..' . '/app/About.php',
         'App\\Article' => __DIR__ . '/../..' . '/app/Article.php',
+        'App\\Certificate' => __DIR__ . '/../..' . '/app/Certificate.php',
         'App\\Client' => __DIR__ . '/../..' . '/app/Client.php',
         'App\\Console\\Kernel' => __DIR__ . '/../..' . '/app/Console/Kernel.php',
         'App\\Email' => __DIR__ . '/../..' . '/app/Email.php',
@@ -455,6 +456,7 @@ class ComposerStaticInit09d270110d788090f84c24ea6759f743
         'App\\Http\\Controllers\\Admin\\AboutController' => __DIR__ . '/../..' . '/app/Http/Controllers/Admin/AboutController.php',
         'App\\Http\\Controllers\\Admin\\ArticlesController' => __DIR__ . '/../..' . '/app/Http/Controllers/Admin/ArticlesController.php',
         'App\\Http\\Controllers\\Admin\\AuthController' => __DIR__ . '/../..' . '/app/Http/Controllers/Admin/AuthController.php',
+        'App\\Http\\Controllers\\Admin\\CertificatesController' => __DIR__ . '/../..' . '/app/Http/Controllers/Admin/CertificatesController.php',
         'App\\Http\\Controllers\\Admin\\ClientsController' => __DIR__ . '/../..' . '/app/Http/Controllers/Admin/ClientsController.php',
         'App\\Http\\Controllers\\Admin\\FilesController' => __DIR__ . '/../..' . '/app/Http/Controllers/Admin/FilesController.php',
         'App\\Http\\Controllers\\Admin\\HomeController' => __DIR__ . '/../..' . '/app/Http/Controllers/Admin/HomeController.php',

@@ -8,6 +8,7 @@ $baseDir = dirname($vendorDir);
 return array(
     'App\\About' => $baseDir . '/app/About.php',
     'App\\Article' => $baseDir . '/app/Article.php',
+    'App\\Certificate' => $baseDir . '/app/Certificate.php',
     'App\\Client' => $baseDir . '/app/Client.php',
     'App\\Console\\Kernel' => $baseDir . '/app/Console/Kernel.php',
     'App\\Email' => $baseDir . '/app/Email.php',
@@ -15,6 +16,7 @@ return array(
     'App\\Http\\Controllers\\Admin\\AboutController' => $baseDir . '/app/Http/Controllers/Admin/AboutController.php',
     'App\\Http\\Controllers\\Admin\\ArticlesController' => $baseDir . '/app/Http/Controllers/Admin/ArticlesController.php',
     'App\\Http\\Controllers\\Admin\\AuthController' => $baseDir . '/app/Http/Controllers/Admin/AuthController.php',
+    'App\\Http\\Controllers\\Admin\\CertificatesController' => $baseDir . '/app/Http/Controllers/Admin/CertificatesController.php',
     'App\\Http\\Controllers\\Admin\\ClientsController' => $baseDir . '/app/Http/Controllers/Admin/ClientsController.php',
     'App\\Http\\Controllers\\Admin\\FilesController' => $baseDir . '/app/Http/Controllers/Admin/FilesController.php',
     'App\\Http\\Controllers\\Admin\\HomeController' => $baseDir . '/app/Http/Controllers/Admin/HomeController.php',

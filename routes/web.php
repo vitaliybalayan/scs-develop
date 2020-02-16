@@ -75,6 +75,8 @@ Route::group(['prefix'=>'admin','namespace'=>'Admin', 'middleware'	=>	'admin'], 
 	Route::resource('/articles', 'ArticlesController');
 	Route::resource('/locations', 'LocationsController');
 	Route::resource('/certificates', 'CertificatesController');
+	Route::resource('/facts', 'FactsController');
+	Route::resource('/advantages', 'AdvantagesController');
 	Route::post('/services/image_upload', 'ServicesController@preview_upload')->name('services.preview_uplaod');
 
 });

@@ -11,8 +11,9 @@
 @section('content')
 
 {{Form::open([
-	'route'		=>	'about.store',
+	'route'		=>	['about.update', $about->id],
 	'files'		=>	true,
+	'id'		=> 'form_upload'
 ])}}
 
 <div class="kt-content  kt-grid__item kt-grid__item--fluid kt-grid kt-grid--hor" id="kt_content">
@@ -38,6 +39,8 @@
 
 	<!-- begin:: Content -->
 	<div class="kt-container  kt-container--fluid  kt-grid__item kt-grid__item--fluid">
+
+		<div id="result"></div>
 
 		@include('admin.errors')
 
@@ -94,28 +97,28 @@
 									<div class="form-group row">
 										<label class="col-xl-3 col-lg-3 col-form-label">Полное название компании</label>
 										<div class="col-lg-9 col-xl-6">
-											<input class="form-control" type="text" placeholder="Введите полное название компании" name="company_name">
+											<input class="form-control" type="text" placeholder="Введите полное название компании" name="company_name" value="{{ $about->company_name }}">
 										</div>
 									</div>
 
 									<div class="form-group row">
 										<label class="col-xl-3 col-lg-3 col-form-label">Телефон</label>
 										<div class="col-lg-9 col-xl-6">
-											<input class="form-control" type="text" placeholder="Введите телефон" name="phone">
+											<input class="form-control" type="text" placeholder="Введите телефон" name="phone" value="{{ $about->phone }}">
 										</div>
 									</div>
 
 									<div class="form-group row">
 										<label class="col-xl-3 col-lg-3 col-form-label">Email</label>
 										<div class="col-lg-9 col-xl-6">
-											<input class="form-control" type="text" placeholder="Введите email" name="email">
+											<input class="form-control" type="text" placeholder="Введите email" name="email" value="{{ $about->email }}">
 										</div>
 									</div>
 
 									<div class="form-group row">
 										<label class="col-xl-3 col-lg-3 col-form-label">Видео</label>
 										<div class="col-lg-9 col-xl-6">
-											<input class="form-control" type="text" placeholder="Вставьте ссылку на видео" name="video">
+											<input class="form-control" type="text" placeholder="Вставьте ссылку на видео" name="video" value="{{ $about->video }}">
 										</div>
 									</div>
 								</div>
@@ -134,21 +137,7 @@
 											<label class="col-xl-3 col-lg-3 col-form-label">Превью-контент</label>
 											<div class="col-lg-9 col-xl-6">
 												<textarea class="summernote" id="summernote_{{ $lang->code }}" name="locale[{{ $lang->code }}][preview_content]">
-													<div class="parallelogram-item__content">
-														<div class="parallelogram__content-block">
-															<h1>Первая казахстанская сервисная компания</h1>
-															<p data-size="middle" data-font_weight="light">Мы построили нашу репутацию на ценностях профессионализма, инноваций, технических знаний, качества, здоровья и безопасности.</p>
-														</div>
-														<div class="parallelogram__content-block">
-															<h5 data-font_weight="bold">Уверенное развитие</h5>
-															<p data-size="normal" data-font_weight="light">Высокие конкуренция и стандарты качества позволили нам в самые кратчайшие сроки достичь очень высокого уровня сервиса, сравнимого с международными игроками и в некоторых моментах даже превзойти его.</p>
-														</div>
-														<div class="parallelogram__content-block">
-															<div class="parallelogram-links">
-																<a href="{{ route('_about.index', app()->getLocale()) }}" class="text__button green" data-size="middle">История &amp; Миссия</a>
-															</div>
-														</div>
-													</div>
+													{!! $about->getLocalize($default_lang, 'preview_content') !!}
 												</textarea>
 											</div>
 										</div>
@@ -156,14 +145,16 @@
 										<div class="form-group row">
 											<label class="col-xl-3 col-lg-3 col-form-label">Контент</label>
 											<div class="col-lg-9 col-xl-6">
-												<textarea class="summernote" id="summernote_{{ $lang->code }}" name="locale[{{ $lang->code }}][content]"></textarea>
+												<textarea class="summernote" id="summernote_{{ $lang->code }}" name="locale[{{ $lang->code }}][content]">
+													{!! $about->getLocalize($default_lang, 'content') !!}
+												</textarea>
 											</div>
 										</div>
 
 										<div class="form-group row">
 											<label class="col-xl-3 col-lg-3 col-form-label">Мета-теги</label>
 											<div class="col-lg-9 col-xl-6">
-												<input class="form-control" type="text" name="locale[{{ $lang->code }}][meta_tags]" placeholder="Введите мета-теги через запятую">
+												<input class="form-control" type="text" name="locale[{{ $lang->code }}][meta_tags]" placeholder="Введите мета-теги через запятую" value="{{ $about->getLocalize($default_lang, 'meta_tags') }}">
 											</div>
 										</div>
 									</div>
@@ -185,6 +176,7 @@
 											<div class="custom-file">
 												<input type="file" class="custom-file-input" name="og_image" id="customFile">
 												<label class="custom-file-label" for="customFile" style="text-align: left;">Выберите файл</label>
+												<img src="{{ $about->getOgImage() }}" style="max-height: 200px">
 											</div>
 										</div>
 									</div>
@@ -216,4 +208,37 @@
 
 <script src="/assets/admin/speakingurl-master/speakingurl.min.js" type="text/javascript"></script>
 <script src="/assets/admin/jquery-slugify-master/dist/slugify.min.js" type="text/javascript"></script>
+
+<script>
+$('#form_upload').submit(function(event) {
+	event.preventDefault();
+
+	$('button').attr('disabled', true);
+	
+	$.ajax({
+		type: $(this).attr('method'),
+		url: $(this).attr('action'),
+		data: new FormData(this),
+		contentType: false,
+		cache: false,
+		processData: false,
+		statusCode: {
+			404: function() {
+				alert( "Страница не найдена." );
+			}
+		},
+		success: function(result){
+			$('#result').html('<div class="alert alert-success fade show" role="alert"><div class="alert-icon"><i class="flaticon-warning"></i></div><div class="alert-text">'+ result.status +'</div><div class="alert-close"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true"><i class="la la-close"></i></span></button></div></div>');
+			
+			$('button').attr('disabled', false);
+
+			$('body,html').animate({scrollTop: 0}, 400); 
+		}, 
+		error: function(result) {
+			$('#dd').html(result);
+			$('button').attr('disabled', false);
+		}
+	})
+});
+</script>
 @endsection

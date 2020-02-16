@@ -11,7 +11,7 @@
 		<div class="footer__content">
 			<div class="col-2 gap-50">
 				<div class="footer_copyrite">
-					© 2019–{{ Carbon\Carbon::today()->year }} <br> Ships Catering Supply 
+					© 2019–{{ Carbon\Carbon::today()->year }} <br> {{ $about->company_name }} 
 				</div>
 				<div class="footer__address">
 					
@@ -49,7 +49,7 @@
 						</div>
 						<span class="footer__link">@lang('titles.developers')</span>
 					</span>
-					<a href="#" class="footer__link">office@s-c-s.kz</a>
+					<a href="#" class="footer__link">{{ $about->email }}</a>
 				</div>
 			</div>
 		</div>
