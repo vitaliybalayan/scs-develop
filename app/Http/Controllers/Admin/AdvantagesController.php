@@ -53,7 +53,7 @@ class AdvantagesController extends Controller
         $advantage->uploadImage($request->file('image'));
         $advantage->is_public($request->get('is_public'));
 
-        return redirect()->route('facts.index');
+        return redirect()->route('advantages.index');
     }
 
     /**
@@ -79,10 +79,10 @@ class AdvantagesController extends Controller
         $g_languages = Language::where('is_public', 1)->get();
         $default_lang = Language::where('is_default', 1)->first()->code;
 
-        return view('admin.facts.edit', compact(
+        return view('admin.advantages.edit', compact(
             'g_languages',
             'default_lang',
-            'fact'
+            'advantage'
         ));
     }
 
@@ -98,11 +98,12 @@ class AdvantagesController extends Controller
         $advantage = Advantage::find($id);
 
         $advantage->edit($request->all());
+        $advantage->localRemove($advantage->id);
         $advantage->saveContent($request->get('locale'));
         $advantage->uploadImage($request->file('image'));
         $advantage->is_public($request->get('is_public'));
 
-        return redirect()->route('facts.index');
+        return redirect()->route('advantages.index');
     }
 
     /**
@@ -117,6 +118,6 @@ class AdvantagesController extends Controller
         $advantage->localRemove($advantage->id);
         $advantage->remove();
 
-        return redirect()->route('facts.index');
+        return redirect()->route('advantages.index');
     }
 }

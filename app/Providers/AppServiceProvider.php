@@ -10,6 +10,8 @@ use App\Setting;
 use App\Language;
 use App\Location;
 use App\Certificate;
+use App\Advantage;
+use App\Fact;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -34,6 +36,8 @@ class AppServiceProvider extends ServiceProvider
         view()->composer('home.index', function($view) {
             $view->with('site', Setting::all()->first());
             $view->with('about', About::all()->first());
+            $view->with('advantages', Advantage::where('is_public', 1)->orderBy('position', 'desc')->get());
+            $view->with('facts', Fact::where('is_public', 1)->orderBy('position', 'desc')->get());
         });
 
         view()->composer('blocks.footer', function($view) {

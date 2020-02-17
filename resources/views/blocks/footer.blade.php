@@ -5,7 +5,7 @@
 			<div class="footer__logotype">
 				<img src="/assets/frontend/img/SCS-footer-logo.svg" alt="SCS">
 			</div>
-			<div class="footer__phone inline-middle"><a href="tel:+77292533525">+7 (7292) <span class="hightlight">533 525</span><img src="/assets/frontend/img/icons/call-white.svg" alt="Телефон"></a></div>
+			<div class="footer__phone inline-middle"><a href="tel:{{ str_replace(' ', '', $about->phone) }}">{{ substr($about->phone, 0, 10) }} <span class="hightlight">{{ substr($about->phone, 10) }}</span><img src="/assets/frontend/img/icons/call-white.svg" alt="Телефон"></a></div>
 		</div>
 
 		<div class="footer__content">
@@ -16,11 +16,9 @@
 				<div class="footer__address">
 					
 					<div class="footer__address-head inline-middle">
-
 						@foreach($locations as $location)
 						<a href="javascript:void(0)" class="tab_block @if($location->id == $locations->first()->id) active @endif" data-tab_block="{{ $location->id }}_address" onclick="showBlock('{{ $location->id }}_address');">{{ $location->getLocalize(app()->getLocale(), 'city') }}</a>
 						@endforeach
-
 					</div>
 					
 					@foreach($locations as $location)
@@ -58,7 +56,6 @@
 	<div class="footer__block">
 		<div class="footer__block-logotypes">
 			<div class="inline-middle">
-
 				@foreach($certificates as $certificate)
 				<div class="footer__block-logo_item">
 					<a href="{{ $certificate->getImage() }}" class="popup-link_image">

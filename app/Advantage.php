@@ -62,7 +62,7 @@ class Advantage extends Model
 
 	public function localRemove($id)
 	{
-		$locals = Localization::where('lozalizable_id', $id)->where('lozalizable_type', About::class)->get();
+		$locals = Localization::where('lozalizable_id', $id)->where('lozalizable_type', Advantage::class)->get();
 		
 		foreach ($locals as $local) {
 			$local->delete();

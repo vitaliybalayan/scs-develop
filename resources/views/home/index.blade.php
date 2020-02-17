@@ -87,33 +87,21 @@
 							
 							<div class="owl-carousel parallelogram__content-slider">
 
+								@foreach($facts as $fact)
 								<div class="parallelogram__content-item">
 									<div class="parallelogram__content-block">
 										<div class="bigger_count">
-											<div class="bigger__number">13</div>
-											<div class="bigger__text">лет</div>
+											<div class="bigger__number">{{ $fact->getLocalize(app()->getLocale(), 'title') }}</div>
+											<div class="bigger__text">{{ $fact->getLocalize(app()->getLocale(), 'subtitle') }}</div>
 										</div>
-										<p class="stock_blue-p" data-size="large">стабильного развития в работе offshore & onshore</p>
+										<p class="stock_blue-p" data-size="large">{{ $fact->getLocalize(app()->getLocale(), 'desc') }}</p>
 									</div>
 
 									<div class="parallelogram-links">
-										<a href="#" class="text__button green" data-size="middle">Вся статистика</a>
+										<a href="{{ $fact->getLocalize(app()->getLocale(), 'link') }}" class="text__button green" data-size="middle">{{ $fact->getLocalize(app()->getLocale(), 'text_link') }}</a>
 									</div>
 								</div>
-
-								<div class="parallelogram__content-item">
-									<div class="parallelogram__content-block">
-										<div class="bigger_count">
-											<div class="bigger__number">14</div>
-											<div class="bigger__text">лет</div>
-										</div>
-										<p class="stock_blue-p" data-size="large">стабильного развития в работе offshore & onshore</p>
-									</div>
-
-									<div class="parallelogram-links">
-										<a href="#" class="text__button green" data-size="middle">Другая ссылка</a>
-									</div>
-								</div>
+								@endforeach
 
 							</div>
 
@@ -159,26 +147,15 @@
 		<div class="section-advan__container">
 			<div class="container">
 				<div class="col-4 gap-30">
+
+					@foreach($advantages as $advantage)
 					<div class="section-advan__item">
-						<div class="section-advan__item-image"><img src="/assets/frontend/img/icons/experience-icon.svg" alt="Опыт"></div>
-						<div class="section-advan__item-title">Опыт</div>
-						<div class="section-advan__item-desc">Lorem ipsum dolor sit amet, consec</div>
+						<div class="section-advan__item-image"><img src="{{ $advantage->getImage() }}" alt="{{ $advantage->getLocalize(app()->getLocale(), 'title') }}" style="max-height: 48px;"></div>
+						<div class="section-advan__item-title">{{ $advantage->getLocalize(app()->getLocale(), 'title') }}</div>
+						<div class="section-advan__item-desc">{{ $advantage->getLocalize(app()->getLocale(), 'desc') }}</div>
 					</div>
-					<div class="section-advan__item">
-						<div class="section-advan__item-image"><img src="/assets/frontend/img/icons/quality-icon.svg" alt="Система  качества"></div>
-						<div class="section-advan__item-title">Система качества</div>
-						<div class="section-advan__item-desc">Lorem ipsum dolor sit amet, consec</div>
-					</div>
-					<div class="section-advan__item">
-						<div class="section-advan__item-image"><img src="/assets/frontend/img/icons/complex-services-icon.svg" alt="Комплексные  услуги"></div>
-						<div class="section-advan__item-title">Комплексные услуги</div>
-						<div class="section-advan__item-desc">Lorem ipsum dolor sit amet, consec</div>
-					</div>
-					<div class="section-advan__item">
-						<div class="section-advan__item-image"><img src="/assets/frontend/img/icons/qualified-personnel.svg" alt="Специалисты  высшего класса"></div>
-						<div class="section-advan__item-title">Специалисты высшего класса</div>
-						<div class="section-advan__item-desc">Lorem ipsum dolor sit amet, consec</div>
-					</div>
+					@endforeach
+
 				</div>
 			</div>
 		</div>
