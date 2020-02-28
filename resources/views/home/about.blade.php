@@ -1,7 +1,11 @@
 @extends('layout')
 
 @section('title')
-{{ $client->name }}
+@if (app()->getLocale() != 'kz')
+	@lang('titles.About company') {{ $about->company_name }}
+	@else
+	{{ $about->company_name }} @lang('titles.About company')
+@endif
 @endsection
 
 @section('detalis')
@@ -12,12 +16,12 @@
 <main class="inner-content">
 
 	<section class="inner-page_banner-container">
-		<div class="inner-page_banner-item" style="background: linear-gradient(0deg, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('{{$client->getImage()}}') 50% no-repeat; background-size: cover;">
+		<div class="inner-page_banner-item" style="background: linear-gradient(0deg, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('{{$about->getImage()}}') 50% no-repeat; background-size: cover;">
 			<div class="g-content">
 				<div class="container">
 					<div class="inner-page_banner-content">
 						<div class="inner_banner-desc">
-							<h1>{{ $client->name }}</h1>
+							<h1>{{ $about->company_name }}</h1>
 						</div>
 						<a href="#page" class="arrow-down_link anchor_link"></a>
 					</div>
@@ -29,8 +33,11 @@
 	<div class="white__content" id="page">
 		<div class="g-content">
 			<div class="container">
+				<div class="blockquote-right">
+					<blockquote>{{ $about->getLocalize(app()->getLocale(), 'quote') }}</blockquote>
+				</div>
 				<div class="inner-page">
-					{!! $client->getLocalize($lang, 'content') !!}
+					{!! $about->getLocalize(app()->getLocale(), 'content') !!}
 				</div>
 
 			</div>

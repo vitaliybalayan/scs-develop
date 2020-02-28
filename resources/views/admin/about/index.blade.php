@@ -79,7 +79,7 @@
 										<label class="col-form-label col-lg-3 col-sm-12">Изображение</label>
 										<div class="col-lg-4 col-md-9 col-sm-12">
 											<div class="kt-avatar kt-avatar--outline" id="kt_user_avatar_1">
-												<div class="kt-avatar__holder" style="background-image: url('{{ $about->getImage() }}'); background-size: 100% auto; background-position: center;"></div>
+												<div class="kt-avatar__holder" style="background-image: url('/assets/noimage.png'); background-size: 100% auto; background-position: center;"></div>
 												<label class="kt-avatar__upload" data-toggle="kt-tooltip" title="" data-original-title="Добавить превью">
 												<i class="fa fa-pen"></i>
 												<input type="file" name="image" accept=".png, .jpg, .jpeg">
@@ -150,6 +150,13 @@
 														</div>
 													</div>
 												</textarea>
+											</div>
+										</div>
+
+										<div class="form-group row">
+											<label class="col-xl-3 col-lg-3 col-form-label">Слоган</label>
+											<div class="col-lg-9 col-xl-6">
+												<input class="form-control" type="text" placeholder="Слоган" name="locale[{{ $lang->code }}][quote]">
 											</div>
 										</div>
 

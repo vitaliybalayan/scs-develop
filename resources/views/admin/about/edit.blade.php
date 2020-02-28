@@ -137,8 +137,15 @@
 											<label class="col-xl-3 col-lg-3 col-form-label">Превью-контент</label>
 											<div class="col-lg-9 col-xl-6">
 												<textarea class="summernote" id="summernote_{{ $lang->code }}" name="locale[{{ $lang->code }}][preview_content]">
-													{!! $about->getLocalize($default_lang, 'preview_content') !!}
+													{!! $about->getLocalize($lang->code, 'preview_content') !!}
 												</textarea>
+											</div>
+										</div>
+
+										<div class="form-group row">
+											<label class="col-xl-3 col-lg-3 col-form-label">Слоган</label>
+											<div class="col-lg-9 col-xl-6">
+												<input class="form-control" type="text" placeholder="Слоган" name="locale[{{ $lang->code }}][quote]" value="{!! $about->getLocalize($lang->code, 'quote') !!}">
 											</div>
 										</div>
 
@@ -146,7 +153,7 @@
 											<label class="col-xl-3 col-lg-3 col-form-label">Контент</label>
 											<div class="col-lg-9 col-xl-6">
 												<textarea class="summernote" id="summernote_{{ $lang->code }}" name="locale[{{ $lang->code }}][content]">
-													{!! $about->getLocalize($default_lang, 'content') !!}
+													{!! $about->getLocalize($lang->code, 'content') !!}
 												</textarea>
 											</div>
 										</div>
@@ -154,7 +161,7 @@
 										<div class="form-group row">
 											<label class="col-xl-3 col-lg-3 col-form-label">Мета-теги</label>
 											<div class="col-lg-9 col-xl-6">
-												<input class="form-control" type="text" name="locale[{{ $lang->code }}][meta_tags]" placeholder="Введите мета-теги через запятую" value="{{ $about->getLocalize($default_lang, 'meta_tags') }}">
+												<input class="form-control" type="text" name="locale[{{ $lang->code }}][meta_tags]" placeholder="Введите мета-теги через запятую" value="{{ $about->getLocalize($lang->code, 'meta_tags') }}">
 											</div>
 										</div>
 									</div>

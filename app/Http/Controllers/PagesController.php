@@ -6,6 +6,7 @@ use App\Client;
 use App\Service;
 use App\Article;
 use App\Location;
+use App\About;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
@@ -36,5 +37,12 @@ class PagesController extends Controller
     public function career($lang)
     {
         return view('home.career');
+    }
+
+    public function about($lang)
+    {
+        $about = About::all()->first();
+
+        return view('home.about', compact('about'));
     }
 }

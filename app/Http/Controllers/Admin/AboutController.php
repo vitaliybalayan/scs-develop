@@ -15,7 +15,7 @@ class AboutController extends Controller
         $g_languages = Language::where('is_public', 1)->get();
         $default_lang = Language::where('is_default', 1)->first()->code;
 
-    	if (!$about) {
+    	if ($about == null) {
     		return view('admin.about.index', compact(
     			'g_languages'
     		));
@@ -30,11 +30,13 @@ class AboutController extends Controller
 
     public function store(Request $request)
     {
+        // dd($request->get('locale'));
         $about = About::add($request->all());
 
+        
+        $about->saveContent($request->get('locale'));
         $about->uploadImage($request->file('image'));
         $about->uploadOgImage($request->file('og_image'));
-        $about->saveContent($request->get('locale'));
 
         return redirect()->route('about.index'); 
     }

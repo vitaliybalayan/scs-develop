@@ -192,7 +192,9 @@
 							</div>
 							<div class="f__c-s_f-s__item-subtitle">{{ $article->created_at->format('d.m.Y') }}</div>
 							<div class="f__c-s_f-s__item-content">{{ $article->getLocalize(app()->getLocale(), 'desc') }}</div>
-							<div class="f__c-s_f-s__item-footer"><a href="{{ route('_articles.show', ['locale' => app()->getLocale(), 'slug' => $article->getLocalize(app()->getLocale(), 'slug')]) }}" class="stadrt__button green">@lang('buttons.learn_more')</a></div>
+							<div class="f__c-s_f-s__item-footer">
+								<a href="{{ route('_articles.show', ['locale' => app()->getLocale(), 'slug' => $article->getLocalize(app()->getLocale(), 'slug')]) }}" class="stadrt__button green">@lang('buttons.learn_more')</a>
+							</div>
 						</div>
 						@endforeach
 
