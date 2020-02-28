@@ -6,5 +6,4 @@
 php artisan storage:link
 php artisan config:clear
 php artisan cache:clear
-php artisan migrate
-php artisan db:seed
+php artisan migrate --seed
