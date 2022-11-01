@@ -45,7 +45,7 @@
     "filename": "speakingurl.min.js",
     "dependencies": {},
     "devDependencies": {
-        "gulp": "^3.8.8",
+        "gulp": "^4.0.2",
         "gulp-bump": "^2.4.0",
         "gulp-header": "^1.2.2",
         "gulp-jsbeautifier": "^2.0.3",
